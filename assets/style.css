@@ -1,0 +1,263 @@
+:root {
+    --navy: #0E2A4D;
+    --navy-deep: #081C36;
+    --blue-accent: #3D8BFD;
+    --blue-soft: #DCEBFF;
+    --bg: #F6F9FE;
+    --charcoal: #1C2733;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--bg);
+    color: var(--charcoal);
+}
+
+/* NAV Section  */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    padding: 14px 48px;
+    box-shadow: 0 2px 16px rgba(14, 42, 77, 0.07);
+    position: relative;
+}
+
+/* LOGO  */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--navy);
+}
+
+.crest {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.brand-text .school-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.28rem;
+    letter-spacing: 0.5px;
+    color: var(--navy);
+}
+
+.brand-text .school-tag {
+    font-size: 0.64rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue-accent);
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+/* Desktop nav  */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    list-style: none;
+}
+
+.nav-links li a {
+    position: relative;
+    text-decoration: none;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding-bottom: 6px;
+    transition: color 0.25s ease;
+}
+
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--blue-accent);
+    transition: width 0.28s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--navy);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.nav-links li a.active {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.nav-links li a.active::after {
+    width: 100%;
+}
+/* Enwuiry */
+.enquiry-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding: 9px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.enquiry-btn:hover {
+    background: var(blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(61, 139, 253, 0.6), 0 4px 14px rgba(14, 42, 77, 0.25);
+}
+
+/* triple button  */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.menu-toggle span {
+    width: 26px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 14px 20px;
+        background: var(--navy);
+        box-shadow: none;
+    }
+
+    .brand-text .school-name {
+        color: #FFFFFF;
+    }
+
+    .brand-text .school-tag {
+        color: var(--blue-soft);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-toggle span {
+        background: #FFFFFF;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        background: var(--navy-deep);
+        padding: 28px 32px 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        transform: translateY(-12px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 50;
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        color: #E7EFFC;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 4px 0;
+    }
+
+    .nav-links li a::after {
+        display: none;
+    }
+
+    .nav-links li a::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--blue-accent);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .nav-links li a.active,
+    .nav-links li a:hover {
+        color: #FFFFFF;
+    }
+
+    .nav-links li a.active::before,
+    .nav-links li a:hover::before {
+        opacity: 1;
+    }
+
+    .enquiry-btn {
+        display: inline-flex;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        background: transparent;
+        border: 2px solid var(--blue-accent);
+        color: var(--blue-accent);
+    }
+
+    .enquiry-btn:hover {
+        background: var(--blue-accent);
+        color: white;
+        box-shadow: 0 0 18px rgba(61, 139, 253, 0.7);
+    }
+}
+
