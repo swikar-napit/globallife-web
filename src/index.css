@@ -286,6 +286,7 @@ body {
     box-shadow: none;
   }
 }
+
 /* FOOTER */
 .footer {
   background: var(--navy);
@@ -391,11 +392,42 @@ body {
   margin-bottom: 12px;
 }
 
-.footer-links li a {
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
   text-decoration: none;
+  padding: 4px 0;
   transition: color 0.2s ease;
+}
+
+.footer-link-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  color: var(--blue-accent);
+}
+
+.footer-link:hover {
+  color: #fff;
+}
+
+.footer-link:hover .footer-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.footer-link.active {
+  color: var(--blue-accent);
+  font-weight: 600;
+}
+
+.footer-link.active .footer-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--blue-accent);
 }
 
 .footer-links li a:hover {
