@@ -1,12 +1,15 @@
 import { Link } from "react-router"
 import { useState, useEffect } from "react"
-import heroImg from "../assets/global.jpg"
+import slide1 from "../assets/global1.jpg"
+import slide2 from "../assets/global2.jpg"
+import slide3 from "../assets/global3.jpg"
+import slide4 from "../assets/global5.jpg"
 
 const slides = [
-  { id: 1, img: heroImg, caption: "Academic Excellence" },
-  { id: 2, img: heroImg, caption: "Holistic Development" },
-  { id: 3, img: heroImg, caption: "Boarding Life" },
-  { id: 4, img: heroImg, caption: "Sports & Activities" },
+  { id: 1, img: slide4, caption: "Welcome Program" },
+  { id: 2, img: slide2, caption: "Welcome Program" },
+  { id: 3, img: slide3, caption: "Welcome Program" },
+  { id: 4, img: slide1, caption: "Welcome Program" },
 ]
 
 function Home() {
