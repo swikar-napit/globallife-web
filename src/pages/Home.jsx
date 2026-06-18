@@ -1,7 +1,24 @@
 import { Link } from "react-router"
+import { useState, useEffect } from "react"
 import heroImg from "../assets/global.jpg"
 
+const slides = [
+  { id: 1, img: heroImg, caption: "Academic Excellence" },
+  { id: 2, img: heroImg, caption: "Holistic Development" },
+  { id: 3, img: heroImg, caption: "Boarding Life" },
+  { id: 4, img: heroImg, caption: "Sports & Activities" },
+]
+
 function Home() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length)
+    }, 3000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <>
       <section className="hero">
@@ -23,8 +40,25 @@ function Home() {
         </div>
 
         <div className="hero-image-wrap">
-          <div className="hero-image-placeholder">
-            <img src={heroImg} alt="Students at Global Life School" className="hero-img" />
+          <div className="hero-slideshow">
+            {slides.map((slide, index) => (
+              <img
+                key={slide.id}
+                src={slide.img}
+                alt={slide.caption}
+                className={index === current ? "slide active" : "slide"}
+              />
+            ))}
+            <div className="slide-caption">{slides[current].caption}</div>
+            <div className="slide-dots">
+              {slides.map((_, index) => (
+                <span
+                  key={index}
+                  className={index === current ? "dot active" : "dot"}
+                  onClick={() => setCurrent(index)}
+                />
+              ))}
+            </div>
           </div>
           <div className="hero-image-badge">
             <span className="badge-year">Est.</span>
