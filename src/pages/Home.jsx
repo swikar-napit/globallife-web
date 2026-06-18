@@ -91,6 +91,26 @@ function Home() {
           <span className="stat-label">Board Pass Rate</span>
         </div>
       </div>
+
+      <section className="home-about">
+        <div className="home-about-inner">
+          <span className="home-about-eyebrow">About Us</span>
+          <h2 className="home-about-heading">
+            Welcome to <span>Global Life School</span>
+          </h2>
+          <div className="home-about-copy">
+            <p>
+              Global Life School is committed to shaping future leaders through innovative learning, strong values, and academic excellence. We create an inspiring environment where students are encouraged to think creatively, explore their potential, and develop the skills needed to succeed in a rapidly changing world
+            </p>
+            <p>
+              By combining academic excellence with creativity and critical thinking, we prepare students to become responsible, confident, and future-ready individuals.
+            </p>
+          </div>
+          <Link to="/about" className="home-about-btn">
+             About Us <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
     </>
   )
 }
