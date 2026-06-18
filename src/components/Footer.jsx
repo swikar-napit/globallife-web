@@ -83,7 +83,7 @@ function Footer() {
           <ul className="footer-contact-list">
             <li>
               <span className="footer-contact-icon">📍</span>
-              <span>Kathmandu, Bagmati Province, Nepal</span>
+              <span>Kamalbinayak-10, Bhaktapur, Nepal</span>
             </li>
             <li>
               <span className="footer-contact-icon">📞</span>
@@ -92,7 +92,7 @@ function Footer() {
             </li>
             <li>
               <span className="footer-contact-icon">✉️</span>
-              <span>info@globallifeschool.edu.np</span>
+              <span>globallifesch@gmail.com</span>
             </li>
           </ul>
         </div>
@@ -104,7 +104,7 @@ function Footer() {
           © 2026 Global Life School. All rights reserved.
         </div>
         <div className="footer-bottom-badge">
-          Built with React
+          Built with React by Swikar Napit
         </div>
       </div>
     </footer>

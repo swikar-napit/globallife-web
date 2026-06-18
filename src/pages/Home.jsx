@@ -38,7 +38,7 @@ function Home() {
           </p>
           <div className="hero-actions">
             <Link to="/academics" className="hero-btn-primary">Apply for Admission</Link>
-            <Link to="/about" className="hero-btn-secondary">Our Story</Link>
+            <Link to="/contact" className="hero-btn-primary">Contact Us</Link>
           </div>
         </div>
 
