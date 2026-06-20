@@ -11,6 +11,28 @@ const slides = [
   { id: 3, img: slide3, caption: "Welcome Program" },
   { id: 4, img: slide1, caption: "Welcome Program" },
 ]
+const features = [
+  {
+    icon: "🎓",
+    title: "Academic Excellence",
+    text: "A rigorous curriculum designed to challenge and inspire every learner."
+  },
+  {
+    icon: "🏠",
+    title: "Safe Boarding Life",
+    text: "Comfortable, secure boarding facilities that feel like a second home."
+  },
+  {
+    icon: "🌍",
+    title: "Holistic Growth",
+    text: "Sports, arts, and clubs that nurture confidence beyond the classroom."
+  },
+  {
+    icon: "🤝",
+    title: "Caring Mentors",
+    text: "Experienced teachers dedicated to every student's personal journey."
+  },
+]
 
 function Home() {
   const [current, setCurrent] = useState(0)
@@ -107,10 +129,41 @@ function Home() {
             </p>
           </div>
           <Link to="/about" className="home-about-btn">
-             About Us <span aria-hidden="true">→</span>
+            About Us <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>
+     <section className="features-section">
+  <div className="features-bento">
+    <div className="feature-card feature-big">
+      <span className="feature-question">Why Choose<br />Global Life?</span>
+      <p className="feature-answer">
+        Because we believe every child deserves a place where academics,
+        character, and confidence grow together — guided by teachers who
+        truly care about their journey.
+      </p>
+    </div>
+
+    <div className="feature-stack">
+      <div className="feature-card feature-small">
+        <div className="feature-icon">{features[1].icon}</div>
+        <h3 className="feature-title">{features[1].title}</h3>
+        <p className="feature-text">{features[1].text}</p>
+      </div>
+      <div className="feature-card feature-small">
+        <div className="feature-icon">{features[2].icon}</div>
+        <h3 className="feature-title">{features[2].title}</h3>
+        <p className="feature-text">{features[2].text}</p>
+      </div>
+    </div>
+
+    <div className="feature-card feature-big">
+      <div className="feature-icon">{features[3].icon}</div>
+      <h3 className="feature-title">{features[3].title}</h3>
+      <p className="feature-text">{features[3].text}</p>
+    </div>
+  </div>
+</section>
     </>
   )
 }
