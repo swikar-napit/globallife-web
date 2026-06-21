@@ -11,6 +11,28 @@ const slides = [
   { id: 3, img: slide3, caption: "Welcome Program" },
   { id: 4, img: slide1, caption: "Welcome Program" },
 ]
+const programs = [
+  {
+    icon: "🧸",
+    title: "Early Years",
+    text: "Play-based learning that nurtures curiosity and a lifelong love of discovery."
+  },
+  {
+    icon: "📖",
+    title: "Primary School",
+    text: "Strong foundations in literacy, numeracy, and creative thinking."
+  },
+  {
+    icon: "🔬",
+    title: "Secondary School",
+    text: "A broad, rigorous curriculum that prepares students for board exams."
+  },
+  {
+    icon: "🎯",
+    title: "Senior Secondary",
+    text: "Focused academic and career guidance for university readiness."
+  },
+]
 const features = [
   {
     icon: "🎓",
@@ -157,6 +179,47 @@ function Home() {
                 <p className="why-card-text">{feature.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="academics-section">
+        <div className="academics-header">
+          <span className="academics-eyebrow">Academics</span>
+          <h2 className="academics-heading">A Program for Every Stage</h2>
+          <p className="academics-subtext">
+            From first steps to final exams, our curriculum grows with every
+            student — building confidence, curiosity, and character along
+            the way.
+          </p>
+        </div>
+
+        <div className="academics-grid">
+          {programs.map((program) => (
+            <div className="academics-card" key={program.title}>
+              <div className="academics-card-icon">{program.icon}</div>
+              <h3 className="academics-card-title">{program.title}</h3>
+              <p className="academics-card-text">{program.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <Link to="/academics" className="academics-cta">
+          Explore All Programs <span aria-hidden="true">→</span>
+        </Link>
+      </section>
+
+      <section className="cta-section">
+        <div className="cta-card">
+          <h2 className="cta-heading">Ready to Join Global Life School?</h2>
+          <p className="cta-text">
+            Applications for the upcoming academic year are open. Take the
+            first step toward a future built on excellence, character, and
+            care.
+          </p>
+          <div className="cta-actions">
+            <Link to="/academics" className="cta-btn-primary">Apply Now</Link>
+            <Link to="/contact" className="cta-btn-secondary">Contact Us</Link>
           </div>
         </div>
       </section>
