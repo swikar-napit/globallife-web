@@ -133,37 +133,33 @@ function Home() {
           </Link>
         </div>
       </section>
-     <section className="features-section">
-  <div className="features-bento">
-    <div className="feature-card feature-big">
-      <span className="feature-question">Why Choose<br />Global Life?</span>
-      <p className="feature-answer">
-        Because we believe every child deserves a place where academics,
-        character, and confidence grow together — guided by teachers who
-        truly care about their journey.
-      </p>
-    </div>
+      <section className="why-section">
+        <div className="why-bento">
+          <div className="why-hero-card">
+            <span className="why-hero-mark" aria-hidden="true">❝</span>
+            <span className="why-hero-eyebrow">Why Global Life</span>
+            <h2 className="why-hero-title">Why Choose<br />Global Life?</h2>
+            <p className="why-hero-text">
+              Because we believe every child deserves a place where
+              academics, character, and confidence grow together — guided by
+              teachers who truly care about their journey.
+            </p>
+            <Link to="/about" className="why-hero-link">
+              Discover Our Story <span aria-hidden="true">→</span>
+            </Link>
+          </div>
 
-    <div className="feature-stack">
-      <div className="feature-card feature-small">
-        <div className="feature-icon">{features[1].icon}</div>
-        <h3 className="feature-title">{features[1].title}</h3>
-        <p className="feature-text">{features[1].text}</p>
-      </div>
-      <div className="feature-card feature-small">
-        <div className="feature-icon">{features[2].icon}</div>
-        <h3 className="feature-title">{features[2].title}</h3>
-        <p className="feature-text">{features[2].text}</p>
-      </div>
-    </div>
-
-    <div className="feature-card feature-big">
-      <div className="feature-icon">{features[3].icon}</div>
-      <h3 className="feature-title">{features[3].title}</h3>
-      <p className="feature-text">{features[3].text}</p>
-    </div>
-  </div>
-</section>
+          <div className="why-grid">
+            {features.map((feature) => (
+              <div className="why-card" key={feature.title}>
+                <div className="why-card-icon">{feature.icon}</div>
+                <h3 className="why-card-title">{feature.title}</h3>
+                <p className="why-card-text">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   )
 }
