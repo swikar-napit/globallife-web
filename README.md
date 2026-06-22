@@ -1,16 +1,49 @@
-# React + Vite
+# Global Life School Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React and Vite website for Global Life School. The site presents the school as a disciplined, caring, and academically focused boarding and day school.
 
-Currently, two official plugins are available:
+## Project Goal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The goal is to make the website feel trustworthy to parents and clear for students. Every section should communicate real school value: academic habits, safe routines, mentorship, confidence, and a practical path toward admission.
 
-## React Compiler
+## Design Mindset
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Keep the design professional, calm, and institution-first.
+- Use the existing navy, blue, white, and soft background palette consistently.
+- Prefer specific school details over generic marketing language.
+- Make sections easy to scan on mobile and desktop.
+- Avoid visuals or copy that feel AI-generated, decorative without purpose, or disconnected from the school.
 
-## Expanding the ESLint configuration
+## What We Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React for page components.
+- Vite for local development and production builds.
+- React Router links for internal navigation.
+- CSS custom properties for the core color system.
+- Fraunces for headings and Work Sans for body text.
+- Local school images from `src/assets` for the home slideshow.
+
+## Current Home Page Direction
+
+- Hero: introduces Global Life School with a direct admissions path.
+- Stats: gives quick confidence signals.
+- About: explains the school's academic and character-building focus.
+- Why Choose Us: highlights daily discipline, boarding care, mentorship, and growth beyond books.
+- Academics: previews school programs.
+- CTA: guides families toward admission or contact.
+
+## Working Principles
+
+- Match new sections to the existing theme before adding new visual ideas.
+- Write copy as if it belongs in a real school prospectus.
+- Keep components simple and maintainable.
+- Use responsive CSS so sections remain clean on small screens.
+- Document important design decisions in `.agent/skills/global_web/README.md`.
+
+## Development
+
+```bash
+npm install
+npm run dev
+npm run build
+```

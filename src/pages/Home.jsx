@@ -33,24 +33,24 @@ const programs = [
 ]
 const features = [
   {
-    icon: "🎓",
-    title: "Academic Excellence",
-    text: "A rigorous curriculum designed to challenge and inspire every learner."
+    label: "01",
+    title: "Strong Academic Habits",
+    text: "Lessons are planned around clear concepts, regular practice, revision support, and steady exam preparation from the early grades onward."
   },
   {
-    icon: "🏠",
-    title: "Safe Boarding Life",
-    text: "Comfortable, secure boarding facilities that feel like a second home."
+    label: "02",
+    title: "A Caring Boarding Routine",
+    text: "Boarding students follow a balanced rhythm of study, meals, rest, hygiene, recreation, and supervised evening learning."
   },
   {
-    icon: "🌍",
-    title: "Holistic Growth",
-    text: "Sports, arts, and clubs that nurture confidence beyond the classroom."
+    label: "03",
+    title: "Teachers Who Know Students",
+    text: "Mentors watch progress closely, notice changes early, and guide each child with patience, discipline, and encouragement."
   },
   {
-    icon: "🤝",
-    title: "Caring Mentors",
-    text: "Experienced teachers dedicated to every student's personal journey."
+    label: "04",
+    title: "Confidence Beyond Books",
+    text: "Students build communication, teamwork, leadership, creativity, and values through assemblies, activities, sports, and clubs."
   },
 ]
 
@@ -154,29 +154,46 @@ function Home() {
         </div>
       </section>
       <section className="why-section">
-        <div className="why-bento">
-          <div className="why-hero-card">
-            <span className="why-hero-mark" aria-hidden="true">❝</span>
-            <span className="why-hero-eyebrow">Why Global Life</span>
-            <h2 className="why-hero-title">Why Choose<br />Global Life?</h2>
+        <div className="why-inner">
+          <div className="why-intro">
+            <span className="why-eyebrow">Why choose us</span>
+            <h2 className="why-title">A school where daily discipline meets genuine care.</h2>
             <p className="why-hero-text">
-              Because we believe every child deserves a place where
-              academics, character, and confidence grow together — guided by
-              teachers who truly care about their journey.
+              Global Life School is built for families who want more than marks
+              alone. We combine structured academics, attentive mentoring, and a
+              safe school culture so students grow with confidence, manners, and
+              purpose.
             </p>
-            <Link to="/about" className="why-hero-link">
-              Discover Our Story <span aria-hidden="true">→</span>
+            <Link to="/about" className="why-link">
+              Learn more about us <span aria-hidden="true">→</span>
             </Link>
           </div>
 
-          <div className="why-grid">
-            {features.map((feature) => (
-              <div className="why-card" key={feature.title}>
-                <div className="why-card-icon">{feature.icon}</div>
-                <h3 className="why-card-title">{feature.title}</h3>
-                <p className="why-card-text">{feature.text}</p>
+          <div className="why-content">
+            <div className="why-proof">
+              <div>
+                <span className="why-proof-value">15+</span>
+                <span className="why-proof-label">years serving families</span>
               </div>
-            ))}
+              <div>
+                <span className="why-proof-value">40+</span>
+                <span className="why-proof-label">teaching staff</span>
+              </div>
+              <div>
+                <span className="why-proof-value">500+</span>
+                <span className="why-proof-label">students guided</span>
+              </div>
+            </div>
+
+            <div className="why-grid">
+              {features.map((feature) => (
+                <article className="why-card" key={feature.title}>
+                  <span className="why-card-label">{feature.label}</span>
+                  <h3 className="why-card-title">{feature.title}</h3>
+                  <p className="why-card-text">{feature.text}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
