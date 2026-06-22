@@ -13,24 +13,22 @@ const slides = [
 ]
 const programs = [
   {
-    icon: "🧸",
-    title: "Early Years",
-    text: "Play-based learning that nurtures curiosity and a lifelong love of discovery."
+    level: "Early Years",
+    grades: "Nursery – Class 1",
+    title: "Pre-Primary",
+    text: "A caring start with playful learning, language development, social confidence, and healthy routines for young learners.",
   },
   {
-    icon: "📖",
-    title: "Primary School",
-    text: "Strong foundations in literacy, numeracy, and creative thinking."
+    level: "Foundation Years",
+    grades: "Class 1 – Class 7",
+    title: "Primary",
+    text: "Strong core learning in English, Nepali, mathematics, science, social studies, values, arts, and activities.",
   },
   {
-    icon: "🔬",
-    title: "Secondary School",
-    text: "A broad, rigorous curriculum that prepares students for board exams."
-  },
-  {
-    icon: "🎯",
-    title: "Senior Secondary",
-    text: "Focused academic and career guidance for university readiness."
+    level: "Grades 8 – 10",
+    grades: "Class 8 – Class 10",
+    title: "Lower Secondary & Secondary",
+    text: "Disciplined academic preparation with subject depth, critical thinking, exam readiness, leadership opportunities, and co-curricular growth.",
   },
 ]
 const features = [
@@ -184,29 +182,38 @@ function Home() {
       </section>
 
       <section className="academics-section">
-        <div className="academics-header">
-          <span className="academics-eyebrow">Academics</span>
-          <h2 className="academics-heading">A Program for Every Stage</h2>
-          <p className="academics-subtext">
-            From first steps to final exams, our curriculum grows with every
-            student — building confidence, curiosity, and character along
-            the way.
-          </p>
-        </div>
+        <div className="academics-inner">
+          <div className="academics-header">
+            <h2 className="academics-heading">
+              Our <em className="academics-heading-em">programs</em>
+            </h2>
+          </div>
 
-        <div className="academics-grid">
-          {programs.map((program) => (
-            <div className="academics-card" key={program.title}>
-              <div className="academics-card-icon">{program.icon}</div>
-              <h3 className="academics-card-title">{program.title}</h3>
-              <p className="academics-card-text">{program.text}</p>
+          <div className="academics-layout">
+            <div className="academics-row-top">
+              {programs.slice(0, 2).map((program) => (
+                <div className="academics-card" key={program.title}>
+                  <span className="academics-card-level">{program.level}</span>
+                  <h3 className="academics-card-title">{program.title}</h3>
+                  <p className="academics-card-text">{program.text}</p>
+                  <Link to="/academics" className="academics-card-btn">
+                    Explore Program <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              ))}
             </div>
-          ))}
+            <div className="academics-row-bottom">
+              <div className="academics-card academics-card-wide" key={programs[2].title}>
+                <span className="academics-card-level">{programs[2].level}</span>
+                <h3 className="academics-card-title">{programs[2].title}</h3>
+                <p className="academics-card-text">{programs[2].text}</p>
+                <Link to="/academics" className="academics-card-btn">
+                  Explore Program <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <Link to="/academics" className="academics-cta">
-          Explore All Programs <span aria-hidden="true">→</span>
-        </Link>
       </section>
 
       <section className="cta-section">
