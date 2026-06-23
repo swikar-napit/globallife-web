@@ -28,29 +28,29 @@ const programs = [
     level: "Grades 8 – 10",
     grades: "Class 8 – Class 10",
     title: "Lower Secondary & Secondary",
-    text: "Disciplined academic preparation with subject depth, critical thinking, exam readiness, leadership opportunities, and co-curricular growth.",
+    text: "Disciplined academic preparation with subject depth, critical thinking, exam readiness, and co-curricular growth.",
   },
 ]
 const features = [
   {
-    label: "01",
-    title: "Strong Academic Habits",
-    text: "Lessons are planned around clear concepts, regular practice, revision support, and steady exam preparation from the early grades onward."
+    icon: "🎓",
+    title: "Academic Excellence",
+    text: "A rigorous curriculum designed to challenge and inspire every learner."
   },
   {
-    label: "02",
-    title: "A Caring Boarding Routine",
-    text: "Boarding students follow a balanced rhythm of study, meals, rest, hygiene, recreation, and supervised evening learning."
+    icon: "🏠",
+    title: "Safe Boarding Life",
+    text: "Comfortable, secure boarding facilities that feel like a second home."
   },
   {
-    label: "03",
-    title: "Teachers Who Know Students",
-    text: "Mentors watch progress closely, notice changes early, and guide each child with patience, discipline, and encouragement."
+    icon: "🌍",
+    title: "Holistic Growth",
+    text: "Sports, arts, and clubs that nurture confidence beyond the classroom."
   },
   {
-    label: "04",
-    title: "Confidence Beyond Books",
-    text: "Students build communication, teamwork, leadership, creativity, and values through assemblies, activities, sports, and clubs."
+    icon: "🤝",
+    title: "Caring Mentors",
+    text: "Experienced teachers dedicated to every student's personal journey."
   },
 ]
 
@@ -153,86 +153,71 @@ function Home() {
           </Link>
         </div>
       </section>
-      <section className="why-section">
-        <div className="why-inner">
-          <div className="why-intro">
-            <span className="why-eyebrow">Why choose us</span>
-            <h2 className="why-title">A school where daily discipline meets genuine care.</h2>
-            <p className="why-hero-text">
-              Global Life School is built for families who want more than marks
-              alone. We combine structured academics, attentive mentoring, and a
-              safe school culture so students grow with confidence, manners, and
-              purpose.
-            </p>
-            <Link to="/about" className="why-link">
-              Learn more about us <span aria-hidden="true">→</span>
-            </Link>
-          </div>
+            <section className="academics-section">
+        <div className="acad-inner">
 
-          <div className="why-content">
-            <div className="why-proof">
-              <div>
-                <span className="why-proof-value">15+</span>
-                <span className="why-proof-label">years serving families</span>
-              </div>
-              <div>
-                <span className="why-proof-value">40+</span>
-                <span className="why-proof-label">teaching staff</span>
-              </div>
-              <div>
-                <span className="why-proof-value">500+</span>
-                <span className="why-proof-label">students guided</span>
-              </div>
-            </div>
-
-            <div className="why-grid">
-              {features.map((feature) => (
-                <article className="why-card" key={feature.title}>
-                  <span className="why-card-label">{feature.label}</span>
-                  <h3 className="why-card-title">{feature.title}</h3>
-                  <p className="why-card-text">{feature.text}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="academics-section">
-        <div className="academics-inner">
-          <div className="academics-header">
-            <h2 className="academics-heading">
-              Our <em className="academics-heading-em">programs</em>
+          <div className="acad-top">
+            <span className="acad-eyebrow">Academics</span>
+            <h2 className="acad-headline">
+              Programs built for<br />
+              <em className="acad-headline-em">every stage of growth</em>
             </h2>
           </div>
 
-          <div className="academics-layout">
-            <div className="academics-row-top">
-              {programs.slice(0, 2).map((program) => (
-                <div className="academics-card" key={program.title}>
-                  <span className="academics-card-level">{program.level}</span>
-                  <h3 className="academics-card-title">{program.title}</h3>
-                  <p className="academics-card-text">{program.text}</p>
-                  <Link to="/academics" className="academics-card-btn">
-                    Explore Program <span aria-hidden="true">→</span>
-                  </Link>
+          <div className="acad-grid">
+            {programs.map((program, index) => (
+              <Link to="/academics" className="acad-card" key={program.title}>
+                <span className="acad-card-num" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="acad-card-pill">
+                  <span className="acad-pill-label">{program.level}</span>
+                  <span className="acad-pill-grades">{program.grades}</span>
                 </div>
-              ))}
-            </div>
-            <div className="academics-row-bottom">
-              <div className="academics-card academics-card-wide" key={programs[2].title}>
-                <span className="academics-card-level">{programs[2].level}</span>
-                <h3 className="academics-card-title">{programs[2].title}</h3>
-                <p className="academics-card-text">{programs[2].text}</p>
-                <Link to="/academics" className="academics-card-btn">
-                  Explore Program <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-            </div>
+                <h3 className="acad-card-title">{program.title}</h3>
+                <p className="acad-card-text">{program.text}</p>
+                <span className="acad-card-arrow" aria-hidden="true">→</span>
+              </Link>
+            ))}
           </div>
+
+          <div className="acad-footer">
+            <span className="acad-count">3 programs · Est. 2009</span>
+            <Link to="/academics" className="acad-cta">
+              View All Programs <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
         </div>
       </section>
 
+      <section className="why-section">
+        <div className="why-bento">
+          <div className="why-hero-card">
+            <span className="why-hero-mark" aria-hidden="true">❝</span>
+            <span className="why-hero-eyebrow">Why Global Life</span>
+            <h2 className="why-hero-title">Why Choose<br />Global Life?</h2>
+            <p className="why-hero-text">
+              Because we believe every child deserves a place where
+              academics, character, and confidence grow together — guided by
+              teachers who truly care about their journey.
+            </p>
+            <Link to="/about" className="why-hero-link">
+              Discover Our Story <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="why-grid">
+            {features.map((feature) => (
+              <div className="why-card" key={feature.title}>
+                <div className="why-card-icon">{feature.icon}</div>
+                <h3 className="why-card-title">{feature.title}</h3>
+                <p className="why-card-text">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="cta-section">
         <div className="cta-card">
           <h2 className="cta-heading">Ready to Join Global Life School?</h2>
