@@ -31,24 +31,55 @@ const programs = [
     text: "Disciplined academic preparation with subject depth, critical thinking, exam readiness, and co-curricular growth.",
   },
 ]
+const featureIcons = {
+  cap: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3 2 8l10 5 10-5-10-5Z" />
+      <path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5" />
+      <path d="M22 8.3V14" />
+    </svg>
+  ),
+  home: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 11.5 12 4l8 7.5" />
+      <path d="M6 10v9a1 1 0 0 0 1 1h4v-5h2v5h4a1 1 0 0 0 1-1v-9" />
+    </svg>
+  ),
+  sprout: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 21v-9" />
+      <path d="M12 12C12 7 8 5 4 5c0 5 3 8 8 8Z" />
+      <path d="M12 12c0-4 3-6 7-6 0 4-2 7-7 7" />
+    </svg>
+  ),
+  mentors: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="8" cy="8" r="3" />
+      <path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+      <circle cx="17" cy="9" r="2.4" />
+      <path d="M14.5 20c.2-2.6 2.1-4.6 4.5-4.9" />
+    </svg>
+  ),
+}
+
 const features = [
   {
-    icon: "🎓",
+    icon: featureIcons.cap,
     title: "Academic Excellence",
     text: "A rigorous curriculum designed to challenge and inspire every learner."
   },
   {
-    icon: "🏠",
+    icon: featureIcons.home,
     title: "Safe Boarding Life",
     text: "Comfortable, secure boarding facilities that feel like a second home."
   },
   {
-    icon: "🌍",
+    icon: featureIcons.sprout,
     title: "Holistic Growth",
     text: "Sports, arts, and clubs that nurture confidence beyond the classroom."
   },
   {
-    icon: "🤝",
+    icon: featureIcons.mentors,
     title: "Caring Mentors",
     text: "Experienced teachers dedicated to every student's personal journey."
   },
@@ -194,15 +225,14 @@ function Home() {
       <section className="why-section">
         <div className="why-bento">
           <div className="why-hero-card">
-            <span className="why-hero-mark" aria-hidden="true">❝</span>
-            <span className="why-hero-eyebrow">Why Global Life</span>
+            <span className="why-hero-eyebrow">Our Promise</span>
             <h2 className="why-hero-title">Why Choose<br />Global Life?</h2>
             <p className="why-hero-text">
               Because we believe every child deserves a place where
               academics, character, and confidence grow together — guided by
               teachers who truly care about their journey.
             </p>
-            <Link to="/about" className="why-hero-link">
+            <Link to="/about" className="why-hero-cta">
               Discover Our Story <span aria-hidden="true">→</span>
             </Link>
           </div>
