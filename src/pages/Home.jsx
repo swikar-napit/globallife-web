@@ -133,7 +133,7 @@ function Home() {
             <div className="slide-dots">
               {slides.map((_, index) => (
                 <span
-                  key={index} 
+                  key={index}
                   className={index === current ? "dot active" : "dot"}
                   onClick={() => setCurrent(index)}
                 />
@@ -254,15 +254,36 @@ function Home() {
       </section>
       <section className="cta-section">
         <div className="cta-card">
-          <h2 className="cta-heading">Ready to Join Global Life School?</h2>
-          <p className="cta-text">
-            Applications for the upcoming academic year are open. Take the
-            first step toward a future built on excellence, character, and
-            care.
-          </p>
-          <div className="cta-actions">
-            <Link to="/academics" className="cta-btn-primary">Apply Now</Link>
-            <Link to="/contact" className="cta-btn-secondary">Contact Us</Link>
+          <div className="cta-photo" style={{ backgroundImage: `url(${slide3})` }} aria-hidden="true" />
+          <div className="cta-overlay" aria-hidden="true" />
+          <div className="cta-content">
+            <span className="cta-eyebrow">Now Enrolling</span>
+            <h2 className="cta-heading">Ready to Join Global Life School?</h2>
+            <p className="cta-text">
+              Applications for the upcoming academic year are open. Take the
+              first step toward a future built on excellence, character, and
+              care.
+            </p>
+            <div className="cta-stats">
+              <div className="cta-stat">
+                <span className="cta-stat-num">500+</span>
+                <span className="cta-stat-label">Students</span>
+              </div>
+              <div className="cta-stat-divider"></div>
+              <div className="cta-stat">
+                <span className="cta-stat-num">15+</span>
+                <span className="cta-stat-label">Years</span>
+              </div>
+              <div className="cta-stat-divider"></div>
+              <div className="cta-stat">
+                <span className="cta-stat-num">98%</span>
+                <span className="cta-stat-label">Pass Rate</span>
+              </div>
+            </div>
+            <div className="cta-actions">
+              <Link to="/academics" className="cta-btn-primary">Apply Now</Link>
+              <Link to="/contact" className="cta-btn-secondary">Contact Us</Link>
+            </div>
           </div>
         </div>
       </section>
