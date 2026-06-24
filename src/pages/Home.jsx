@@ -20,13 +20,13 @@ const programs = [
   },
   {
     level: "Foundation Years",
-    grades: "Class 1 – Class 7",
+    grades: "Class 1 – Class 5",
     title: "Primary",
     text: "Strong core learning in English, Nepali, mathematics, science, social studies, values, arts, and activities.",
   },
   {
-    level: "Grades 8 – 10",
-    grades: "Class 8 – Class 10",
+    level: "Middle & Secondary Level",
+    grades: "Class 6 – Class 10",
     title: "Lower Secondary & Secondary",
     text: "Disciplined academic preparation with subject depth, critical thinking, exam readiness, and co-curricular growth.",
   },
@@ -66,22 +66,26 @@ const features = [
   {
     icon: featureIcons.cap,
     title: "Academic Excellence",
-    text: "A rigorous curriculum designed to challenge and inspire every learner."
+    text: "A rigorous curriculum designed to challenge and inspire every learner.",
+    accent: "blue",
   },
   {
     icon: featureIcons.home,
     title: "Safe Boarding Life",
-    text: "Comfortable, secure boarding facilities that feel like a second home."
+    text: "Comfortable, secure boarding facilities that feel like a second home.",
+    accent: "amber",
   },
   {
     icon: featureIcons.sprout,
     title: "Holistic Growth",
-    text: "Sports, arts, and clubs that nurture confidence beyond the classroom."
+    text: "Sports, arts, and clubs that nurture confidence beyond the classroom.",
+    accent: "green",
   },
   {
     icon: featureIcons.mentors,
     title: "Caring Mentors",
-    text: "Experienced teachers dedicated to every student's personal journey."
+    text: "Experienced teachers dedicated to every student's personal journey.",
+    accent: "violet",
   },
 ]
 
@@ -129,7 +133,7 @@ function Home() {
             <div className="slide-dots">
               {slides.map((_, index) => (
                 <span
-                  key={index}
+                  key={index} 
                   className={index === current ? "dot active" : "dot"}
                   onClick={() => setCurrent(index)}
                 />
@@ -239,7 +243,7 @@ function Home() {
 
           <div className="why-grid">
             {features.map((feature) => (
-              <div className="why-card" key={feature.title}>
+              <div className={`why-card why-card--${feature.accent}`} key={feature.title}>
                 <div className="why-card-icon">{feature.icon}</div>
                 <h3 className="why-card-title">{feature.title}</h3>
                 <p className="why-card-text">{feature.text}</p>
