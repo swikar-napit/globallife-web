@@ -1250,7 +1250,7 @@ body {
 
 /* ACADEMICS SECTION */
 .academics-section {
-  padding: 100px 64px;
+  padding: 80px 64px;
   background: var(--navy);
   position: relative;
   overflow: hidden;
@@ -1278,7 +1278,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
   gap: 20px;
 }
 
@@ -1322,7 +1322,7 @@ body {
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 20px;
-  padding: 36px 28px 28px;
+  padding: 28px 28px 24px;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -1358,11 +1358,11 @@ body {
 
 .acad-card-num {
   position: absolute;
-  top: 6px;
+  top: 4px;
   right: 20px;
   font-family: 'Fraunces', serif;
   font-weight: 700;
-  font-size: 4.5rem;
+  font-size: 4rem;
   line-height: 1;
   color: rgba(255, 255, 255, 0.05);
   transition: color 0.35s ease;
@@ -1405,7 +1405,7 @@ body {
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   z-index: 1;
 }
 
@@ -1413,9 +1413,9 @@ body {
   position: relative;
   font-size: 0.92rem;
   color: rgba(255,255,255,0.55);
-  line-height: 1.75;
+  line-height: 1.6;
   flex-grow: 1;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   z-index: 1;
 }
 
@@ -1443,7 +1443,7 @@ body {
 }
 
 .acad-footer {
-  margin-top: 44px;
+  margin-top: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
