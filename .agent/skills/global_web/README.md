@@ -25,6 +25,9 @@ Create a polished school website that presents Global Life School as academicall
 - Prefer real admissions and school-life details over generic words like world-class, innovative, or transformative unless they are supported by context.
 - Keep cards, grids, and buttons restrained with consistent spacing and radius.
 - Make responsive behavior part of the first edit, not an afterthought.
+- On mobile, hero text should stay on top and the image should appear below the copy.
+- Preserve the hero image size through tablet breakpoints and let the copy take the squeeze. Reduce text size only if needed for balance, never the image size.
+- When the image does stack, ensure the hero section still feels compact and strong; avoid large vertical gaps and overly tall state that makes the page look broken.
 - Keep documentation updated when the project's direction or design language changes.
 
 ## Current Section Standard
