@@ -516,7 +516,8 @@ body {
 }
 
 .hero-content {
-  flex: 1 1 380px;
+  flex: 1 1 320px;
+  min-width: 0;
   max-width: 580px;
 }
 
@@ -788,37 +789,64 @@ body {
   line-height: 1;
 }
 
-/* HERO MOBILE */
-@media (max-width: 640px) {
+/* HERO RESPONSIVE — text squeezes first; image stacks below when space runs out */
+
+/* Prevent horizontal scroll when image is wider than viewport but still side-by-side */
+@media (max-width: 1100px) {
   .hero {
-    flex-direction: column;
-    padding: 48px 20px;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 820px) {
+  .hero {
+    flex-direction: column-reverse;
+    padding: 48px 24px 56px;
     text-align: center;
     min-height: auto;
+    gap: 36px;
   }
 
   .hero-content {
     max-width: 100%;
+    flex: none;
+    width: 100%;
+  }
+
+  .hero-image-wrap {
+    width: 100%;
+    flex: none;
+  }
+
+  /* image fills the full stacked width */
+  .hero-slideshow {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 700 / 460;
   }
 
   .hero-subtext {
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-actions {
     justify-content: center;
   }
-
-  .hero-image-wrap {
-    max-width: 100%;
-  }
-
-  .hero-image-placeholder {
-    width: 280px;
-    height: 280px;
-  }
 }
 
+@media (max-width: 640px) {
+  .hero {
+    padding: 36px 20px 48px;
+  }
+
+  .hero-slideshow {
+    aspect-ratio: auto;
+    height: 260px;
+    border-radius: 12px;
+  }
+}
 @media (max-width: 900px) {
   .stats-bar {
     flex-wrap: wrap;
@@ -860,20 +888,21 @@ body {
 
 .hero-slideshow {
   position: relative;
-  width: 100%;
-  aspect-ratio: 700 / 460;
+  width: 700px;
+  height: 460px;
   border-radius: 16px;
   overflow: hidden;
   border: none;
   box-shadow: 0 20px 60px rgba(14, 42, 77, 0.15);
+  flex-shrink: 0;
 }
+
 .hero-image-wrap {
-  flex: 1 1 320px;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  max-width: 700px;
 }
 
 
@@ -919,14 +948,6 @@ body {
   transform: scale(1.3);
 }
 
-/* MOBILE SLIDESHOW */
-@media (max-width: 640px) {
-  .hero-slideshow {
-    aspect-ratio: auto;
-    height: 260px;
-    border-radius: 12px;
-  }
-}
 /* FEATURES SECTION */
 .features-section {
   padding: 80px 48px;
