@@ -806,7 +806,6 @@ body {
 
   .hero-image-wrap {
     width: 700px;
-    max-width: 100%;
   }
 }
 
@@ -827,15 +826,14 @@ body {
 
   .hero-image-wrap {
     width: 700px;
-    max-width: 100%;
     flex: none;
     margin: 0 auto;
   }
 
-  /* image keeps its desktop size until the screen is narrower than the image width */
+  /* image stays a fixed size on every screen; the hero's overflow-x:hidden
+     crops it evenly instead of shrinking it */
   .hero-slideshow {
     width: 700px;
-    max-width: 100%;
     height: 460px;
     aspect-ratio: 700 / 460;
   }
@@ -854,13 +852,6 @@ body {
 @media (max-width: 640px) {
   .hero {
     padding: 36px 20px 48px;
-  }
-
-  .hero-slideshow {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 700 / 460;
-    border-radius: 12px;
   }
 }
 @media (max-width: 900px) {
@@ -905,7 +896,6 @@ body {
 .hero-slideshow {
   position: relative;
   width: 700px;
-  max-width: 100%;
   height: 460px;
   border-radius: 16px;
   overflow: hidden;
@@ -917,7 +907,6 @@ body {
 .hero-image-wrap {
   flex: 0 0 700px;
   width: 700px;
-  max-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
