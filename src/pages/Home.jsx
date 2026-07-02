@@ -3,13 +3,13 @@ import { useState, useEffect } from "react"
 import slide1 from "../assets/global1.jpg"
 import slide2 from "../assets/global2.jpg"
 import slide3 from "../assets/global3.jpg"
-import slide4 from "../assets/global5.jpg"
+import slide5 from "../assets/global5.jpg"
 
 const slides = [
-  { id: 1, img: slide4, caption: "Welcome Program" },
-  { id: 2, img: slide2, caption: "Welcome Program" },
-  { id: 3, img: slide3, caption: "Welcome Program" },
-  { id: 4, img: slide1, caption: "Welcome Program" },
+  { id: 1, img: slide5, caption: "Welcome Program" },
+  { id: 2, img: slide2, caption: "Dance performance" },
+  { id: 3, img: slide3, caption: "orientation program" },
+  { id: 4, img: slide1, caption: "A Home Away From Home" },
 ]
 const programs = [
   {
@@ -91,13 +91,15 @@ const features = [
 
 function Home() {
   const [current, setCurrent] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
 
   useEffect(() => {
+    if (isPaused) return
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
     }, 3000)
     return () => clearInterval(timer)
-  }, [])
+  }, [isPaused])
 
   return (
     <>
@@ -115,12 +117,16 @@ function Home() {
           </p>
           <div className="hero-actions">
             <Link to="/academics" className="hero-btn-primary">Apply for Admission</Link>
-            <Link to="/contact" className="hero-btn-primary">Contact Us</Link>
+            <Link to="/contact" className="hero-btn-secondary">Contact Us</Link>
           </div>
         </div>
 
         <div className="hero-image-wrap">
-          <div className="hero-slideshow">
+          <div
+            className="hero-slideshow"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {slides.map((slide, index) => (
               <img
                 key={slide.id}
@@ -131,11 +137,14 @@ function Home() {
             ))}
             <div className="slide-caption">{slides[current].caption}</div>
             <div className="slide-dots">
-              {slides.map((_, index) => (
-                <span
-                  key={index}
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  type="button"
                   className={index === current ? "dot active" : "dot"}
                   onClick={() => setCurrent(index)}
+                  aria-label={`Show slide ${index + 1}: ${slide.caption}`}
+                  aria-current={index === current}
                 />
               ))}
             </div>
