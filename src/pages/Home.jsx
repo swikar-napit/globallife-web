@@ -197,7 +197,7 @@ function Home() {
           </Link>
         </div>
       </section>
-            <section className="academics-section">
+      <section className="academics-section">
         <div className="acad-inner">
 
           <div className="acad-top">
