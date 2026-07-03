@@ -156,11 +156,10 @@ function Home() {
         </div>
 
         <div className="hero-scroll-cue" aria-hidden="true">
-          <span>Scroll</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 5v14" />
-            <path d="m6 13 6 6 6-6" />
-          </svg>
+          <div className="hero-scroll-cue-mouse">
+            <div className="hero-scroll-cue-dot"></div>
+          </div>
+          <span className="hero-scroll-cue-label">Scroll</span>
         </div>
       </section>
 

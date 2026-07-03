@@ -305,9 +305,9 @@ body {
 .hero {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  padding: clamp(24px, 3vw, 40px) clamp(24px, 4.5vw, 48px);
+  padding: clamp(40px, 5vw, 64px) clamp(24px, 4.5vw, 48px) clamp(64px, 6vw, 88px);
   background: var(--page-bg);
   gap: clamp(24px, 4vw, 48px);
   min-height: calc(100vh - 76px);
@@ -316,6 +316,7 @@ body {
 .hero-content {
   flex: 1 1 45%;
   max-width: 580px;
+  align-self: flex-start;
 }
 
 .hero-eyebrow {
@@ -455,8 +456,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  aspect-ratio: 700 / 460;
-  max-height: 100%;
   border-radius: 16px;
   overflow: hidden;
   border: none;
@@ -466,30 +465,46 @@ body {
 .hero-scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: 18px;
+  bottom: clamp(16px, 2.5vw, 32px);
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  z-index: 3;
+}
+
+.hero-scroll-cue-mouse {
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(14, 42, 77, 0.28);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.hero-scroll-cue-dot {
+  width: 4px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--blue-accent);
+  animation: heroScrollDot 1.8s ease-in-out infinite;
+}
+
+.hero-scroll-cue-label {
   color: #8a94a6;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  opacity: 0.7;
-  animation: heroScrollBounce 2.2s ease-in-out infinite;
 }
 
-.hero-scroll-cue svg {
-  width: 16px;
-  height: 16px;
-  stroke: #8a94a6;
-}
-
-@keyframes heroScrollBounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 6px); }
+@keyframes heroScrollDot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(12px); opacity: 0; }
+  71% { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 @media (max-width: 900px) {
@@ -502,9 +517,9 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   position: relative;
-  max-height: min(560px, 60vh);
+  max-height: 720px;
 }
 
 
@@ -590,7 +605,7 @@ body {
     overflow-x: hidden;
     gap: clamp(20px, 3vw, 40px);
     padding: clamp(32px, 4vw, 60px) clamp(20px, 3vw, 48px);
-    align-items: center;
+    align-items: stretch;
   }
 }
 
@@ -610,11 +625,13 @@ body {
     flex: none;
     width: 100%;
     order: 1;
+    align-self: center;
   }
 
   .hero-image-wrap {
     width: 100%;
     max-width: 540px;
+    max-height: none;
     flex: none;
     margin: 0 auto;
     order: 2;
@@ -623,6 +640,7 @@ body {
   .hero-slideshow {
     width: 100%;
     height: auto;
+    aspect-ratio: 700 / 460;
   }
 
   .hero-subtext {
