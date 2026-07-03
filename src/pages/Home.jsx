@@ -154,6 +154,14 @@ function Home() {
             <span className="badge-num">2009</span>
           </div>
         </div>
+
+        <div className="hero-scroll-cue" aria-hidden="true">
+          <span>Scroll</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14" />
+            <path d="m6 13 6 6 6-6" />
+          </svg>
+        </div>
       </section>
 
       <div className="stats-bar">
