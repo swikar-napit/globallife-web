@@ -1,46 +1,40 @@
 import { useState } from "react";
-import './Contact.css'
+import "./Contact.css";
 
-const contactDetails = [
+const infoCards = [
   {
+    label: "Address",
+    value: ["Global Life School, Kamalbinayak", "Bhaktapur, Nepal"],
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-        <circle cx="12" cy="10" r="3" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
       </svg>
     ),
-    label: "Address",
-    lines: ["Global Life School, Kamalbinayak", "Bhaktapur, Nepal"],
   },
   {
+    label: "Phone",
+    value: ["01-6612925", "01-6620200"],
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
       </svg>
     ),
-    label: "Phone Numbers",
-    lines: ["01-6620200", "01-6612925"],
   },
   {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-        <polyline points="22,6 12,13 2,6" />
-      </svg>
-    ),
     label: "Email",
-    lines: ["globallifesch@gmail.com"],
-  },
-  {
+    value: ["globallifesch@gmail.com"],
+    link: "mailto:globallifesch@gmail.com",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
       </svg>
     ),
-    label: "Office Hours",
-    lines: ["Sun – Fri: 9:00 AM – 5:00 PM", "Saturday: Closed"],
   },
+];
+
+const hours = [
+  { day: "Sunday – Friday", time: "9:00 AM – 5:00 PM" },
+  { day: "Saturday", time: "Closed", closed: true },
 ];
 
 const enquiryTypes = [
@@ -55,12 +49,8 @@ const enquiryTypes = [
 
 export default function Contact() {
   const [form, setForm] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    enquiryType: "",
-    studentName: "",
-    message: "",
+    fullName: "", email: "", phone: "",
+    enquiryType: "", studentName: "", grade: "", message: "",
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -69,7 +59,7 @@ export default function Contact() {
     const e = {};
     if (!form.fullName.trim()) e.fullName = "Full name is required.";
     if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Enter a valid email address.";
+      e.email = "Enter a valid email.";
     if (!form.phone.trim()) e.phone = "Phone number is required.";
     else if (!/^(97|98)\d{8}$/.test(form.phone.replace(/\s/g, "")))
       e.phone = "Use 10 digits starting with 97 or 98.";
@@ -80,8 +70,8 @@ export default function Contact() {
   };
 
   const handleChange = (e) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setErrors((prev) => ({ ...prev, [e.target.name]: undefined }));
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+    setErrors((p) => ({ ...p, [e.target.name]: undefined }));
   };
 
   const handleSubmit = () => {
@@ -92,234 +82,207 @@ export default function Contact() {
 
   return (
     <>
-
       {/* ── HERO ── */}
-      <section className="contact-hero">
-        <div className="contact-hero-overlay" />
-        <div className="contact-hero-dots">
-          {Array.from({ length: 30 }).map((_, i) => (
-            <div key={i} className="contact-hero-dot" />
-          ))}
-        </div>
-        <div className="contact-hero-content">
-          <nav className="contact-breadcrumb">
+      <section className="ct-hero">
+        <div className="ct-hero-grid" />
+        <div className="ct-hero-glow" />
+        <div className="ct-hero-content">
+          <nav className="ct-breadcrumb">
             <a href="/">Home</a>
-            <div className="contact-breadcrumb-sep" />
-            <span>Contact</span>
+            <div className="ct-breadcrumb-sep" />
+            <span className="ct-breadcrumb-current">Contact</span>
           </nav>
-          <h1 className="contact-hero-title">
-            Get in <span className="contact-hero-title-accent">Touch</span>
+          <div className="ct-hero-eyebrow">
+            <span className="ct-hero-eyebrow-dot" />
+            We'd love to hear from you
+          </div>
+          <h1 className="ct-hero-title">
+            Let's Start a<br /><em>Conversation</em>
           </h1>
-          <p className="contact-hero-sub">
-            Reach out for admissions enquiries, academic information, or to
-            arrange a visit to Global Life School in Bhaktapur.
+          <p className="ct-hero-sub">
+            Whether you're a parent exploring admissions, a student with questions,
+            or a community member — our doors and inboxes are always open.
           </p>
         </div>
       </section>
 
-      {/* ── BODY ── */}
-      <div className="contact-body">
-
-        {/* LEFT — Contact Details */}
-        <aside className="contact-details-wrap">
-          <p className="contact-section-label">Contact Details</p>
-          <h2 className="contact-details-heading">
-            <em>Reach</em> us
-          </h2>
-          <p className="contact-details-sub">
-            We're happy to answer your questions about admissions, boarding,
-            academics, or anything else. Come find us in Bhaktapur.
-          </p>
-
-          <div className="contact-detail-items">
-            {contactDetails.map((item) => (
-              <div key={item.label} className="contact-detail-item">
-                <div className="contact-detail-icon">{item.icon}</div>
-                <div className="contact-detail-text">
-                  <div className="contact-detail-label">{item.label}</div>
-                  <div className="contact-detail-value">
-                    {item.lines.map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        {i < item.lines.length - 1 && <br />}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+      {/* ── FLOATING INFO CARDS ── */}
+      <div className="ct-cards-row">
+        {infoCards.map((card) => (
+          <div key={card.label} className="ct-info-card">
+            <div className="ct-info-card-icon">{card.icon}</div>
+            <div>
+              <div className="ct-info-card-label">{card.label}</div>
+              <div className="ct-info-card-value">
+                {card.link ? (
+                  <a href={card.link}>{card.value[0]}</a>
+                ) : (
+                  card.value.map((line, i) => (
+                    <span key={i}>{line}{i < card.value.length - 1 && <br />}</span>
+                  ))
+                )}
               </div>
-            ))}
+            </div>
           </div>
+        ))}
+      </div>
 
-          {/* Map placeholder — swap for a real <iframe> */}
-          <div className="contact-map">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            Kamalbinayak, Bhaktapur
-          </div>
-        </aside>
+      {/* ── BODY ── */}
+      <div className="ct-body">
 
-        {/* RIGHT — Form */}
-        <div className="contact-form-wrap">
-          <p className="contact-section-label">Send a Message</p>
+        {/* FORM */}
+        <div className="ct-form-card">
+          <p className="ct-form-section-label">Send a Message</p>
 
           {submitted ? (
-            <div className="contact-success">
-              <div className="contact-success-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="ct-success">
+              <div className="ct-success-ring">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <div className="contact-success-title">Message Sent!</div>
-              <p className="contact-success-msg">
-                Thank you for reaching out. Our team will get back to you
-                within 24 hours. For urgent matters, please call us directly.
+              <div className="ct-success-title">Message Received!</div>
+              <p className="ct-success-msg">
+                Thank you for reaching out to Global Life School. Our team will
+                respond within one business day. For urgent matters, call us directly.
               </p>
-              <button className="contact-success-back" onClick={() => setSubmitted(false)}>
+              <button className="ct-success-back" onClick={() => setSubmitted(false)}>
                 Send Another Message
               </button>
             </div>
           ) : (
             <>
-              <h2 className="contact-form-heading">
-                Let's <em>talk</em>
+              <h2 className="ct-form-heading">
+                Write to <em>us</em>
               </h2>
-              <p className="contact-form-sub">
-                Fill in the form below and we'll get back to you within 24 hours.
-                For urgent enquiries, please call us directly.
+              <p className="ct-form-sub">
+                Fill in the details below and we'll get back to you within 24 hours.
               </p>
 
-              <div className="contact-form-grid">
-                {/* Full Name */}
-                <div className="contact-form-group">
-                  <label className="contact-form-label">
-                    Full Name <span className="req">*</span>
-                  </label>
-                  <input
-                    className={`contact-form-input${errors.fullName ? " error" : ""}`}
-                    name="fullName"
-                    placeholder="Your full name"
-                    value={form.fullName}
-                    onChange={handleChange}
-                  />
-                  {errors.fullName && <span className="contact-field-error">{errors.fullName}</span>}
+              <div className="ct-form-grid">
+                <div className="ct-form-group">
+                  <label className="ct-form-label">Full Name <span className="req">*</span></label>
+                  <input className={`ct-input${errors.fullName ? " err" : ""}`} name="fullName"
+                    placeholder="Your full name" value={form.fullName} onChange={handleChange} />
+                  {errors.fullName && <span className="ct-field-err">{errors.fullName}</span>}
                 </div>
 
-                {/* Email */}
-                <div className="contact-form-group">
-                  <label className="contact-form-label">
-                    Email Address <span className="opt">(optional)</span>
-                  </label>
-                  <input
-                    className={`contact-form-input${errors.email ? " error" : ""}`}
-                    name="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={form.email}
-                    onChange={handleChange}
-                  />
-                  {errors.email && <span className="contact-field-error">{errors.email}</span>}
+                <div className="ct-form-group">
+                  <label className="ct-form-label">Email Address <span className="opt">(optional)</span></label>
+                  <input className={`ct-input${errors.email ? " err" : ""}`} name="email"
+                    type="email" placeholder="your@email.com" value={form.email} onChange={handleChange} />
+                  {errors.email && <span className="ct-field-err">{errors.email}</span>}
                 </div>
 
-                {/* Phone */}
-                <div className="contact-form-group">
-                  <label className="contact-form-label">
-                    Phone Number <span className="req">*</span>
-                  </label>
-                  <input
-                    className={`contact-form-input${errors.phone ? " error" : ""}`}
-                    name="phone"
-                    placeholder="98XXXXXXXX"
-                    value={form.phone}
-                    onChange={handleChange}
-                  />
+                <div className="ct-form-group">
+                  <label className="ct-form-label">Phone Number <span className="req">*</span></label>
+                  <input className={`ct-input${errors.phone ? " err" : ""}`} name="phone"
+                    placeholder="98XXXXXXXX" value={form.phone} onChange={handleChange} />
                   {errors.phone
-                    ? <span className="contact-field-error">{errors.phone}</span>
-                    : <span className="contact-field-hint">Use 10 digits, starting with 97 or 98.</span>
-                  }
+                    ? <span className="ct-field-err">{errors.phone}</span>
+                    : <span className="ct-field-hint">10 digits starting with 97 or 98</span>}
                 </div>
 
-                {/* Enquiry Type */}
-                <div className="contact-form-group">
-                  <label className="contact-form-label">
-                    Enquiry Type <span className="req">*</span>
-                  </label>
-                  <select
-                    className={`contact-form-select${errors.enquiryType ? " error" : ""}`}
-                    name="enquiryType"
-                    value={form.enquiryType}
-                    onChange={handleChange}
-                  >
+                <div className="ct-form-group">
+                  <label className="ct-form-label">Enquiry Type <span className="req">*</span></label>
+                  <select className={`ct-select${errors.enquiryType ? " err" : ""}`} name="enquiryType"
+                    value={form.enquiryType} onChange={handleChange}>
                     {enquiryTypes.map((t) => (
-                      <option key={t} value={t === "Select a topic" ? "" : t} disabled={t === "Select a topic"}>
-                        {t}
-                      </option>
+                      <option key={t} value={t === "Select a topic" ? "" : t} disabled={t === "Select a topic"}>{t}</option>
                     ))}
                   </select>
-                  {errors.enquiryType && <span className="contact-field-error">{errors.enquiryType}</span>}
+                  {errors.enquiryType && <span className="ct-field-err">{errors.enquiryType}</span>}
                 </div>
 
-                {/* Student Name */}
-                <div className="contact-form-group">
-                  <label className="contact-form-label">
-                    Student Name <span className="opt">(if applicable)</span>
-                  </label>
-                  <input
-                    className="contact-form-input"
-                    name="studentName"
-                    placeholder="Student's full name"
-                    value={form.studentName}
-                    onChange={handleChange}
-                  />
+                <div className="ct-form-group">
+                  <label className="ct-form-label">Student Name <span className="opt">(if applicable)</span></label>
+                  <input className="ct-input" name="studentName"
+                    placeholder="Student's full name" value={form.studentName} onChange={handleChange} />
                 </div>
 
-                {/* Grade */}
-                <div className="contact-form-group">
-                  <label className="contact-form-label">
-                    Grade / Class <span className="opt">(if applicable)</span>
-                  </label>
-                  <input
-                    className="contact-form-input"
-                    name="grade"
-                    placeholder="e.g. Grade 8"
-                    value={form.grade || ""}
-                    onChange={handleChange}
-                  />
+                <div className="ct-form-group">
+                  <label className="ct-form-label">Grade / Class <span className="opt">(if applicable)</span></label>
+                  <input className="ct-input" name="grade"
+                    placeholder="e.g. Grade 8" value={form.grade} onChange={handleChange} />
                 </div>
 
-                {/* Message */}
-                <div className="contact-form-group full">
-                  <label className="contact-form-label">
-                    Your Message <span className="req">*</span>
-                  </label>
-                  <textarea
-                    className={`contact-form-textarea${errors.message ? " error" : ""}`}
-                    name="message"
-                    placeholder="Write your message here…"
-                    value={form.message}
-                    onChange={handleChange}
-                  />
-                  {errors.message && <span className="contact-field-error">{errors.message}</span>}
+                <div className="ct-form-group full">
+                  <label className="ct-form-label">Your Message <span className="req">*</span></label>
+                  <textarea className={`ct-textarea${errors.message ? " err" : ""}`} name="message"
+                    placeholder="Write your message here…" value={form.message} onChange={handleChange} />
+                  {errors.message && <span className="ct-field-err">{errors.message}</span>}
                 </div>
               </div>
 
-              <div className="contact-form-footer">
-                <p className="contact-form-note">
-                  We typically respond within one business day. Your information
-                  is kept strictly confidential.
+              <div className="ct-form-actions">
+                <p className="ct-form-note">
+                  We respond within one business day. Your details are kept confidential.
                 </p>
-                <button className="contact-submit-btn" onClick={handleSubmit}>
+                <button className="ct-submit-btn" onClick={handleSubmit}>
                   Send Message
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
+                  <svg className="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                   </svg>
                 </button>
               </div>
             </>
           )}
         </div>
+
+        {/* SIDE PANEL */}
+        <aside className="ct-side">
+
+          {/* Office Hours */}
+          <div className="ct-hours-card">
+            <p className="ct-hours-label">Office Hours</p>
+            <h3 className="ct-hours-title">When to reach us</h3>
+            {hours.map((h) => (
+              <div key={h.day} className="ct-hours-row">
+                <span className="ct-hours-day">{h.day}</span>
+                <span className={`ct-hours-time${h.closed ? " closed" : ""}`}>{h.time}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Map */}
+          <div className="ct-map-card">
+            <div className="ct-map-inner">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--navy)"
+                strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+              </svg>
+              Kamalbinayak, Bhaktapur
+            </div>
+            <div className="ct-map-footer">
+              <div className="ct-map-address">Global Life School<br />Kamalbinayak, Bhaktapur</div>
+              <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="ct-map-link">
+                Get directions →
+              </a>
+            </div>
+          </div>
+
+          {/* Social */}
+          <div className="ct-social-card">
+            <p className="ct-social-label">Follow Us</p>
+            <div className="ct-social-row">
+              <a href="#" className="ct-social-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+                Facebook
+              </a>
+              <a href="#" className="ct-social-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                </svg>
+                Instagram
+              </a>
+            </div>
+          </div>
+
+        </aside>
       </div>
     </>
   );
