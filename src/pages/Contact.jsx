@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./Contact.css";
 
-const infoCards = [
+const stripItems = [
   {
     label: "Address",
     value: ["Global Life School, Kamalbinayak", "Bhaktapur, Nepal"],
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
       </svg>
     ),
   },
@@ -15,7 +16,7 @@ const infoCards = [
     label: "Phone",
     value: ["01-6612925", "01-6620200"],
     icon: (
-      <svg width="20" height="20" viewBox="0 0   <App />24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/>
       </svg>
     ),
@@ -26,7 +27,8 @@ const infoCards = [
     link: "mailto:info@globallifeschool.edu.np",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
       </svg>
     ),
   },
@@ -34,7 +36,7 @@ const infoCards = [
 
 const hours = [
   { day: "Sunday – Friday", time: "9:00 AM – 5:00 PM" },
-  { day: "Saturday",        time: "Closed", closed: true },
+  { day: "Saturday", time: "Closed", closed: true },
 ];
 
 const enquiryTypes = [
@@ -92,12 +94,12 @@ export default function Contact() {
             <div className="ct-breadcrumb-sep" />
             <span className="ct-breadcrumb-current">Contact</span>
           </nav>
-          <div className="ct-hero-eyebrow">
+          <span className="ct-hero-eyebrow">
             <span className="ct-hero-eyebrow-dot" />
             We'd love to hear from you
-          </div>
+          </span>
           <h1 className="ct-hero-title">
-            Let's Start a<br /><em>Conversation</em>
+            Let's Start a <em>Conversation</em>
           </h1>
           <p className="ct-hero-sub">
             Whether you're a parent exploring admissions, a student with questions,
@@ -106,21 +108,20 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── INFO CARDS ── */}
-      {/* .ct-cards-section has page-bg; negative margin on the row overlaps the hero */}
-      <div className="ct-cards-section">
-        <div className="ct-cards-row">
-          {infoCards.map((card) => (
-            <div key={card.label} className="ct-info-card">
-              <div className="ct-info-card-icon">{card.icon}</div>
+      {/* ── INFO STRIP — same navy background, no overlap tricks ── */}
+      <div className="ct-strip">
+        <div className="ct-strip-inner">
+          {stripItems.map((item) => (
+            <div key={item.label} className="ct-strip-item">
+              <div className="ct-strip-icon">{item.icon}</div>
               <div>
-                <div className="ct-info-card-label">{card.label}</div>
-                <div className="ct-info-card-value">
-                  {card.link ? (
-                    <a href={card.link}>{card.value[0]}</a>
+                <div className="ct-strip-label">{item.label}</div>
+                <div className="ct-strip-value">
+                  {item.link ? (
+                    <a href={item.link}>{item.value[0]}</a>
                   ) : (
-                    card.value.map((line, i) => (
-                      <span key={i}>{line}{i < card.value.length - 1 && <br />}</span>
+                    item.value.map((line, i) => (
+                      <span key={i}>{line}{i < item.value.length - 1 && <br />}</span>
                     ))
                   )}
                 </div>
@@ -134,9 +135,9 @@ export default function Contact() {
       <div className="ct-body">
         <div className="ct-body-inner">
 
-          {/* FORM */}
+          {/* ── FORM ── */}
           <div className="ct-form-card">
-            <p className="ct-form-section-label">Send a Message</p>
+            <p className="ct-form-eyebrow">Send a Message</p>
 
             {submitted ? (
               <div className="ct-success">
@@ -162,24 +163,25 @@ export default function Contact() {
                 </p>
 
                 <div className="ct-form-grid">
+
                   <div className="ct-form-group">
                     <label className="ct-form-label">Full Name <span className="req">*</span></label>
                     <input className={`ct-input${errors.fullName ? " err" : ""}`} name="fullName"
-                      placeholder="Your full name" value={form.fullName} onChange={handleChange}/>
+                      placeholder="Your full name" value={form.fullName} onChange={handleChange} />
                     {errors.fullName && <span className="ct-field-err">{errors.fullName}</span>}
                   </div>
 
                   <div className="ct-form-group">
                     <label className="ct-form-label">Email Address <span className="opt">(optional)</span></label>
                     <input className={`ct-input${errors.email ? " err" : ""}`} name="email"
-                      type="email" placeholder="your@email.com" value={form.email} onChange={handleChange}/>
+                      type="email" placeholder="your@email.com" value={form.email} onChange={handleChange} />
                     {errors.email && <span className="ct-field-err">{errors.email}</span>}
                   </div>
 
                   <div className="ct-form-group">
                     <label className="ct-form-label">Phone Number <span className="req">*</span></label>
                     <input className={`ct-input${errors.phone ? " err" : ""}`} name="phone"
-                      placeholder="98XXXXXXXX" value={form.phone} onChange={handleChange}/>
+                      placeholder="98XXXXXXXX" value={form.phone} onChange={handleChange} />
                     {errors.phone
                       ? <span className="ct-field-err">{errors.phone}</span>
                       : <span className="ct-field-hint">10 digits starting with 97 or 98</span>}
@@ -199,21 +201,22 @@ export default function Contact() {
                   <div className="ct-form-group">
                     <label className="ct-form-label">Student Name <span className="opt">(if applicable)</span></label>
                     <input className="ct-input" name="studentName"
-                      placeholder="Student's full name" value={form.studentName} onChange={handleChange}/>
+                      placeholder="Student's full name" value={form.studentName} onChange={handleChange} />
                   </div>
 
                   <div className="ct-form-group">
                     <label className="ct-form-label">Grade / Class <span className="opt">(if applicable)</span></label>
                     <input className="ct-input" name="grade"
-                      placeholder="e.g. Grade 8" value={form.grade} onChange={handleChange}/>
+                      placeholder="e.g. Grade 8" value={form.grade} onChange={handleChange} />
                   </div>
 
                   <div className="ct-form-group full">
                     <label className="ct-form-label">Your Message <span className="req">*</span></label>
                     <textarea className={`ct-textarea${errors.message ? " err" : ""}`} name="message"
-                      placeholder="Write your message here…" value={form.message} onChange={handleChange}/>
+                      placeholder="Write your message here…" value={form.message} onChange={handleChange} />
                     {errors.message && <span className="ct-field-err">{errors.message}</span>}
                   </div>
+
                 </div>
 
                 <div className="ct-form-actions">
@@ -224,7 +227,8 @@ export default function Contact() {
                     Send Message
                     <svg className="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
                     </svg>
                   </button>
                 </div>
@@ -232,11 +236,11 @@ export default function Contact() {
             )}
           </div>
 
-          {/* SIDEBAR */}
+          {/* ── SIDEBAR ── */}
           <aside className="ct-side">
 
             <div className="ct-hours-card">
-              <p className="ct-hours-eyebrow">Office Hours</p>
+              <p className="ct-side-eyebrow">Office Hours</p>
               <h3 className="ct-hours-title">When to reach us</h3>
               {hours.map((h) => (
                 <div key={h.day} className="ct-hours-row">
@@ -250,7 +254,8 @@ export default function Contact() {
               <div className="ct-map-visual">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--navy)"
                   strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
                 </svg>
                 Kamalbinayak, Bhaktapur
               </div>
@@ -263,7 +268,7 @@ export default function Contact() {
             </div>
 
             <div className="ct-social-card">
-              <p className="ct-social-eyebrow">Follow Us</p>
+              <p className="ct-side-eyebrow">Follow Us</p>
               <div className="ct-social-row">
                 <a href="#" className="ct-social-btn">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
