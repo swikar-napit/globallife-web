@@ -1,32 +1,35 @@
 import { useState } from "react";
 import "./Contact.css";
 
-const stripItems = [
+const infoCards = [
   {
-    label: "Address",
-    value: ["Global Life School, Kamalbinayak", "Bhaktapur, Nepal"],
+    label: "Find Us",
+    heading: "Our Location",
+    value: ["Global Life School", "Kamalbinayak, Bhaktapur", "Nepal"],
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
         <circle cx="12" cy="10" r="3"/>
       </svg>
     ),
   },
   {
-    label: "Phone",
+    label: "Call Us",
+    heading: "Phone Numbers",
     value: ["01-6612925", "01-6620200"],
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/>
       </svg>
     ),
   },
   {
-    label: "Email",
+    label: "Email Us",
+    heading: "Email Address",
     value: ["info@globallifeschool.edu.np"],
     link: "mailto:info@globallifeschool.edu.np",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
         <polyline points="22,6 12,13 2,6"/>
       </svg>
@@ -35,8 +38,8 @@ const stripItems = [
 ];
 
 const hours = [
-  { day: "Sunday – Friday", time: "9:00 AM – 5:00 PM" },
-  { day: "Saturday", time: "Closed", closed: true },
+  { day: "Sunday – Friday", time: "9:00 AM – 5:00 PM", open: true },
+  { day: "Saturday", time: "Closed", open: false },
 ];
 
 const enquiryTypes = [
@@ -108,34 +111,35 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── INFO STRIP — same navy background, no overlap tricks ── */}
-      <div className="ct-strip">
-        <div className="ct-strip-inner">
-          {stripItems.map((item) => (
-            <div key={item.label} className="ct-strip-item">
-              <div className="ct-strip-icon">{item.icon}</div>
-              <div>
-                <div className="ct-strip-label">{item.label}</div>
-                <div className="ct-strip-value">
-                  {item.link ? (
-                    <a href={item.link}>{item.value[0]}</a>
-                  ) : (
-                    item.value.map((line, i) => (
-                      <span key={i}>{line}{i < item.value.length - 1 && <br />}</span>
-                    ))
-                  )}
-                </div>
+      {/* ── INFO CARDS — clean section on page-bg ── */}
+      <section className="ct-cards-section">
+        <div className="ct-cards-inner">
+          {infoCards.map((card) => (
+            <div key={card.label} className="ct-info-card">
+              <div className="ct-info-card-top">
+                <div className="ct-info-card-icon">{card.icon}</div>
+                <span className="ct-info-card-eyebrow">{card.label}</span>
+              </div>
+              <h3 className="ct-info-card-heading">{card.heading}</h3>
+              <div className="ct-info-card-value">
+                {card.link ? (
+                  <a href={card.link}>{card.value[0]}</a>
+                ) : (
+                  card.value.map((line, i) => (
+                    <span key={i}>{line}{i < card.value.length - 1 && <br />}</span>
+                  ))
+                )}
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* ── BODY ── */}
-      <div className="ct-body">
+      {/* ── MAIN BODY ── */}
+      <section className="ct-body">
         <div className="ct-body-inner">
 
-          {/* ── FORM ── */}
+          {/* FORM */}
           <div className="ct-form-card">
             <p className="ct-form-eyebrow">Send a Message</p>
 
@@ -161,7 +165,6 @@ export default function Contact() {
                 <p className="ct-form-sub">
                   Fill in the details below and we'll get back to you within 24 hours.
                 </p>
-
                 <div className="ct-form-grid">
 
                   <div className="ct-form-group">
@@ -218,7 +221,6 @@ export default function Contact() {
                   </div>
 
                 </div>
-
                 <div className="ct-form-actions">
                   <p className="ct-form-note">
                     We respond within one business day. Your details are kept confidential.
@@ -236,48 +238,58 @@ export default function Contact() {
             )}
           </div>
 
-          {/* ── SIDEBAR ── */}
+          {/* SIDEBAR */}
           <aside className="ct-side">
 
+            {/* Hours */}
             <div className="ct-hours-card">
               <p className="ct-side-eyebrow">Office Hours</p>
               <h3 className="ct-hours-title">When to reach us</h3>
               {hours.map((h) => (
                 <div key={h.day} className="ct-hours-row">
                   <span className="ct-hours-day">{h.day}</span>
-                  <span className={`ct-hours-time${h.closed ? " closed" : ""}`}>{h.time}</span>
+                  <span className={`ct-hours-time${!h.open ? " closed" : ""}`}>{h.time}</span>
                 </div>
               ))}
             </div>
 
+            {/* Map */}
             <div className="ct-map-card">
               <div className="ct-map-visual">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--navy)"
-                  strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-                Kamalbinayak, Bhaktapur
+                <div className="ct-map-pin">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <p className="ct-map-label">Kamalbinayak, Bhaktapur</p>
               </div>
               <div className="ct-map-footer">
-                <div className="ct-map-address">Global Life School<br />Kamalbinayak, Bhaktapur</div>
+                <div>
+                  <div className="ct-map-name">Global Life School</div>
+                  <div className="ct-map-address">Kamalbinayak, Bhaktapur</div>
+                </div>
                 <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="ct-map-link">
-                  Get directions →
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                  Directions
                 </a>
               </div>
             </div>
 
+            {/* Social */}
             <div className="ct-social-card">
               <p className="ct-side-eyebrow">Follow Us</p>
               <div className="ct-social-row">
                 <a href="#" className="ct-social-btn">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                   </svg>
                   Facebook
                 </a>
                 <a href="#" className="ct-social-btn">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                     <circle cx="12" cy="12" r="4"/>
                     <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
@@ -289,7 +301,7 @@ export default function Contact() {
 
           </aside>
         </div>
-      </div>
+      </section>
     </>
   );
 }

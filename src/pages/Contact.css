@@ -1,24 +1,24 @@
 /* ================================================
    CONTACT PAGE — Contact.css
-   Tokens from index.css:
-   --navy: #0E2A4D  --navy-deep: #081C36
-   --blue-accent: #3D8BFD  --blue-soft: #DCEBFF
-   --bg: #F6F9FE  --page-bg: #F9F9FA
-   Fonts: Fraunces (headings) · Work Sans (body)
+   Tokens: --navy #0E2A4D · --navy-deep #081C36
+           --blue-accent #3D8BFD · --blue-soft #DCEBFF
+           --bg #F6F9FE · --page-bg #F9F9FA
+   Fonts: Fraunces (serif) · Work Sans (sans)
    ================================================ */
 
-/* ── HERO ── */
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
 .ct-hero {
     position: relative;
     background: var(--navy);
-    padding: 72px 48px 64px;
+    padding: 72px 48px 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-/* subtle grid pattern — same vibe as Home sections */
 .ct-hero-grid {
     position: absolute;
     inset: 0;
@@ -30,15 +30,14 @@
     background-size: 52px 52px;
 }
 
-/* radial glow at bottom — bleeds into the strip below for continuity */
 .ct-hero-glow {
     position: absolute;
-    bottom: -40px;
+    bottom: -60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 700px;
-    height: 260px;
-    background: radial-gradient(ellipse, rgba(61, 139, 253, 0.2) 0%, transparent 68%);
+    width: 720px;
+    height: 280px;
+    background: radial-gradient(ellipse, rgba(61, 139, 253, 0.18) 0%, transparent 68%);
     pointer-events: none;
     animation: ctGlow 5s ease-in-out infinite alternate;
 }
@@ -59,20 +58,19 @@
     max-width: 640px;
 }
 
-/* breadcrumb — matches Home page style */
 .ct-breadcrumb {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.38);
     font-weight: 500;
     margin-bottom: 24px;
 }
 
 .ct-breadcrumb a {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.38);
     text-decoration: none;
     transition: color 0.2s;
 }
@@ -84,22 +82,21 @@
 .ct-breadcrumb-sep {
     width: 4px;
     height: 4px;
-    border-top: 1.5px solid rgba(255, 255, 255, 0.28);
-    border-right: 1.5px solid rgba(255, 255, 255, 0.28);
+    border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-right: 1.5px solid rgba(255, 255, 255, 0.25);
     transform: rotate(45deg);
 }
 
 .ct-breadcrumb-current {
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.75);
 }
 
-/* eyebrow pill — mirrors .hero-eyebrow from index.css but inverted */
 .ct-hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(61, 139, 253, 0.13);
-    border: 1px solid rgba(61, 139, 253, 0.3);
+    background: rgba(61, 139, 253, 0.12);
+    border: 1px solid rgba(61, 139, 253, 0.28);
     color: #7ab8ff;
     font-size: 0.68rem;
     font-weight: 600;
@@ -118,7 +115,6 @@
     flex-shrink: 0;
 }
 
-/* heading — mirrors .hero-heading font sizing */
 .ct-hero-title {
     font-family: 'Fraunces', serif;
     font-size: clamp(2rem, 4.5vw, 3.2rem);
@@ -135,50 +131,73 @@
 
 .ct-hero-sub {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 255, 255, 0.55);
     line-height: 1.85;
     max-width: 500px;
     margin: 0 auto;
 }
 
-/* ── INFO STRIP ── */
-/* Continues the navy background — no clipping issues at all */
-.ct-strip {
-    background: var(--navy);
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+/* ─────────────────────────────────────────
+   INFO CARDS
+───────────────────────────────────────── */
+.ct-cards-section {
+    background: var(--page-bg);
+    padding: 56px 48px 0;
 }
 
-.ct-strip-inner {
+.ct-cards-inner {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 48px;
+    gap: 20px;
 }
 
-.ct-strip-item {
+.ct-info-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 32px 28px 28px;
+    border: 1px solid rgba(14, 42, 77, 0.07);
+    box-shadow: 0 2px 16px rgba(14, 42, 77, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* top accent bar */
+.ct-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-accent), rgba(61, 139, 253, 0.3));
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.ct-info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(14, 42, 77, 0.11);
+}
+
+.ct-info-card:hover::before {
+    opacity: 1;
+}
+
+.ct-info-card-top {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 28px 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.07);
-    transition: background 0.2s;
-    cursor: default;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
-.ct-strip-item:last-child {
-    border-right: none;
-}
-
-.ct-strip-item:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.ct-strip-icon {
+.ct-info-card-icon {
     width: 44px;
     height: 44px;
-    border-radius: 10px;
-    background: rgba(61, 139, 253, 0.15);
+    border-radius: 12px;
+    background: var(--blue-soft);
     color: var(--blue-accent);
     display: flex;
     align-items: center;
@@ -186,36 +205,47 @@
     flex-shrink: 0;
 }
 
-.ct-strip-label {
-    font-size: 0.6rem;
+.ct-info-card-eyebrow {
+    font-size: 0.62rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--blue-accent);
-    margin-bottom: 5px;
 }
 
-.ct-strip-value {
-    font-size: 0.88rem;
+.ct-info-card-heading {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.ct-info-card-value {
+    font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.82);
-    line-height: 1.65;
+    color: #4A5568;
+    line-height: 1.75;
 }
 
-.ct-strip-value a {
-    color: rgba(255, 255, 255, 0.82);
+.ct-info-card-value a {
+    color: var(--blue-accent);
     text-decoration: none;
+    font-weight: 600;
     transition: color 0.2s;
 }
 
-.ct-strip-value a:hover {
-    color: #fff;
+.ct-info-card-value a:hover {
+    color: var(--navy);
 }
 
-/* ── BODY ── */
+/* ─────────────────────────────────────────
+   BODY — form + sidebar
+───────────────────────────────────────── */
 .ct-body {
     background: var(--page-bg);
-    padding: 56px 48px 80px;
+    padding: 40px 48px 80px;
 }
 
 .ct-body-inner {
@@ -223,18 +253,19 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 290px;
-    gap: 28px;
+    gap: 24px;
     align-items: start;
 }
 
-/* ── FORM CARD ── */
+/* ─────────────────────────────────────────
+   FORM CARD
+───────────────────────────────────────── */
 .ct-form-card {
     background: #fff;
     border-radius: 20px;
     padding: 44px 44px 40px;
     box-shadow: 0 2px 24px rgba(14, 42, 77, 0.07);
     border: 1px solid rgba(14, 42, 77, 0.06);
-    /* notebook line — signature element */
     border-left: 4px solid var(--blue-accent);
 }
 
@@ -302,10 +333,8 @@
     font-size: 0.59rem;
     font-weight: 500;
     margin-left: 4px;
-    letter-spacing: 1px;
 }
 
-/* inputs — mirrors Home's form aesthetic */
 .ct-input,
 .ct-select,
 .ct-textarea {
@@ -377,7 +406,6 @@
     max-width: 280px;
 }
 
-/* submit — mirrors .hero-btn-primary from index.css */
 .ct-submit-btn {
     display: inline-flex;
     align-items: center;
@@ -391,9 +419,9 @@
     border-radius: 8px;
     border: none;
     cursor: pointer;
+    letter-spacing: 0.3px;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     white-space: nowrap;
-    letter-spacing: 0.3px;
 }
 
 .ct-submit-btn:hover {
@@ -410,7 +438,9 @@
     transform: translateX(4px);
 }
 
-/* ── SIDEBAR ── */
+/* ─────────────────────────────────────────
+   SIDEBAR
+───────────────────────────────────────── */
 .ct-side {
     display: flex;
     flex-direction: column;
@@ -426,7 +456,7 @@
     margin-bottom: 10px;
 }
 
-/* Hours — navy card matching site's dark cards */
+/* Hours — navy, mirrors your CTA card style */
 .ct-hours-card {
     background: var(--navy);
     border-radius: 16px;
@@ -456,7 +486,7 @@
 }
 
 .ct-hours-day {
-    color: rgba(255, 255, 255, 0.52);
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 500;
 }
 
@@ -467,11 +497,11 @@
 
 .ct-hours-time.closed {
     color: rgba(255, 255, 255, 0.28);
-    font-weight: 400;
     font-style: italic;
+    font-weight: 400;
 }
 
-/* Map card */
+/* Map */
 .ct-map-card {
     border-radius: 16px;
     overflow: hidden;
@@ -480,50 +510,94 @@
 }
 
 .ct-map-visual {
-    height: 152px;
-    background: linear-gradient(145deg, #dce9f6 0%, #b8d0eb 100%);
+    height: 140px;
+    background: linear-gradient(145deg, var(--navy) 0%, #162e50 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    color: var(--navy);
-    font-size: 0.8rem;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* decorative grid on map */
+.ct-map-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(61, 139, 253, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61, 139, 253, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.ct-map-pin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--blue-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 8px rgba(61, 139, 253, 0.2);
+}
+
+.ct-map-label {
+    font-size: 0.78rem;
     font-weight: 600;
-    opacity: 0.72;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    z-index: 1;
 }
 
 .ct-map-footer {
     background: #fff;
-    padding: 12px 16px;
+    padding: 14px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
 }
 
-.ct-map-address {
-    font-size: 0.79rem;
+.ct-map-name {
+    font-size: 0.85rem;
     color: var(--navy);
-    font-weight: 500;
-    line-height: 1.45;
+    font-weight: 600;
+}
+
+.ct-map-address {
+    font-size: 0.75rem;
+    color: #5a6a7e;
+    margin-top: 2px;
 }
 
 .ct-map-link {
-    font-size: 0.73rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--blue-accent);
     text-decoration: none;
     white-space: nowrap;
     transition: color 0.2s;
     flex-shrink: 0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(61, 139, 253, 0.25);
+    background: var(--blue-soft);
 }
 
 .ct-map-link:hover {
-    color: var(--navy);
+    background: var(--blue-accent);
+    color: #fff;
+    border-color: var(--blue-accent);
 }
 
-/* Social card */
+/* Social */
 .ct-social-card {
     background: #fff;
     border-radius: 16px;
@@ -542,12 +616,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    padding: 9px 10px;
+    gap: 7px;
+    padding: 10px 12px;
     border-radius: 8px;
     border: 1.5px solid rgba(14, 42, 77, 0.1);
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.77rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--navy);
     text-decoration: none;
@@ -560,7 +634,9 @@
     color: var(--blue-accent);
 }
 
-/* ── SUCCESS STATE ── */
+/* ─────────────────────────────────────────
+   SUCCESS STATE
+───────────────────────────────────────── */
 .ct-success {
     display: flex;
     flex-direction: column;
@@ -617,7 +693,9 @@
     background: var(--navy-deep);
 }
 
-/* ── RESPONSIVE ── */
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
 @media (max-width: 960px) {
     .ct-body-inner {
         grid-template-columns: 1fr;
@@ -635,33 +713,26 @@
 }
 
 @media (max-width: 768px) {
-    .ct-strip-inner {
+    .ct-cards-inner {
         grid-template-columns: 1fr;
-        padding: 0 24px;
     }
 
-    .ct-strip-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        padding: 20px 0;
-    }
-
-    .ct-strip-item:last-child {
-        border-bottom: none;
+    .ct-cards-section {
+        padding: 48px 24px 0;
     }
 
     .ct-hero {
-        padding: 60px 24px 52px;
+        padding: 60px 24px 68px;
     }
 
     .ct-body {
-        padding: 40px 24px 60px;
+        padding: 36px 24px 60px;
     }
 }
 
 @media (max-width: 640px) {
     .ct-hero {
-        padding: 56px 20px 48px;
+        padding: 52px 20px 60px;
     }
 
     .ct-form-grid {
@@ -686,7 +757,11 @@
     }
 
     .ct-body {
-        padding: 32px 16px 56px;
+        padding: 28px 16px 56px;
+    }
+
+    .ct-cards-section {
+        padding: 36px 16px 0;
     }
 
     .ct-side {
