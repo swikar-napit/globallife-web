@@ -159,3 +159,146 @@
     row-gap: 20px;
   }
 }
+/* =================================*********
+   MISSION & VISION — foundation boxes
+========================================= */
+.mv-section {
+  background: var(--page-bg);
+  padding: clamp(64px, 9vw, 104px) clamp(24px, 5vw, 48px);
+}
+
+.mv-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.mv-intro {
+  max-width: 640px;
+  margin: 0 0 clamp(48px, 7vw, 72px);
+  text-align: left;
+}
+
+.mv-eyebrow {
+  display: block;
+  color: var(--navy, #0E2A4D);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.mv-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+  font-weight: 500;
+  color: var(--navy, #0E2A4D);
+  line-height: 1.15;
+}
+
+.mv-heading em {
+  font-style: italic;
+  color: var(--navy, #0E2A4D);
+  font-weight: 500;
+}
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3vw, 32px);
+}
+
+.mv-box {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(32px, 3.5vw, 44px) clamp(28px, 3vw, 36px);
+  box-shadow: 0 16px 40px rgba(14, 42, 77, 0.08);
+  border: 1px solid rgba(14, 42, 77, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.mv-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 56px rgba(14, 42, 77, 0.13);
+}
+
+.mv-sticker {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: var(--blue-accent);
+  transform: rotate(-4deg);
+  box-shadow: 0 10px 24px rgba(14, 42, 77, 0.25);
+}
+
+.mv-box--vision {
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border-color: transparent;
+  box-shadow: 0 16px 40px rgba(8, 28, 54, 0.4);
+}
+
+.mv-box--vision:hover {
+  box-shadow: 0 26px 56px rgba(8, 28, 54, 0.5);
+}
+
+.mv-box--vision .mv-sticker {
+  transform: rotate(4deg);
+  background: rgba(61, 139, 253, 0.18);
+  color: var(--blue-accent);
+}
+
+.mv-sticker svg {
+  width: 28px;
+  height: 28px;
+}
+
+.mv-box-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--blue-accent);
+  margin-bottom: 12px;
+}
+
+.mv-box--vision .mv-box-label {
+  color: var(--blue-accent);
+}
+
+.mv-box-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.mv-box--vision .mv-box-title {
+  color: #fff;
+}
+
+.mv-box-text {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--charcoal);
+  opacity: 0.8;
+}
+
+.mv-box--vision .mv-box-text {
+  color: rgba(255, 255, 255, 0.88);
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .mv-grid {
+    grid-template-columns: 1fr;
+  }
+}
