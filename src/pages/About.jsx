@@ -119,20 +119,57 @@ function About() {
             </h2>
           </div>
 
-          <div className="story-timeline">
-            <div className="story-line" aria-hidden="true"></div>
+          <div className="story-scroll">
+            <div className="story-timeline">
+              <div className="story-row story-row--top">
+                {milestones.map((m, index) => (
+                  <div className="story-slot" key={m.year}>
+                    {index % 2 === 0 && (
+                      <div className="story-content">
+                        <span className="story-year">{m.year}</span>
+                        <h3 className="story-title">{m.title}</h3>
+                        <p className="story-text">{m.text}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
 
-            {milestones.map((m, index) => (
-              <div
-                className={`story-item ${index % 2 === 0 ? "story-item--left" : "story-item--right"}`}
-                key={m.year}
-              >
+              <div className="story-row story-row--line">
+                <div className="story-line" aria-hidden="true"></div>
+                {milestones.map((m) => (
+                  <div className="story-slot" key={m.year}>
+                    <div className="story-dot" aria-hidden="true"></div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="story-row story-row--bottom">
+                {milestones.map((m, index) => (
+                  <div className="story-slot" key={m.year}>
+                    {index % 2 !== 0 && (
+                      <div className="story-content">
+                        <span className="story-year">{m.year}</span>
+                        <h3 className="story-title">{m.title}</h3>
+                        <p className="story-text">{m.text}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="story-mobile-list">
+            <div className="story-mobile-line" aria-hidden="true"></div>
+            {milestones.map((m) => (
+              <div className="story-mobile-item" key={m.year}>
+                <div className="story-mobile-dot" aria-hidden="true"></div>
                 <div className="story-content">
                   <span className="story-year">{m.year}</span>
                   <h3 className="story-title">{m.title}</h3>
                   <p className="story-text">{m.text}</p>
                 </div>
-                <div className="story-dot" aria-hidden="true"></div>
               </div>
             ))}
           </div>
