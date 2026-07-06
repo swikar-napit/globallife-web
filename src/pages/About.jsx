@@ -2,6 +2,34 @@ import { Link } from "react-router"
 import "./About.css"
 import crest from "../assets/global.jpg"
 
+const milestones = [
+  {
+    year: "2009",
+    title: "Global Life School is founded",
+    text: "Opened our doors with a single building, a handful of classrooms, and a promise to put every child's growth first.",
+  },
+  {
+    year: "2013",
+    title: "Boarding facilities open",
+    text: "Introduced safe, home-like boarding houses, welcoming students from across the region for the first time.",
+  },
+  {
+    year: "2017",
+    title: "Secondary level launched",
+    text: "Expanded through Class 10, giving students a full academic journey without ever needing to change schools.",
+  },
+  {
+    year: "2021",
+    title: "500th student enrolled",
+    text: "Crossed a major milestone in enrollment, a mark of the trust families across the community placed in us.",
+  },
+  {
+    year: "2024",
+    title: "98% board pass rate achieved",
+    text: "Our graduating class posted our strongest results yet, a reflection of years of disciplined academic groundwork.",
+  },
+]
+
 function About() {
   return (
     <>
@@ -9,7 +37,7 @@ function About() {
         <div className="about-hero-content">
           <span className="about-hero-eyebrow">Our Story & Values</span>
           <h1 className="about-hero-heading">
-            About <em>Global Life School</em>
+            About <em>Global Life</em> School
           </h1>
           <p className="about-hero-subtext">
             A boarding and day school dedicated to academic excellence,
@@ -79,6 +107,34 @@ function About() {
                 Life's balance of excellence and character into the world.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="story-section">
+        <div className="story-inner">
+          <div className="mv-intro">
+            <span className="mv-eyebrow">Our Story</span>
+            <h2 className="mv-heading">
+              Fifteen years of <em>growing together</em>
+            </h2>
+          </div>
+
+          <div className="story-timeline">
+            <div className="story-line" aria-hidden="true"></div>
+
+            {milestones.map((m, index) => (
+              <div
+                className={`story-item ${index % 2 === 0 ? "story-item--left" : "story-item--right"}`}
+                key={m.year}
+              >
+                <div className="story-content">
+                  <span className="story-year">{m.year}</span>
+                  <h3 className="story-title">{m.title}</h3>
+                  <p className="story-text">{m.text}</p>
+                </div>
+                <div className="story-dot" aria-hidden="true"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
