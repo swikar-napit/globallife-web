@@ -9,7 +9,7 @@ function About() {
         <div className="about-hero-content">
           <span className="about-hero-eyebrow">Our Story & Values</span>
           <h1 className="about-hero-heading">
-            About <em>Global Life</em> School
+            About <em>Global Life School</em>
           </h1>
           <p className="about-hero-subtext">
             A boarding and day school dedicated to academic excellence,
