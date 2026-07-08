@@ -111,6 +111,62 @@ function About() {
           </div>
         </div>
       </section>
+            <section className="principal-section">
+        <div className="principal-inner">
+          <div className="mv-intro">
+            <span className="mv-eyebrow">Leadership</span>
+            <h2 className="mv-heading">
+              A word from our <em>Principal</em>
+            </h2>
+          </div>
+
+          <div className="principal-card">
+            <div className="principal-photo-wrap">
+              <img src={principalPhoto} alt="Principal of Global Life School" className="principal-photo" />
+              <div className="principal-photo-badge">
+                <span className="principal-badge-num">15+</span>
+                <span className="principal-badge-label">Years Leading</span>
+              </div>
+            </div>
+
+            <div className="principal-content">
+              <svg className="principal-quote-mark" viewBox="0 0 64 52" aria-hidden="true">
+                <path d="M0 52V30.7Q0 15.4 9 7 18 -1.4 32 0.6L30 10.9Q21.1 10.2 16.3 15 11.5 19.8 12.2 28.2H25.6V52ZM38.4 52V30.7Q38.4 15.4 47.4 7 56.4 -1.4 70.4 0.6L68.4 10.9Q59.5 10.2 54.7 15 49.9 19.8 50.6 28.2H64V52Z" />
+              </svg>
+
+              <p className="principal-salutation">Dear Students, Parents, and Well-wishers,</p>
+
+              <p className="principal-para">
+                At Global Life School, every child is welcomed with genuine
+                care, so the classroom feels less like an institution and
+                more like a second home. We encourage curiosity rather than
+                memorization, and we work hard to keep that spark of
+                inquisitiveness burning long after the bell rings.
+              </p>
+
+              <p className="principal-para">
+                We don't confine learning to four walls. Through district
+                and national-level competitions, cultural festivals, and
+                excursions, our students step into the wider world early,
+                and come back home with both confidence and a stronger sense
+                of who they are.
+              </p>
+
+              <p className="principal-para">
+                None of this would mean anything without the trust our
+                families place in us, and we never take that trust lightly.
+                We remain grateful for it, and always open to hearing how we
+                can serve our students better.
+              </p>
+
+              <div className="principal-signoff">
+                <span className="principal-name">Mrs. Madhu Sharma</span>
+                <span className="principal-title">Principal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="story-section">
         <div className="story-inner">
           <div className="mv-intro">
@@ -173,63 +229,6 @@ function About() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="principal-section">
-        <div className="principal-inner">
-          <div className="mv-intro">
-            <span className="mv-eyebrow">Leadership</span>
-            <h2 className="mv-heading">
-              A word from our <em>Principal</em>
-            </h2>
-          </div>
-
-          <div className="principal-card">
-            <div className="principal-photo-wrap">
-              <img src={principalPhoto} alt="Principal of Global Life School" className="principal-photo" />
-              <div className="principal-photo-badge">
-                <span className="principal-badge-num">15+</span>
-                <span className="principal-badge-label">Years Leading</span>
-              </div>
-            </div>
-
-            <div className="principal-content">
-              <svg className="principal-quote-mark" viewBox="0 0 64 52" aria-hidden="true">
-                <path d="M0 52V30.7Q0 15.4 9 7 18 -1.4 32 0.6L30 10.9Q21.1 10.2 16.3 15 11.5 19.8 12.2 28.2H25.6V52ZM38.4 52V30.7Q38.4 15.4 47.4 7 56.4 -1.4 70.4 0.6L68.4 10.9Q59.5 10.2 54.7 15 49.9 19.8 50.6 28.2H64V52Z" />
-              </svg>
-
-              <p className="principal-salutation">Dear Students, Parents, and Well-wishers,</p>
-
-              <p className="principal-para">
-                At Global Life School, every child is welcomed with genuine
-                care, so the classroom feels less like an institution and
-                more like a second home. We encourage curiosity rather than
-                memorization, and we work hard to keep that spark of
-                inquisitiveness burning long after the bell rings.
-              </p>
-
-              <p className="principal-para">
-                We don't confine learning to four walls. Through district
-                and national-level competitions, cultural festivals, and
-                excursions, our students step into the wider world early,
-                and come back home with both confidence and a stronger sense
-                of who they are.
-              </p>
-
-              <p className="principal-para">
-                None of this would mean anything without the trust our
-                families place in us, and we never take that trust lightly.
-                We remain grateful for it, and always open to hearing how we
-                can serve our students better.
-              </p>
-
-              <div className="principal-signoff">
-                <span className="principal-name">Mrs. Madhu Sharma</span>
-                <span className="principal-title">Principal</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
