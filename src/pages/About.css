@@ -510,7 +510,36 @@
 }
 
 .principal-photo-wrap {
+  position: relative;
   flex: 0 0 clamp(240px, 32vw, 380px);
+}
+
+.principal-photo-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 18px;
+  box-shadow: 0 14px 30px rgba(14, 42, 77, 0.35);
+}
+
+.principal-badge-num {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.principal-badge-label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
 }
 
 .principal-photo {
@@ -522,9 +551,22 @@
 }
 
 .principal-content {
+  position: relative;
   flex: 1 1 auto;
   padding: clamp(32px, 4vw, 52px) clamp(28px, 4vw, 48px);
 }
+
+.principal-quote-mark {
+  position: absolute;
+  top: clamp(18px, 2.5vw, 28px);
+  right: clamp(24px, 4vw, 44px);
+  width: 56px;
+  height: 46px;
+  fill: var(--blue-soft);
+  opacity: 0.9;
+}
+
+
 
 .principal-salutation {
   font-family: 'Fraunces', serif;

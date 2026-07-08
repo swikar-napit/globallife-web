@@ -189,9 +189,17 @@ function About() {
           <div className="principal-card">
             <div className="principal-photo-wrap">
               <img src={principalPhoto} alt="Principal of Global Life School" className="principal-photo" />
+              <div className="principal-photo-badge">
+                <span className="principal-badge-num">15+</span>
+                <span className="principal-badge-label">Years Leading</span>
+              </div>
             </div>
 
             <div className="principal-content">
+              <svg className="principal-quote-mark" viewBox="0 0 64 52" aria-hidden="true">
+                <path d="M0 52V30.7Q0 15.4 9 7 18 -1.4 32 0.6L30 10.9Q21.1 10.2 16.3 15 11.5 19.8 12.2 28.2H25.6V52ZM38.4 52V30.7Q38.4 15.4 47.4 7 56.4 -1.4 70.4 0.6L68.4 10.9Q59.5 10.2 54.7 15 49.9 19.8 50.6 28.2H64V52Z" />
+              </svg>
+
               <p className="principal-salutation">Dear Students, Parents, and Well-wishers,</p>
 
               <p className="principal-para">
