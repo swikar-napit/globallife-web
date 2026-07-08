@@ -1,6 +1,7 @@
 import { Link } from "react-router"
 import "./About.css"
 import crest from "../assets/global.jpg"
+import principalPhoto from "../assets/principal.jpg"
 
 const milestones = [
   {
@@ -172,6 +173,36 @@ function About() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="principal-section">
+        <div className="principal-inner">
+          <div className="principal-photo-wrap">
+            <img src={principalPhoto} alt="Principal of Global Life School" className="principal-photo" />
+            <div className="principal-photo-badge">
+              <span className="principal-badge-line1">15+</span>
+              <span className="principal-badge-line2">Years Leading</span>
+            </div>
+          </div>
+
+          <div className="principal-content">
+            <span className="mv-eyebrow">A Message From Our Principal</span>
+            <svg className="principal-quote-mark" viewBox="0 0 40 32" aria-hidden="true">
+              <path d="M0 32V19.2Q0 9.6 5.6 4.4 11.2 -0.8 20 0.4L18.8 6.8Q13.2 6.4 10.2 9.4 7.2 12.4 7.6 17.6H16V32ZM24 32V19.2Q24 9.6 29.6 4.4 35.2 -0.8 44 0.4L42.8 6.8Q37.2 6.4 34.2 9.4 31.2 12.4 31.6 17.6H40V32Z" />
+            </svg>
+            <p className="principal-quote">
+              Every child who walks through our gates carries a story still
+              being written. Our task is not to write it for them, but to
+              give them the discipline, the values, and the confidence to
+              write it well themselves. That has been our promise since day
+              one, and it remains our promise today.
+            </p>
+            <div className="principal-signoff">
+              <span className="principal-name">Mrs. Madhu Sharma</span>
+              <span className="principal-title">Principal, Global Life School</span>
+            </div>
           </div>
         </div>
       </section>

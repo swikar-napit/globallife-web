@@ -485,3 +485,119 @@
     display: none;
   }
 }
+
+/* =================================*********
+   MESSAGE FROM THE PRINCIPAL
+========================================= */
+.principal-section {
+  background: #fff;
+  padding: clamp(64px, 9vw, 108px) clamp(24px, 5vw, 64px);
+}
+
+.principal-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 6vw, 80px);
+}
+
+.principal-photo-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.principal-photo {
+  width: clamp(220px, 26vw, 300px);
+  height: clamp(260px, 30vw, 360px);
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(14, 42, 77, 0.18);
+}
+
+.principal-photo-badge {
+  position: absolute;
+  bottom: -18px;
+  right: -18px;
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 14px 20px;
+  text-align: center;
+  box-shadow: 0 16px 34px rgba(14, 42, 77, 0.3);
+}
+
+.principal-badge-line1 {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.principal-badge-line2 {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+.principal-content {
+  flex: 1 1 auto;
+}
+
+.principal-quote-mark {
+  width: 44px;
+  height: 36px;
+  fill: var(--blue-soft);
+  margin: 14px 0 4px;
+}
+
+.principal-quote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--navy);
+  margin-bottom: 28px;
+}
+
+.principal-signoff {
+  display: flex;
+  flex-direction: column;
+  padding-top: 18px;
+  border-top: 1px solid rgba(14, 42, 77, 0.12);
+}
+
+.principal-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.principal-title {
+  font-size: 0.82rem;
+  color: var(--charcoal);
+  opacity: 0.65;
+  margin-top: 2px;
+}
+
+@media (max-width: 800px) {
+  .principal-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .principal-photo-badge {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .principal-signoff {
+    align-items: center;
+  }
+}
