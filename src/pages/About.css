@@ -305,32 +305,100 @@
   }
 }
 
-.values-row {
+/* =================================*********
+   CORE VALUES SECTION
+========================================= */
+.core-values-section {
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  padding: clamp(64px, 9vw, 104px) clamp(24px, 5vw, 48px);
+}
+
+.core-values-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.core-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.5vw, 24px);
+}
+
+.core-value-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 36px) clamp(20px, 2.5vw, 28px);
+  transition: transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+}
+
+.core-value-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25);
+}
+
+.core-value-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: clamp(32px, 4vw, 44px);
-}
-
-.value-pill {
-  display: inline-flex;
   align-items: center;
-  background: #fff;
-  border: 1px solid rgba(14, 42, 77, 0.1);
-  color: var(--navy);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 9px 20px;
-  border-radius: 999px;
-  box-shadow: 0 8px 20px rgba(14, 42, 77, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  justify-content: center;
+  margin-bottom: 20px;
+  transform: rotate(-4deg);
 }
 
-.value-pill:hover {
-  transform: translateY(-3px);
-  background: var(--navy);
+.core-value-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.core-value-icon--blue {
+  background: rgba(61, 139, 253, 0.2);
+  color: #5fa8ff;
+}
+
+.core-value-icon--amber {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.core-value-icon--green {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.core-value-icon--violet {
+  background: rgba(167, 139, 250, 0.15);
+  color: #a78bfa;
+}
+
+.core-value-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  font-weight: 700;
   color: #fff;
-  box-shadow: 0 14px 28px rgba(14, 42, 77, 0.2);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.core-value-text {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 900px) {
+  .core-values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .core-values-grid {
+    grid-template-columns: 1fr;
+  }
 }
 /* =================================*********
    OUR STORY — horizontal timeline
