@@ -1,7 +1,9 @@
 import { Link } from "react-router"
+import { useEffect, useRef, useState } from "react"
 import "./About.css"
 import crest from "../assets/global.jpg"
 import principalPhoto from "../assets/principal.jpg"
+import ctaPhoto from "../assets/global1.jpg"
 
 const milestones = [
   {
@@ -31,7 +33,67 @@ const milestones = [
   },
 ]
 
+const stats = [
+  { value: 15, suffix: "+", label: "Years of Excellence" },
+  { value: 500, suffix: "+", label: "Students" },
+  { value: 40, suffix: "+", label: "Teachers" },
+]
+
+function useCountUp(target, active, duration = 1400) {
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    if (!active) return
+    let startTime = null
+    let frameId
+
+    const step = (timestamp) => {
+      if (startTime === null) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setValue(Math.round(eased * target))
+      if (progress < 1) frameId = requestAnimationFrame(step)
+    }
+
+    frameId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(frameId)
+  }, [active, target, duration])
+
+  return value
+}
+
+function StatCounter({ value, suffix, label, active }) {
+  const count = useCountUp(value, active)
+  return (
+    <div className="about-hero-stat">
+      <span className="about-hero-stat-num">{count}{suffix}</span>
+      <span className="about-hero-stat-label">{label}</span>
+    </div>
+  )
+}
+
 function About() {
+  const [statsActive, setStatsActive] = useState(false)
+  const statsRef = useRef(null)
+
+  useEffect(() => {
+    const node = statsRef.current
+    if (!node) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsActive(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.4 }
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <section className="about-hero">
@@ -46,19 +108,10 @@ function About() {
             walks through our doors.
           </p>
 
-          <div className="about-hero-stats">
-            <div className="about-hero-stat">
-              <span className="about-hero-stat-num">15+</span>
-              <span className="about-hero-stat-label">Years of Excellence</span>
-            </div>
-            <div className="about-hero-stat">
-              <span className="about-hero-stat-num">500+</span>
-              <span className="about-hero-stat-label">Students</span>
-            </div>
-            <div className="about-hero-stat">
-              <span className="about-hero-stat-num">40+</span>
-              <span className="about-hero-stat-label">Teachers</span>
-            </div>
+          <div className="about-hero-stats" ref={statsRef}>
+            {stats.map((s) => (
+              <StatCounter key={s.label} value={s.value} suffix={s.suffix} label={s.label} active={statsActive} />
+            ))}
           </div>
         </div>
 
@@ -109,6 +162,12 @@ function About() {
               </p>
             </div>
           </div>
+
+          <div className="values-row">
+            {["Discipline", "Curiosity", "Integrity", "Community", "Excellence"].map((v) => (
+              <span className="value-pill" key={v}>{v}</span>
+            ))}
+          </div>
         </div>
       </section>
       <section className="story-section">
@@ -120,44 +179,51 @@ function About() {
             </h2>
           </div>
 
-          <div className="story-scroll">
-            <div className="story-timeline">
-              <div className="story-row story-row--top">
-                {milestones.map((m, index) => (
-                  <div className="story-slot" key={m.year}>
-                    {index % 2 === 0 && (
-                      <div className="story-content">
-                        <span className="story-year">{m.year}</span>
-                        <h3 className="story-title">{m.title}</h3>
-                        <p className="story-text">{m.text}</p>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+          <div className="story-scroll-wrap">
+            <div className="story-scroll">
+              <div className="story-timeline">
+                <div className="story-row story-row--top">
+                  {milestones.map((m, index) => (
+                    <div className="story-slot" key={m.year}>
+                      {index % 2 === 0 && (
+                        <div className="story-content">
+                          <span className="story-year">{m.year}</span>
+                          <h3 className="story-title">{m.title}</h3>
+                          <p className="story-text">{m.text}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
 
-              <div className="story-row story-row--line">
-                <div className="story-line" aria-hidden="true"></div>
-                {milestones.map((m) => (
-                  <div className="story-slot" key={m.year}>
-                    <div className="story-dot" aria-hidden="true"></div>
-                  </div>
-                ))}
-              </div>
+                <div className="story-row story-row--line">
+                  <div className="story-line" aria-hidden="true"></div>
+                  {milestones.map((m) => (
+                    <div className="story-slot" key={m.year}>
+                      <div className="story-dot" aria-hidden="true"></div>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="story-row story-row--bottom">
-                {milestones.map((m, index) => (
-                  <div className="story-slot" key={m.year}>
-                    {index % 2 !== 0 && (
-                      <div className="story-content">
-                        <span className="story-year">{m.year}</span>
-                        <h3 className="story-title">{m.title}</h3>
-                        <p className="story-text">{m.text}</p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                <div className="story-row story-row--bottom">
+                  {milestones.map((m, index) => (
+                    <div className="story-slot" key={m.year}>
+                      {index % 2 !== 0 && (
+                        <div className="story-content">
+                          <span className="story-year">{m.year}</span>
+                          <h3 className="story-title">{m.title}</h3>
+                          <p className="story-text">{m.text}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
+            </div>
+            <div className="story-scroll-fade" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 6l6 6-6 6" />
+              </svg>
             </div>
           </div>
 
@@ -229,6 +295,42 @@ function About() {
                 <span className="principal-name">Mrs. Madhu Sharma</span>
                 <span className="principal-title">Principal</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="cta-section">
+        <div className="cta-card">
+          <div className="cta-photo" style={{ backgroundImage: `url(${ctaPhoto})` }} aria-hidden="true" />
+          <div className="cta-overlay" aria-hidden="true" />
+          <div className="cta-content">
+            <span className="cta-eyebrow">Now Enrolling</span>
+            <h2 className="cta-heading">Ready to Join Global Life School?</h2>
+            <p className="cta-text">
+              Come see the classrooms, meet the teachers, and picture your
+              child thriving here. Applications for the upcoming academic
+              year are open now.
+            </p>
+            <div className="cta-stats">
+              <div className="cta-stat">
+                <span className="cta-stat-num">500+</span>
+                <span className="cta-stat-label">Students</span>
+              </div>
+              <div className="cta-stat-divider"></div>
+              <div className="cta-stat">
+                <span className="cta-stat-num">15+</span>
+                <span className="cta-stat-label">Years</span>
+              </div>
+              <div className="cta-stat-divider"></div>
+              <div className="cta-stat">
+                <span className="cta-stat-num">98%</span>
+                <span className="cta-stat-label">Pass Rate</span>
+              </div>
+            </div>
+            <div className="cta-actions">
+              <Link to="/academics" className="cta-btn-primary">Apply Now</Link>
+              <Link to="/contact" className="cta-btn-secondary">Contact Us</Link>
             </div>
           </div>
         </div>

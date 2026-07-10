@@ -92,6 +92,8 @@
 .about-hero-stat {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .about-hero-stat-num {
@@ -302,6 +304,34 @@
     grid-template-columns: 1fr;
   }
 }
+
+.values-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(32px, 4vw, 44px);
+}
+
+.value-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(14, 42, 77, 0.1);
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(14, 42, 77, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.value-pill:hover {
+  transform: translateY(-3px);
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(14, 42, 77, 0.2);
+}
 /* =================================*********
    OUR STORY — horizontal timeline
 ========================================= */
@@ -325,6 +355,42 @@
 .story-inner {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.story-scroll-wrap {
+  position: relative;
+}
+
+.story-scroll-fade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 8px;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  background: linear-gradient(90deg, rgba(11, 30, 58, 0) 0%, var(--navy-deep) 78%);
+  pointer-events: none;
+}
+
+.story-scroll-fade svg {
+  width: 20px;
+  height: 20px;
+  color: rgba(255, 255, 255, 0.65);
+  animation: story-scroll-nudge 1.6s ease-in-out infinite;
+}
+
+@keyframes story-scroll-nudge {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(5px); opacity: 1; }
+}
+
+@media (max-width: 700px) {
+  .story-scroll-fade {
+    display: none;
+  }
 }
 
 .story-scroll {
