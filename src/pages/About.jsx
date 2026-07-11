@@ -75,7 +75,6 @@ function StatCounter({ value, suffix, label, active }) {
 const coreValues = [
   {
     title: "Discipline",
-    text: "Consistent routines and clear expectations that help every student build lasting focus and self-control.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="16" rx="3" />
@@ -85,7 +84,6 @@ const coreValues = [
   },
   {
     title: "Integrity",
-    text: "Honesty and accountability woven into everyday learning, so doing the right thing becomes second nature.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3 4 6.5V12c0 5 3.4 8.5 8 9 4.6-.5 8-4 8-9V6.5L12 3Z" />
@@ -95,7 +93,6 @@ const coreValues = [
   },
   {
     title: "Compassion",
-    text: "A genuinely caring environment where every child feels seen, supported, and safe to grow at their own pace.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 20.5s-7-4.35-9.3-8.8C1.4 8.6 3 5 6.4 5c1.9 0 3.3 1 4.6 2.6C12.3 6 13.7 5 15.6 5c3.4 0 5 3.6 3.7 6.7-2.3 4.45-9.3 8.8-9.3 8.8Z" />
@@ -104,7 +101,6 @@ const coreValues = [
   },
   {
     title: "Excellence",
-    text: "A relentless pursuit of quality in academics, character, and community, in everything we build together.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3 14.5 9.5 21 12 14.5 14.5 12 21 9.5 14.5 3 12 9.5 9.5 Z" />
@@ -170,38 +166,30 @@ function About() {
             </h2>
           </div>
 
-          <div className="mv-grid">
-            <div className="mv-box mv-box--mission">
-              <div className="mv-sticker">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="9" />
-                  <circle cx="12" cy="12" r="5" />
-                  <circle cx="12" cy="12" r="1.3" fill="currentColor" />
-                </svg>
-              </div>
-              <span className="mv-box-label">Our Mission</span>
-              <h3 className="mv-box-title">What we do, every day</h3>
-              <p className="mv-box-text">
-                We nurture every child through disciplined academics, strong
-                values, and genuine care, giving each learner the confidence
-                and skills to grow into a responsible, capable individual.
-              </p>
-            </div>
+          <div className="mv-statement">
+            <p className="mv-statement-main">
+              We nurture every child through disciplined academics, strong
+              values, and genuine care — giving each learner the confidence
+              and skills to grow into a responsible, capable individual.
+            </p>
 
-            <div className="mv-box mv-box--vision">
-              <div className="mv-sticker">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 3 L14.5 9.5 21 12 14.5 14.5 12 21 9.5 14.5 3 12 9.5 9.5 Z" />
-                </svg>
-              </div>
-              <span className="mv-box-label">Our Vision</span>
-              <h3 className="mv-box-title">Where we're headed</h3>
-              <p className="mv-box-text">
-                We see a school known across the region for producing
-                thoughtful, future-ready leaders, alumni who carry Global
-                Life's balance of excellence and character into the world.
+            <div className="mv-statement-side">
+              <span className="mv-side-label">Our Vision</span>
+              <p className="mv-side-text">
+                A school known across the region for producing thoughtful,
+                future-ready leaders, alumni who carry Global Life's balance
+                of excellence and character into the world.
               </p>
             </div>
+          </div>
+
+          <div className="values-strip">
+            {coreValues.map((v) => (
+              <div className="value-item" key={v.title}>
+                <span className="value-icon">{v.icon}</span>
+                <span className="value-label">{v.title}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -331,27 +319,6 @@ function About() {
                 <span className="principal-title">Principal</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="core-values-section">
-        <div className="core-values-inner">
-          <div className="mv-intro">
-            <span className="mv-eyebrow">What We Stand For</span>
-            <h2 className="mv-heading">
-              The values behind <em>every decision</em>
-            </h2>
-          </div>
-
-          <div className="core-values-grid">
-            {coreValues.map((v) => (
-              <div className="core-value-card" key={v.title}>
-                <div className="core-value-icon">{v.icon}</div>
-                <h3 className="core-value-title">{v.title}</h3>
-                <p className="core-value-text">{v.text}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
