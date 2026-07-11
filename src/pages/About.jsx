@@ -72,6 +72,47 @@ function StatCounter({ value, suffix, label, active }) {
   )
 }
 
+const coreValues = [
+  {
+    title: "Discipline",
+    text: "Consistent routines and clear expectations that help every student build lasting focus and self-control.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="3" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Integrity",
+    text: "Honesty and accountability woven into everyday learning, so doing the right thing becomes second nature.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3 4 6.5V12c0 5 3.4 8.5 8 9 4.6-.5 8-4 8-9V6.5L12 3Z" />
+        <path d="M9.5 12l1.8 1.8L15 10" />
+      </svg>
+    ),
+  },
+  {
+    title: "Compassion",
+    text: "A genuinely caring environment where every child feels seen, supported, and safe to grow at their own pace.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20.5s-7-4.35-9.3-8.8C1.4 8.6 3 5 6.4 5c1.9 0 3.3 1 4.6 2.6C12.3 6 13.7 5 15.6 5c3.4 0 5 3.6 3.7 6.7-2.3 4.45-9.3 8.8-9.3 8.8Z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Excellence",
+    text: "A relentless pursuit of quality in academics, character, and community, in everything we build together.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 3 14.5 9.5 21 12 14.5 14.5 12 21 9.5 14.5 3 12 9.5 9.5 Z" />
+      </svg>
+    ),
+  },
+]
+
 function About() {
   const [statsActive, setStatsActive] = useState(false)
   const statsRef = useRef(null)
@@ -162,8 +203,6 @@ function About() {
               </p>
             </div>
           </div>
-
-
         </div>
       </section>
       <section className="story-section">
@@ -299,57 +338,20 @@ function About() {
       <section className="core-values-section">
         <div className="core-values-inner">
           <div className="mv-intro">
-            <span className="mv-eyebrow" style={{ color: "var(--blue-accent)" }}>What We Stand For</span>
-            <h2 className="mv-heading" style={{ color: "#fff" }}>
-              Our <em style={{ color: "var(--blue-accent)" }}>Core Values</em>
+            <span className="mv-eyebrow">What We Stand For</span>
+            <h2 className="mv-heading">
+              The values behind <em>every decision</em>
             </h2>
           </div>
 
           <div className="core-values-grid">
-            <div className="core-value-card">
-              <div className="core-value-icon core-value-icon--blue">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7L12 2Z" />
-                </svg>
+            {coreValues.map((v) => (
+              <div className="core-value-card" key={v.title}>
+                <div className="core-value-icon">{v.icon}</div>
+                <h3 className="core-value-title">{v.title}</h3>
+                <p className="core-value-text">{v.text}</p>
               </div>
-              <h3 className="core-value-title">Discipline</h3>
-              <p className="core-value-text">We believe lasting achievement is built on consistency. Students learn to show up, follow through, and take responsibility for their own progress every single day.</p>
-            </div>
-
-            <div className="core-value-card">
-              <div className="core-value-icon core-value-icon--amber">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2Z" />
-                </svg>
-              </div>
-              <h3 className="core-value-title">Excellence</h3>
-              <p className="core-value-text">We set high expectations — not to create pressure, but to unlock potential. Every child is capable of more than they think, and we help them discover that.</p>
-            </div>
-
-            <div className="core-value-card">
-              <div className="core-value-icon core-value-icon--green">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 22V12" />
-                  <path d="M12 12C12 7 8 5 4 5c0 5 3 8 8 8Z" />
-                  <path d="M12 12c0-4 3-6 7-6 0 4-2 7-7 7" />
-                </svg>
-              </div>
-              <h3 className="core-value-title">Integrity</h3>
-              <p className="core-value-text">Honesty and character are non-negotiable here. We guide students to do the right thing not because they're watched, but because it reflects who they truly are.</p>
-            </div>
-
-            <div className="core-value-card">
-              <div className="core-value-icon core-value-icon--violet">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="8" cy="8" r="3" />
-                  <path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
-                  <circle cx="17" cy="9" r="2.4" />
-                  <path d="M14.5 20c.2-2.6 2.1-4.6 4.5-4.9" />
-                </svg>
-              </div>
-              <h3 className="core-value-title">Compassion</h3>
-              <p className="core-value-text">A school is only as strong as the care within it. We nurture empathy and kindness so students grow into people who lift others up wherever they go.</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
