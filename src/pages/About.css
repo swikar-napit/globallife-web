@@ -165,18 +165,23 @@
    MISSION & VISION — foundation boxes
 ========================================= */
 .mv-section {
+  position: relative;
   background: var(--page-bg);
-  padding: clamp(64px, 9vw, 104px) clamp(24px, 5vw, 48px);
+  background-image: radial-gradient(rgba(14, 42, 77, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  padding: clamp(56px, 7.5vw, 90px) clamp(24px, 5vw, 48px);
 }
 
 .mv-inner {
+  position: relative;
+  z-index: 1;
   max-width: 1040px;
   margin: 0 auto;
 }
 
 .mv-intro {
   max-width: 640px;
-  margin: 0 0 clamp(48px, 7vw, 72px);
+  margin: 0 0 clamp(40px, 5.5vw, 58px);
   text-align: left;
 }
 
@@ -205,24 +210,58 @@
 }
 
 .mv-statement {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: clamp(40px, 6vw, 72px);
-  padding-top: clamp(8px, 1.5vw, 16px);
-  border-top: 1px solid rgba(14, 42, 77, 0.1);
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(40px, 6vw, 64px);
+  align-items: start;
+}
+
+.mv-statement-main-wrap {
+  position: relative;
+}
+
+.mv-quote-mark {
+  position: absolute;
+  top: -34px;
+  left: -12px;
+  width: 64px;
+  height: 52px;
+  fill: rgba(61, 139, 253, 0.22);
+  z-index: -1;
 }
 
 .mv-statement-main {
   font-family: 'Fraunces', serif;
-  font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+  font-size: clamp(1.35rem, 1.05rem + 1.2vw, 1.85rem);
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--navy);
 }
 
 .mv-statement-side {
-  border-left: 2px solid var(--blue-accent);
-  padding-left: clamp(20px, 2.5vw, 28px);
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border-radius: 20px;
+  padding: clamp(22px, 2.4vw, 28px) clamp(20px, 2.2vw, 24px);
+  box-shadow: 0 20px 44px rgba(14, 42, 77, 0.18);
+}
+
+.mv-side-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  background: rgba(61, 139, 253, 0.18);
+  color: var(--blue-accent);
+}
+
+.mv-side-icon svg {
+  width: 19px;
+  height: 19px;
 }
 
 .mv-side-label {
@@ -236,43 +275,46 @@
 }
 
 .mv-side-text {
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   line-height: 1.75;
-  color: var(--charcoal);
-  opacity: 0.75;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 @media (max-width: 760px) {
   .mv-statement {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
   }
 }
 
 .values-strip {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(28px, 4vw, 48px);
-  margin-top: clamp(40px, 6vw, 64px);
-  padding-top: clamp(28px, 4vw, 40px);
+  gap: clamp(24px, 3.5vw, 40px);
+  margin-top: clamp(32px, 4.5vw, 48px);
+  padding-top: clamp(20px, 3vw, 28px);
   border-top: 1px solid rgba(14, 42, 77, 0.1);
 }
 
 .value-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .value-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(61, 139, 253, 0.1);
+  background: #fff;
   color: var(--navy);
+  border: 1px solid rgba(14, 42, 77, 0.12);
+  box-shadow: 0 8px 18px rgba(14, 42, 77, 0.07);
   flex-shrink: 0;
 }
 
@@ -297,11 +339,8 @@
    OUR STORY — horizontal timeline
 ========================================= */
 .story-section {
-  position: relative;
   background: linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
-  padding: clamp(96px, 11vw, 132px) clamp(24px, 5vw, 48px) clamp(64px, 9vw, 104px);
-  clip-path: polygon(0 48px, 100% 0, 100% 100%, 0 100%);
-  margin-top: -48px;
+  padding: clamp(64px, 9vw, 104px) clamp(24px, 5vw, 48px);
 }
 
 .story-section .mv-eyebrow {
@@ -314,14 +353,6 @@
 
 .story-section .mv-heading em {
   color: var(--blue-accent);
-}
-
-@media (max-width: 700px) {
-  .story-section {
-    clip-path: polygon(0 28px, 100% 0, 100% 100%, 0 100%);
-    margin-top: -28px;
-    padding-top: clamp(64px, 11vw, 88px);
-  }
 }
 
 .story-inner {
@@ -532,17 +563,7 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(180deg, #f4f8ff 0%, var(--page-bg) 100%);
-  padding: clamp(96px, 11vw, 132px) clamp(24px, 5vw, 48px) clamp(64px, 9vw, 108px);
-  clip-path: polygon(0 0, 100% 48px, 100% 100%, 0 100%);
-  margin-top: -48px;
-}
-
-@media (max-width: 700px) {
-  .principal-section {
-    clip-path: polygon(0 0, 100% 28px, 100% 100%, 0 100%);
-    margin-top: -28px;
-    padding-top: clamp(64px, 11vw, 88px);
-  }
+  padding: clamp(64px, 9vw, 108px) clamp(24px, 5vw, 48px);
 }
 
 .principal-section::before {

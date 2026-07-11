@@ -167,13 +167,23 @@ function About() {
           </div>
 
           <div className="mv-statement">
-            <p className="mv-statement-main">
-              We nurture every child through disciplined academics, strong
-              values, and genuine care — giving each learner the confidence
-              and skills to grow into a responsible, capable individual.
-            </p>
+            <div className="mv-statement-main-wrap">
+              <svg className="mv-quote-mark" viewBox="0 0 64 52" aria-hidden="true">
+                <path d="M0 52V30.7Q0 15.4 9 7 18 -1.4 32 0.6L30 10.9Q21.1 10.2 16.3 15 11.5 19.8 12.2 28.2H25.6V52ZM38.4 52V30.7Q38.4 15.4 47.4 7 56.4 -1.4 70.4 0.6L68.4 10.9Q59.5 10.2 54.7 15 49.9 19.8 50.6 28.2H64V52Z" />
+              </svg>
+              <p className="mv-statement-main">
+                We nurture every child through disciplined academics, strong
+                values, and genuine care — giving each learner the confidence
+                and skills to grow into a responsible, capable individual.
+              </p>
+            </div>
 
             <div className="mv-statement-side">
+              <div className="mv-side-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3 L14.5 9.5 21 12 14.5 14.5 12 21 9.5 14.5 3 12 9.5 9.5 Z" />
+                </svg>
+              </div>
               <span className="mv-side-label">Our Vision</span>
               <p className="mv-side-text">
                 A school known across the region for producing thoughtful,
