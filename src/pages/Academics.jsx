@@ -1,44 +1,44 @@
+import { Link } from "react-router"
 import "./Academics.css"
 
 const levels = [
   {
-    level: "Early Years",
-    grades: "Nursery – Class 1",
-    title: "Pre-Primary",
-    text: "A caring start with playful learning, language development, social confidence, and healthy routines for young learners, following NEB's early childhood development framework.",
-    subjects: ["English", "Nepali", "Numeracy", "Environment Studies", "Art & Craft", "Rhymes & Music"],
+    level: "Lower Secondary · Foundation",
+    grades: "Grades 6, 7 & 8",
+    title: "Lower Secondary Program",
+    text: "Students build subject depth across sciences, mathematics, and languages, developing the study habits and academic foundation needed before entering the core secondary years.",
+    subjects: ["English", "Nepali", "Mathematics", "Science", "Social Studies", "Computer Science", "Health & Population"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 21v-9" />
-        <path d="M12 12C12 7 8 5 4 5c0 5 3 8 8 8Z" />
-        <path d="M12 12c0-4 3-6 7-6 0 4-2 7-7 7" />
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
       </svg>
     ),
   },
   {
-    level: "Foundation Years",
-    grades: "Class 1 – Class 5",
-    title: "Primary Level",
-    text: "Strong core learning aligned with the National Education Board curriculum, building fluency in languages, mathematics, science, and social studies alongside arts and values education.",
-    subjects: ["English", "Nepali", "Mathematics", "Science", "Social Studies", "Computer", "Moral Education"],
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 11.5 12 4l8 7.5" />
-        <path d="M6 10v9a1 1 0 0 0 1 1h4v-5h2v5h4a1 1 0 0 0 1-1v-9" />
-      </svg>
-    ),
-  },
-  {
-    level: "Middle & Secondary Level",
-    grades: "Class 6 – Class 10",
-    title: "Lower Secondary & Secondary",
-    text: "Disciplined academic preparation for the SEE examinations, with subject depth in sciences and mathematics, critical thinking, exam readiness, and continued co-curricular growth.",
-    subjects: ["English", "Nepali", "Mathematics", "Science", "Social Studies", "Computer Science", "Health & Population", "Optional Subject"],
+    level: "Secondary · Core Phase",
+    grades: "Grade 9",
+    title: "Grade 9 Program",
+    text: "A pivotal year of deeper subject mastery and optional-subject selection, laying the groundwork students carry directly into their SEE preparation the following year.",
+    subjects: ["English", "Nepali", "Mathematics", "Science", "Social Studies", "Computer Science", "Optional Subject"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 3 2 8l10 5 10-5-10-5Z" />
         <path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5" />
         <path d="M22 8.3V14" />
+      </svg>
+    ),
+  },
+  {
+    level: "SEE Focus · Final Year",
+    grades: "Grade 10 → SEE",
+    title: "Grade 10 SEE Program",
+    text: "Intensive, exam-focused preparation with structured revision, regular assessments, and close mentoring to help every student perform at their best in the SEE board examinations.",
+    subjects: ["English", "Nepali", "Mathematics", "Science", "Social Studies", "Optional Subject", "SEE Preparation"],
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" />
+        <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" />
       </svg>
     ),
   },
@@ -164,13 +164,13 @@ function Academics() {
       <section className="acp-programs">
         <div className="acp-inner">
           <div className="acp-intro">
-            <span className="acp-eyebrow">Program Levels</span>
+            <span className="acp-eyebrow">Curriculum Overview</span>
             <h2 className="acp-heading">
-              Three stages, <em>one continuous journey</em>
+              Programs We <em>Offer</em>
             </h2>
             <p className="acp-intro-sub">
-              Students move seamlessly from early childhood learning through
-              secondary education without ever needing to change schools.
+              A structured three-phase journey through the secondary years,
+              building steadily toward strong SEE results in Grade 10.
             </p>
           </div>
 
@@ -188,6 +188,13 @@ function Academics() {
                       <span className="acp-subject-tag" key={s}>{s}</span>
                     ))}
                   </div>
+                  <Link to="/contact" className="acp-apply-btn">
+                    Apply for Admission
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </Link>
                 </div>
                 <div className="acp-level-icon">{lvl.icon}</div>
               </div>
