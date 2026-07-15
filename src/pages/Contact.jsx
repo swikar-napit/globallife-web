@@ -255,21 +255,24 @@ export default function Contact() {
 
             {/* Map */}
             <div className="ct-map-card">
-              <div className="ct-map-visual">
-                <div className="ct-map-pin">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </div>
-                <p className="ct-map-label">Kamalbinayak, Bhaktapur</p>
-              </div>
+              <iframe
+                className="ct-map-embed"
+                title="Global Life School Location"
+                src="https://www.google.com/maps?q=Global+Life+School,Kamalbinayak,Bhaktapur&z=16&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
               <div className="ct-map-footer">
                 <div>
                   <div className="ct-map-name">Global Life School</div>
                   <div className="ct-map-address">Kamalbinayak, Bhaktapur</div>
                 </div>
-                <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="ct-map-link">
+                <a
+                  href="https://www.google.com/maps/place/Global+Life+School/@27.6774192,85.4387694,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb053c33a0e25b:0x4a9bd98b38986281!8m2!3d27.6774145!4d85.4413497!16s%2Fg%2F11kb8f1jd6"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ct-map-link"
+                >
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                   </svg>
