@@ -1,12 +1,36 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router"
 import crest from "../assets/global.jpg"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      // always show near the top of the page
+      if (currentScrollY < 80) {
+        setHidden(false)
+      } else if (currentScrollY > lastScrollY.current) {
+        // scrolling down
+        setHidden(true)
+      } else {
+        // scrolling up
+        setHidden(false)
+      }
+
+      lastScrollY.current = currentScrollY
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <header className="navbar">
+    <header className={`navbar${hidden && !isOpen ? " nav-hidden" : ""}`}>
       <Link to="/" className="brand">
       <img src={crest} alt="Global Life School Logo" className="crest" />
         <div className="brand-divider"></div>
