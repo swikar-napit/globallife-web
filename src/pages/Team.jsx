@@ -1,31 +1,66 @@
 import { Link } from "react-router"
 import "./Team.css"
+import principalPhoto from "../assets/principal.jpg"
 
-function initials(name) {
-  return name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
+function PhotoSlot({ name, photo }) {
+  if (photo) {
+    return (
+      <div className="tm-card-photo">
+        <img src={photo} alt={name} />
+      </div>
+    )
+  }
+
+  return (
+    <div className="tm-card-photo tm-card-photo--placeholder" aria-hidden="true">
+      <svg className="tm-card-silhouette" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="28" r="14" fill="currentColor" />
+        <path
+          d="M12 72c0-15.5 12.5-28 28-28s28 12.5 28 28"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  )
+}
+
+function TeamCard({ person }) {
+  return (
+    <article className="tm-card">
+      <PhotoSlot name={person.name} photo={person.photo} />
+      <div className="tm-card-body">
+        <h3 className="tm-card-name">{person.name}</h3>
+        <span className="tm-card-role">{person.role}</span>
+        {person.bio ? <p className="tm-card-bio">{person.bio}</p> : null}
+        {person.subject ? (
+          <span className="tm-card-subject">{person.subject}</span>
+        ) : null}
+      </div>
+    </article>
+  )
 }
 
 const leadership = [
   {
     name: "Mrs. Madhu Sharma",
     role: "Principal",
-    bio: "15+ years leading Global Life School with a focus on discipline, character, and academic rigor.",
+    photo: principalPhoto,
+    bio: "Has led Global Life School for over fifteen years — keeping standards high while making sure every child feels known.",
   },
   {
     name: "Mr. Ramesh Adhikari",
     role: "Vice Principal",
-    bio: "Oversees day-to-day academics and student affairs across all grade levels.",
+    bio: "Handles the daily rhythm of classes, exams, and student matters so the school runs smoothly from morning assembly to dismissal.",
   },
   {
     name: "Mrs. Sunita Karki",
     role: "Head of Academics",
-    bio: "Guides curriculum planning and exam preparation, ensuring NEB alignment throughout.",
+    bio: "Shapes the curriculum and exam prep across grades, always checking that classroom work stays aligned with NEB requirements.",
+  },
+  {
+    name: "Mrs. Meena Shrestha",
+    role: "School Counselor",
+    bio: "Works with students and families on boarding adjustment, exam stress, and the quieter challenges that never show up on a report card.",
   },
 ]
 
@@ -60,9 +95,8 @@ function Team() {
             Meet Our <em>Team</em>
           </h1>
           <p className="tm-hero-sub">
-            Experienced leaders and dedicated teachers working together to
-            guide every student toward academic excellence and personal
-            growth.
+            Leaders and teachers who know the students by name — and
+            stay with them through every grade, exam, and boarding year.
           </p>
         </div>
       </section>
@@ -75,19 +109,15 @@ function Team() {
               Guiding the school <em>forward</em>
             </h2>
             <p className="tm-intro-sub">
-              Our leadership team brings together years of experience in
-              education, administration, and student care.
+              Decades of classroom and administrative experience, shared
+              across a small leadership group that still stays close to
+              day-to-day school life.
             </p>
           </div>
 
-          <div className="tm-leadership-row">
+          <div className="tm-grid tm-grid--leadership">
             {leadership.map((person) => (
-              <div className="tm-lead-card" key={person.name}>
-                <div className="tm-avatar">{initials(person.name)}</div>
-                <h3 className="tm-lead-name">{person.name}</h3>
-                <span className="tm-lead-role">{person.role}</span>
-                <p className="tm-lead-bio">{person.bio}</p>
-              </div>
+              <TeamCard key={person.name} person={person} />
             ))}
           </div>
 
@@ -97,20 +127,14 @@ function Team() {
               Our <em>Teaching Staff</em>
             </h2>
             <p className="tm-intro-sub">
-              Subject specialists dedicated to helping every student reach
-              their full potential, in and out of the classroom.
+              Subject teachers who stay after the bell — for extra help,
+              boarding check-ins, and the work that never makes the timetable.
             </p>
           </div>
 
-          <div className="tm-faculty-grid">
+          <div className="tm-grid tm-grid--faculty">
             {faculty.map((person) => (
-              <div className="tm-faculty-card" key={person.name}>
-                <div className="tm-faculty-avatar">{initials(person.name)}</div>
-                <h3 className="tm-faculty-name">{person.name}</h3>
-                <span className="tm-faculty-role">{person.role}</span>
-                <br />
-                <span className="tm-faculty-subject">{person.subject}</span>
-              </div>
+              <TeamCard key={person.name} person={person} />
             ))}
           </div>
         </div>
@@ -123,8 +147,8 @@ function Team() {
             Want to <em>join our team?</em>
           </h2>
           <p className="tm-join-text">
-            We're always looking for passionate educators who share our
-            commitment to discipline, values, and student growth.
+            If you care about discipline, character, and the long haul of
+            a child's education — we'd like to hear from you.
           </p>
           <Link to="/contact" className="tm-join-btn">
             Get in Touch
