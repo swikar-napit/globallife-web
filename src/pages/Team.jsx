@@ -1,103 +1,14 @@
 import { useState } from "react"
-import { Link } from "react-router"
 import "./Team.css"
-import ctaPhoto from "../assets/global1.jpg"
 
 const AVATAR_TONES = ["navy", "blue", "slate", "teal", "indigo", "steel"]
 
-const SUBJECT_ICONS = {
-  math: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-      <line x1="9" y1="9" x2="15" y2="15" />
-      <line x1="15" y1="9" x2="9" y2="15" />
-      <line x1="9" y1="12" x2="15" y2="12" />
-      <line x1="12" y1="9" x2="12" y2="15" />
-    </svg>
-  ),
-  science: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 3h12" />
-      <path d="M12 3v12" />
-      <path d="M9 12h6" />
-      <path d="M12 15c-3.3 0-6 2.7-6 6h12c0-3.3-2.7-6-6-6z" />
-    </svg>
-  ),
-  english: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-    </svg>
-  ),
-  social: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M2 12h20" />
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-    </svg>
-  ),
-  computer: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-      <line x1="8" y1="21" x2="16" y2="21" />
-      <line x1="12" y1="17" x2="12" y2="21" />
-    </svg>
-  ),
-  nepali: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 20h9" />
-      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-    </svg>
-  ),
-  art: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.32143 19.4629 5.37897 20.2061 5.06013 20.7402C4.77093 21.2246 4.96025 21.8499 5.4673 22C5.64161 22.0515 5.82194 22.0777 6.00287 22H12Z" />
-      <circle cx="7.5" cy="10.5" r="1" fill="currentColor"/>
-      <circle cx="11.5" cy="7.5" r="1" fill="currentColor"/>
-      <circle cx="16.5" cy="9.5" r="1" fill="currentColor"/>
-    </svg>
-  ),
-  sports: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-      <path d="M4 22h16" />
-      <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
-      <path d="M12 2a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8a6 6 0 0 1 6-6z" />
-    </svg>
-  ),
-  earlychildhood: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-      <line x1="9" y1="9" x2="9.01" y2="9" />
-      <line x1="15" y1="9" x2="15.01" y2="9" />
-    </svg>
-  ),
-  music: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9 18V5l12-2v13" />
-      <circle cx="6" cy="18" r="3" />
-      <circle cx="18" cy="16" r="3" />
-    </svg>
-  ),
-  general: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  )
-}
-
-function getInitials(name) {
-  return name
-    .split(" ")
-    .filter((part) => !/^(Mrs?|Ms|Dr)\.?$/i.test(part))
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase()
-}
+const PERSON_ICON = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+  </svg>
+)
 
 function getTone(name) {
   let hash = 0
@@ -109,15 +20,8 @@ function getTone(name) {
 
 import principalPhoto from "../assets/principal.jpg"
 
-function Avatar({ name, iconKey }) {
-  // Unused but kept for reference or compatibility if needed
-  return null
-}
-
 function TeamCard({ person }) {
-  const initials = getInitials(person.name)
   const tone = getTone(person.name)
-  const icon = person.iconKey ? SUBJECT_ICONS[person.iconKey] : null
 
   return (
     <article className="tm-card">
@@ -127,11 +31,7 @@ function TeamCard({ person }) {
           <img src={person.photo} alt={person.name} className="tm-card-photo" />
         ) : (
           <div className="tm-card-placeholder">
-            {icon ? (
-              <span className="tm-card-placeholder-icon">{icon}</span>
-            ) : (
-              <span className="tm-card-placeholder-initials">{initials}</span>
-            )}
+            <span className="tm-card-placeholder-icon">{PERSON_ICON}</span>
           </div>
         )}
       </div>
@@ -144,7 +44,6 @@ function TeamCard({ person }) {
 }
 
 const TEAM_DATA = [
-  // Administration (Matching the screenshot names & roles)
   {
     name: "Madhu Sharma",
     role: "Principal",
@@ -152,174 +51,148 @@ const TEAM_DATA = [
     photo: principalPhoto
   },
   {
-    name: "Rajendra Phoju",
+    name: "Unknown",
     role: "Vice Principal",
     category: "administration"
   },
   {
-    name: "Ratna Bir Kisi",
+    name: "Unknown",
     role: "Director",
     category: "administration"
   },
   {
-    name: "Rajani Maiya Phaiju",
+    name: "Unknown",
     role: "Accountant",
     category: "administration"
   },
   {
-    name: "Mr. Ramesh Adhikari",
+    name: "Unknown",
     role: "Founder",
     category: "administration"
   },
-
-  // Lower Secondary (8 cards)
+  //lowersecondary
   {
-    name: "Mr. Bikash Shrestha",
+    name: "Unknown",
     role: "Mathematics Teacher",
-    category: "lower-secondary",
-    iconKey: "math"
+    category: "lower-secondary"
   },
   {
-    name: "Ms. Anita Gurung",
+    name: "Unknown",
     role: "English Teacher",
-    category: "lower-secondary",
-    iconKey: "english"
+    category: "lower-secondary"
   },
   {
-    name: "Mr. Prakash Thapa",
+    name: "Unknown",
     role: "Science Teacher",
-    category: "lower-secondary",
-    iconKey: "science"
+    category: "lower-secondary"
   },
   {
-    name: "Mrs. Sabina Maharjan",
+    name: "Unknown",
     role: "Social Studies Teacher",
-    category: "lower-secondary",
-    iconKey: "social"
+    category: "lower-secondary"
   },
   {
-    name: "Mr. Dipak Bhattarai",
+    name: "Unknown",
     role: "Nepali Teacher",
-    category: "lower-secondary",
-    iconKey: "nepali"
+    category: "lower-secondary"
   },
   {
-    name: "Ms. Kabita Rai",
+    name: "Unknown",
     role: "Computer Science Teacher",
-    category: "lower-secondary",
-    iconKey: "computer"
+    category: "lower-secondary"
   },
   {
-    name: "Mr. Suresh Tamang",
+    name: "Unknown",
     role: "Health & PE Teacher",
-    category: "lower-secondary",
-    iconKey: "sports"
+    category: "lower-secondary"
   },
   {
-    name: "Mr. Rajesh Khadka",
+    name: "Unknown",
     role: "Mathematics Teacher",
-    category: "lower-secondary",
-    iconKey: "math"
+    category: "lower-secondary"
   },
-
-  // Primary (8 cards)
+  // Primary
   {
-    name: "Mrs. Maya Devi",
+    name: "Unknown",
     role: "Grade 5 Class Teacher",
-    category: "primary",
-    iconKey: "general"
+    category: "primary"
   },
   {
-    name: "Mr. Sunil Jha",
+    name: "Unknown",
     role: "English Instructor",
-    category: "primary",
-    iconKey: "english"
+    category: "primary"
   },
   {
-    name: "Ms. Rupa Shrestha",
+    name: "Unknown",
     role: "Science Teacher",
-    category: "primary",
-    iconKey: "science"
+    category: "primary"
   },
   {
-    name: "Mrs. Geeta Pandey",
+    name: "Unknown",
     role: "Nepali Teacher",
-    category: "primary",
-    iconKey: "nepali"
+    category: "primary"
   },
   {
-    name: "Mr. Anil Lama",
+    name: "Unknown",
     role: "Creative Arts Teacher",
-    category: "primary",
-    iconKey: "art"
+    category: "primary"
   },
   {
-    name: "Ms. Priya KC",
+    name: "Unknown",
     role: "Social Teacher",
-    category: "primary",
-    iconKey: "social"
+    category: "primary"
   },
   {
-    name: "Mr. Binod Acharya",
+    name: "Unknown",
     role: "Math Teacher",
-    category: "primary",
-    iconKey: "math"
+    category: "primary"
   },
   {
-    name: "Mrs. Saraswati Joshi",
+    name: "Unknown",
     role: "Moral Education Teacher",
-    category: "primary",
-    iconKey: "general"
+    category: "primary"
   },
 
   // Pre-Primary (8 cards)
   {
-    name: "Mrs. Rashmi Sen",
+    name: "Unknown",
     role: "Pre-Primary Coordinator",
-    category: "pre-primary",
-    iconKey: "earlychildhood"
+    category: "pre-primary"
   },
   {
-    name: "Ms. Pooja Pradhan",
+    name: "Unknown",
     role: "Nursery Lead Teacher",
-    category: "pre-primary",
-    iconKey: "earlychildhood"
+    category: "pre-primary"
   },
   {
-    name: "Mrs. Sneha Tuladhar",
+    name: "Unknown",
     role: "LKG Class Teacher",
-    category: "pre-primary",
-    iconKey: "music"
+    category: "pre-primary"
   },
   {
-    name: "Ms. Shruti Shah",
+    name: "Unknown",
     role: "UKG Class Teacher",
-    category: "pre-primary",
-    iconKey: "math"
+    category: "pre-primary"
   },
   {
-    name: "Mrs. Neha Dixit",
+    name: "Unknown",
     role: "Nursery Assistant",
-    category: "pre-primary",
-    iconKey: "art"
+    category: "pre-primary"
   },
   {
-    name: "Ms. Aarati Thapa",
+    name: "Unknown",
     role: "Playgroup Supervisor",
-    category: "pre-primary",
-    iconKey: "earlychildhood"
+    category: "pre-primary"
   },
   {
-    name: "Mrs. Deepa Bhandari",
+    name: "Unknown",
     role: "Storytelling Instructor",
-    category: "pre-primary",
-    iconKey: "music"
+    category: "pre-primary"
   },
   {
-    name: "Ms. Rekha Chaudhary",
+    name: "Unknown",
     role: "Art & Play Instructor",
-    category: "pre-primary",
-    iconKey: "art"
+    category: "pre-primary"
   }
 ]
 
@@ -427,33 +300,8 @@ function Team() {
           </div>
         </div>
       </section>
-
-      <section className="cta-section">
-        <div className="cta-card">
-          <div className="cta-photo" style={{ backgroundImage: `url(${ctaPhoto})` }} aria-hidden="true" />
-          <div className="cta-overlay" aria-hidden="true" />
-          <div className="cta-content">
-            <span className="cta-eyebrow">We're Hiring</span>
-            <h2 className="cta-heading">Want to <em>join our team?</em></h2>
-            <p className="cta-text">
-              If you care about discipline, character, and the long haul of
-              a child's education — we'd like to hear from you.
-            </p>
-            <div className="cta-actions" style={{ marginTop: "28px" }}>
-              <Link to="/contact" className="cta-btn-primary">
-                Get in Touch
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" style={{ width: "16px", height: "16px", marginLeft: "8px" }}>
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   )
 }
 
 export default Team
-
