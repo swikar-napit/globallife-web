@@ -203,7 +203,7 @@ const CATEGORY_META = {
     sub: "School leadership and support staff guiding academics, operations, and student care across all departments."
   },
   "lower-secondary": {
-    heading: "Our Lower Secondary Team",
+    heading: "Our Lower Secondary & Secondary Team",
     sub: "Subject specialists who inspire learning, guide academic performance, and prepare students for secondary education."
   },
   "primary": {
@@ -261,7 +261,7 @@ function Team() {
                 className={`tm-tab ${activeTab === "lower-secondary" ? "is-active" : ""}`}
                 onClick={() => setActiveTab("lower-secondary")}
               >
-                Lower Secondary
+                Lower Secondary & Secondary
               </button>
               <button
                 className={`tm-tab ${activeTab === "primary" ? "is-active" : ""}`}
