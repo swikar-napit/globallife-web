@@ -1,14 +1,4 @@
-/* ================================================
-   CONTACT PAGE — Contact.css
-   Tokens: --navy #0E2A4D · --navy-deep #081C36
-           --blue-accent #3D8BFD · --blue-soft #DCEBFF
-           --bg #F6F9FE · --page-bg #F9F9FA
-   Fonts: Fraunces (serif) · Work Sans (sans)
-   ================================================ */
 
-/* ─────────────────────────────────────────
-   HERO
-───────────────────────────────────────── */
 .ct-hero {
     position: relative;
     background: var(--navy);
@@ -17,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    overflow: hidden;
 }
 
 .ct-hero-grid {
