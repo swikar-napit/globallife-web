@@ -155,12 +155,6 @@ function Home() {
           </div>
         </div>
 
-        <div className="hero-scroll-cue" aria-hidden="true">
-          <div className="hero-scroll-cue-mouse">
-            <div className="hero-scroll-cue-dot"></div>
-          </div>
-          <span className="hero-scroll-cue-label">Scroll</span>
-        </div>
       </section>
 
       <div className="stats-bar">
