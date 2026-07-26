@@ -4,6 +4,7 @@ import slide1 from "../assets/global1.jpg"
 import slide2 from "../assets/global2.jpg"
 import slide3 from "../assets/global3.jpg"
 import slide5 from "../assets/global5.jpg"
+import "./Home.css"
 
 const slides = [
   { id: 1, img: slide5, caption: "Welcome Program" },

@@ -1,33 +1,128 @@
-# Global Life School — Website
+# 🏫 Global Life School — Official Website
+> 🌐 *A Modern, Responsive Website for Global Life School — Boarding & Day School, Bhaktapur*
 
-A modern, responsive marketing website for **Global Life School**, a boarding and day school in Kamalbinayak, Bhaktapur, Nepal. Built with React and Vite, the site showcases the school's programs, story, leadership, and faculty, and gives prospective families an easy way to get in touch.
+![GitHub repo size](https://img.shields.io/github/repo-size/swikar-napit/globallife-web)
+![GitHub stars](https://img.shields.io/github/stars/swikar-napit/globallife-web?style=social)
+![GitHub forks](https://img.shields.io/github/forks/swikar-napit/globallife-web?style=social)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Made with Love](https://img.shields.io/badge/Made%20with-%E2%9D%A4-red)
+![Nepal](https://img.shields.io/badge/Made%20in-Nepal%20🇳🇵-blue)
+
+---
+
+## 🌐 Live Demo
+👉 [Visit the website]
+
+---
+
+## 📌 Table of Contents
+- [Introduction](#-introduction)
+- [Features](#-features)
+- [Why This Website?](#-why-this-website)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Pages](#-pages)
+- [Roadmap](#-roadmap)
+- [License](#-license)
+- [Author](#-author)
+
+---
+
+## 📖 Introduction
+
+**Global Life School Website** is the official web presence for **Global Life School**, a boarding and day school located in **Kamalbinayak-10, Bhaktapur, Nepal**.
+
+The site gives prospective and current families everything they need — academic programs, the school's story, faculty profiles, and a direct way to get in touch — in a fast, modern, mobile-friendly experience built with React.
+
+> Boarding & Day School | Established **2009** | 500+ Students | 40+ Teachers
+
+---
 
 ## ✨ Features
 
-- **Home** — Hero slideshow, animated stats bar, program highlights, and a "Why Choose Us" bento grid.
-- **About** — School mission & vision, an animated stat counter, a scrollable founding timeline, and a message from the Principal.
-- **Academics** — NEB-aligned curriculum broken into three program phases (Lower Secondary, Grade 9, Grade 10 SEE), each with subjects and an apply CTA.
-- **Team** — Leadership cards and a faculty grid, plus a "join our team" call to action.
-- **Contact** — A validated enquiry form (name, phone, email, enquiry type, message), office hours, an embedded Google Map, and social links.
-- Sticky **auto-hiding navbar**, consistent **footer** with sitemap and contact details, and **scroll-to-top on route change**.
-- Fully responsive layouts with custom breakpoints on every page.
+- 🎞️ Animated hero slideshow with auto-play, pause-on-hover & manual navigation
+- 🧭 Scroll-aware sticky navbar that hides on scroll-down, reveals on scroll-up
+- 🔗 Deep-linkable About page — footer links jump straight to the Principal's Message or Our Story section with smooth scrolling
+- 📈 Animated stat counters that count up when scrolled into view
+- 🕰️ Interactive horizontal timeline of the school's history (2009 → today)
+- 👩‍🏫 Tabbed faculty directory (Administration, Lower Secondary & Secondary, Primary, Pre-Primary)
+- 📱 Fully responsive across every page, card, and grid
+- ⚡ Client-side routing with automatic scroll-to-top between pages (hash-anchor aware)
+- 🎨 Component-scoped CSS — no bloated global stylesheet
 
-## 🛠️ Tech Stack
+---
 
-- **React 18** — component-based UI
-- **Vite** — dev server & build tooling
-- **React Router (`react-router`)** — client-side routing
-- **Plain CSS** (no framework) — custom design system with CSS variables
-- **Fraunces** (serif, headings) & **Work Sans** (sans-serif, body) — Google Fonts
+## 🌟 Why This Website?
+
+Parents and students often need quick answers about:
+- What academic programs are offered, and for which grades?
+- Who's on the faculty and leadership team?
+- How to get in touch or apply for admission?
+
+This site solves that instantly:
+- Clear, organized program breakdowns 📚
+- A real look at the people behind the school 👨‍🏫
+- One-click paths to contact or apply 📩
+- Fast and mobile-friendly, wherever families are browsing 🌍
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [React](https://react.dev) | UI library |
+| [Vite](https://vitejs.dev) | Build tool & dev server |
+| [React Router](https://reactrouter.com) | Client-side routing |
+| CSS3 (component-scoped) | Styling & responsive design |
+| [ESLint](https://eslint.org) | Code linting |
+| Google Fonts (Fraunces & Work Sans) | Typography |
+
+---
+
+## 🚀 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/swikar-napit/globallife-web.git
+cd globallife-web
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+```
+
+The site will be running at `http://localhost:5173` 🎉
+
+---
+
+## 💡 Usage
+
+1. Run the dev server locally, or open the live deployment
+2. Browse **Home** for an overview, stats, and featured programs
+3. Visit **Academics** for a full breakdown of each academic phase
+4. Check **Team** to meet the faculty, filterable by department
+5. Head to **About** to read the school's story and the Principal's message
+6. Use **Contact** to send an inquiry or find the school's address & phone numbers
+
+---
 
 ## 📁 Project Structure
 
-```
-GLOBALLIFE-WEB/
-├── .agent/skills/global_web/README.md
-├── dist/                       # Production build output
-├── node_modules/
+```text
+globallife-web/
+│
+├── dist/ 
+├── node_modules/  
+│
 ├── public/
+│   ├── favicon.svg
+│   └── icons.svg
+│
 ├── src/
 │   ├── assets/
 │   │   ├── global.jpg          # School crest
@@ -39,108 +134,74 @@ GLOBALLIFE-WEB/
 │   │   ├── principal.jpg       # Principal photo
 │   │   ├── react.svg
 │   │   └── vite.svg
+│   │
 │   ├── components/
-│   │   ├── Footer.jsx
-│   │   ├── Navbar.jsx
-│   │   └── ScrollToTop.jsx
+│   │   ├── Footer.css
+│   │   ├── Footer.jsx           # Site footer — quick links, resources, contact info
+│   │   ├── Navbar.css
+│   │   ├── Navbar.jsx           # Sticky, scroll-aware navigation bar
+│   │   └── ScrollToTop.jsx      # Resets scroll position on route change
+│   │
 │   ├── pages/
 │   │   ├── About.css
-│   │   ├── About.jsx
+│   │   ├── About.jsx             # Mission, vision, story timeline, principal's message
 │   │   ├── Academics.css
-│   │   ├── Academics.jsx
+│   │   ├── Academics.jsx         # Curriculum phases (Lower Secondary → SEE)
 │   │   ├── Contact.css
-│   │   ├── Contact.jsx
-│   │   ├── Home.jsx
+│   │   ├── Contact.jsx           # Contact form and school details
+│   │   ├── Home.css
+│   │   ├── Home.jsx              # Landing page — hero, stats, programs, CTA
 │   │   ├── Team.css
-│   │   └── Team.jsx
+│   │   └── Team.jsx              # Faculty & staff directory with tabs
+│   │
 │   ├── App.css
-│   ├── App.jsx                 # Route definitions
-│   ├── index.css                # Global styles & CSS variables
-│   └── main.jsx                 # App entry point
+│   ├── App.jsx                    # Route definitions
+│   ├── index.css                  # Global styles: fonts, CSS variables, reset
+│   └── main.jsx                    # App entry point
+│
 ├── .gitignore
 ├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
-├── README.md
-└── vite.config.js
+├── vite.config.js
+└── README.md
 ```
 
-## 🎨 Design System
+---
 
-All pages share a common set of design tokens (defined in `index.css`) for visual consistency:
+## 📄 Pages
 
-| Token | Value | Usage |
-|---|---|---|
-| `--navy` | `#0E2A4D` | Primary dark backgrounds, headings |
-| `--navy-deep` | `#081C36` | Gradient end / deepest background |
-| `--blue-accent` | `#3D8BFD` | Links, highlights, buttons, icons |
-| `--blue-soft` | `#DCEBFF` | Light accents, badges |
-| `--bg` | `#F6F9FE` | Base page background |
-| `--page-bg` | `#F9F9FA` | Section background |
+| Route | Description |
+|-------|-------------|
+| `/` | Home — hero slideshow, stats, programs overview, "Why Choose Us," and enrollment CTA |
+| `/about` | Mission & vision, core values, school history timeline, and a message from the Principal |
+| `/academics` | Detailed breakdown of academic phases from Lower Secondary through the SEE board exams |
+| `/team` | Faculty and staff directory, filterable by department |
+| `/contact` | Contact information and inquiry form |
 
-Recurring UI patterns across pages:
-- Navy hero sections with a subtle grid overlay + radial glow
-- Breadcrumb navigation under each hero
-- Uppercase "eyebrow" labels above section headings
-- `Fraunces` italic emphasis on key words in headings
-- Card-based content blocks with hover lift effects
+---
 
-## 🚀 Getting Started
+## 🗺 Roadmap
 
-### Prerequisites
-- Node.js (v18 or later recommended)
-- npm
+- [x] Responsive homepage with hero slideshow
+- [x] Academics page with program breakdowns
+- [x] About page with story timeline & principal's message
+- [x] Team page with tabbed faculty directory
+- [x] Component-scoped CSS refactor
+- [x] Deep-linkable footer (Principal's Message / Our Story anchors)
+- [ ] Contact form backend integration
+- [ ] Live deployment
+- [ ] Gallery / media page
 
-### Installation
+---
 
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd <project-folder>
+## 👨‍💻 Author
+**Swikar Napit**
+- 🌐 Website: [swikarnapit.com.np](https://swikarnapit.com.np)
+- 💻 GitHub: [@swikar-napit](https://github.com/swikar-napit)
+- 🔗 LinkedIn: [swikar-napit](https://www.linkedin.com/in/swikar-napit-819b9b414/)
+- 📧 Email: napit.swikar1@gmail.com
+---
 
-# Install dependencies
-npm install
-```
-
-### Development
-
-```bash
-npm run dev
-```
-
-This starts the Vite dev server, typically at `http://localhost:5173`.
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-Outputs a production-ready build to the `dist/` folder.
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
-## 🗺️ Routes
-
-| Path | Page |
-|---|---|
-| `/` | Home |
-| `/about` | About |
-| `/academics` | Academics |
-| `/team` | Team |
-| `/contact` | Contact |
-
-## 📌 Notes
-
-- Team member photos currently use initials-based avatar placeholders — swap in real photos by replacing the `initials(name)` div with an `<img>` tag in `Team.jsx`.
-- The contact form validates name, phone (Nepali format: 10 digits starting with 97/98), and enquiry type on the client side; no backend submission is wired up yet.
-- The Google Map embed in `Contact.jsx` points to Global Life School's location in Kamalbinayak, Bhaktapur — update the `src` and directions URL if the location changes.
-
-## 👤 Credits
-
-Built with React by **Swikar Napit**.
+<sub>Built by Swikar Napit using React, for Global Life School</sub>

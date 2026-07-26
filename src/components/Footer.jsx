@@ -1,5 +1,7 @@
 import { Link, useLocation } from "react-router"
 import crest from "../assets/global.jpg"
+import "./Footer.css"
+
 function Footer() {
   const location = useLocation()
 
@@ -20,7 +22,7 @@ function Footer() {
             and a lifelong love of learning in the heart of Nepal.
           </p>
           <div className="footer-socials">
-            <a href="https://www.facebook.com/profile.php?id=100035277070893" className="footer-social-btn" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=100035277070893" className="footer-social-btn" target="_blank" rel="noreferrer" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
             </a>
           </div>
@@ -58,17 +60,23 @@ function Footer() {
         </div>
 
         <div className="footer-col">
-          <div className="footer-col-title">Academics</div>
+          <div className="footer-col-title">Resources</div>
           <ul className="footer-links">
             <li>
-              <Link to="/academics" className={location.pathname === "/academics" ? "footer-link active" : "footer-link"}>
-                <span>Admissions</span> <span className="footer-link-arrow">→</span>
+              <Link to="/contact" className={location.pathname === "/contact" ? "footer-link active" : "footer-link"}>
+                <span>Contact Us</span> <span className="footer-link-arrow">→</span>
               </Link>
             </li>
-            <li><Link to="/academics" className="footer-link"><span>Curriculum</span> <span className="footer-link-arrow">→</span></Link></li>
-            <li><Link to="/academics" className="footer-link"><span>Gallery</span> <span className="footer-link-arrow">→</span></Link></li>
-            <li><Link to="/academics" className="footer-link"><span>Notices</span> <span className="footer-link-arrow">→</span></Link></li>
-            <li><Link to="/academics" className="footer-link"><span>Results</span> <span className="footer-link-arrow">→</span></Link></li>
+            <li>
+              <Link to="/about#principal-message" className="footer-link">
+                <span>Principal's Message</span> <span className="footer-link-arrow">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/about#our-story" className="footer-link">
+                <span>Our Story</span> <span className="footer-link-arrow">→</span>
+              </Link>
+            </li>
           </ul>
         </div>
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { useEffect, useRef, useState } from "react"
 import "./About.css"
 import crest from "../assets/global.jpg"
@@ -112,6 +112,19 @@ const coreValues = [
 function About() {
   const [statsActive, setStatsActive] = useState(false)
   const statsRef = useRef(null)
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!location.hash) return
+
+    const id = location.hash.slice(1)
+    const timer = setTimeout(() => {
+      const el = document.getElementById(id)
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+    }, 50)
+
+    return () => clearTimeout(timer)
+  }, [location.hash])
 
   useEffect(() => {
     const node = statsRef.current
@@ -213,7 +226,7 @@ function About() {
           </div>
         </div>
       </section>
-      <section className="story-section">
+      <section className="story-section" id="our-story">
         <div className="story-inner">
           <div className="mv-intro">
             <span className="mv-eyebrow">Our Story</span>
@@ -286,7 +299,7 @@ function About() {
         </div>
       </section>
 
-      <section className="principal-section">
+      <section className="principal-section" id="principal-message">
         <div className="principal-inner">
           <div className="mv-intro">
             <span className="mv-eyebrow">Leadership</span>

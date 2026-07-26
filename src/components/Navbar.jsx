@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Link } from "react-router"
 import crest from "../assets/global.jpg"
+import "./Navbar.css"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
