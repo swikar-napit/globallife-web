@@ -1,0 +1,397 @@
+/* ================================================
+   ACADEMICS PAGE — Academics.css
+   Tokens: --navy #0E2A4D · --navy-deep #081C36
+           --blue-accent #3D8BFD · --blue-soft #DCEBFF
+           --bg #F6F9FE · --page-bg #F9F9FA
+   Fonts: Fraunces (serif) · Work Sans (sans)
+   ================================================ */
+
+/* =================================*********
+   HERO
+========================================= */
+.acp-hero {
+  position: relative;
+  background: var(--navy);
+  padding: 56px 48px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.acp-hero-grid {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(61, 139, 253, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 139, 253, 0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.acp-hero-glow {
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61, 139, 253, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.acp-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+.acp-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.38);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.acp-breadcrumb a {
+  color: rgba(255, 255, 255, 0.38);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.acp-breadcrumb a:hover {
+  color: #fff;
+}
+
+.acp-breadcrumb-sep {
+  width: 4px;
+  height: 4px;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-right: 1.5px solid rgba(255, 255, 255, 0.25);
+  transform: rotate(45deg);
+}
+
+.acp-breadcrumb-current {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.acp-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(61, 139, 253, 0.12);
+  border: 1px solid rgba(61, 139, 253, 0.28);
+  color: #7ab8ff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.acp-hero-eyebrow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue-accent);
+  flex-shrink: 0;
+}
+
+.acp-hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.18;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.acp-hero-title em {
+  font-style: italic;
+  color: var(--blue-accent);
+  font-weight: 500;
+}
+
+.acp-hero-sub {
+  font-size: clamp(0.88rem, 0.82rem + 0.2vw, 1rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.acp-hero-board {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.acp-hero-board svg {
+  width: 15px;
+  height: 15px;
+  color: var(--blue-accent);
+  flex-shrink: 0;
+}
+
+/* =================================*********
+   PROGRAM LEVELS
+========================================= */
+.acp-programs {
+  position: relative;
+  background: var(--page-bg);
+  background-image: radial-gradient(rgba(14, 42, 77, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  padding: clamp(56px, 7.5vw, 96px) clamp(24px, 5vw, 48px);
+}
+
+.acp-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.acp-intro {
+  max-width: 640px;
+  margin: 0 0 clamp(44px, 6vw, 64px);
+}
+
+.acp-eyebrow {
+  display: block;
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.acp-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.acp-heading em {
+  font-style: italic;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.acp-intro-sub {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--charcoal);
+  opacity: 0.75;
+}
+
+.acp-level-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 2.8vw, 30px);
+}
+
+.acp-level-card {
+  --accent: #3D8BFD;
+  position: relative;
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent) 20%, transparent) 0%, transparent 55%),
+    linear-gradient(155deg, var(--navy) 0%, var(--navy-deep) 100%);
+  border-radius: 24px;
+  padding: clamp(30px, 3.4vw, 44px) clamp(28px, 4vw, 48px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 22px 50px rgba(6, 16, 32, 0.28);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.acp-level-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 64px rgba(6, 16, 32, 0.38), 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.acp-level-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.acp-level-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.acp-level-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.acp-level-top-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.acp-phase-tag {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.acp-level-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.2px;
+}
+
+.acp-level-grades {
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.acp-level-title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.35rem, 1.1rem + 0.9vw, 1.7rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.acp-level-text {
+  position: relative;
+  z-index: 1;
+  font-size: 0.94rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 640px;
+}
+
+.acp-level-divider {
+  position: relative;
+  z-index: 1;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 45%, transparent) 0%, rgba(255, 255, 255, 0.04) 60%);
+  margin: 26px 0 22px;
+}
+
+.acp-level-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.acp-level-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1 1 340px;
+}
+
+.acp-subject-tag {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 12px;
+  border-radius: 8px;
+}
+
+.acp-apply-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--accent);
+  color: #081C36;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.86rem;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.acp-apply-btn svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.2s ease;
+}
+
+.acp-apply-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.acp-apply-btn:hover svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 640px) {
+  .acp-level-top {
+    flex-wrap: wrap;
+  }
+
+  .acp-level-grades {
+    margin-left: 70px;
+  }
+
+  .acp-level-footer {
+    align-items: stretch;
+  }
+
+  .acp-apply-btn {
+    justify-content: center;
+  }
+}

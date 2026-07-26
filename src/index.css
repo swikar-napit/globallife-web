@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --navy: #0E2A4D;
+  --navy-deep: #081C36;
+  --blue-accent: #3D8BFD;
+  --blue-soft: #DCEBFF;
+  --bg: #F6F9FE;
+  --page-bg: #F9F9FA;
+  --charcoal: #1C2733;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: var(--page-bg);
+  color: var(--charcoal);
+}
