@@ -52,6 +52,9 @@ const enquiryTypes = [
   "Other",
 ];
 
+// Replace this with your own Formspree endpoint ID (from formspree.io → your form → "Endpoint")
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xaqrlkpa";
+
 export default function Contact() {
   const [form, setForm] = useState({
     fullName: "", email: "", phone: "",
@@ -59,12 +62,15 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
 
   const validate = () => {
     const e = {};
     if (!form.fullName.trim()) e.fullName = "Full name is required.";
-    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      e.email = "Enter a valid email.";
+    if (!form.email.trim()) e.email = "Please type a valid email.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      e.email = "Please type a valid email.";
     if (!form.phone.trim()) e.phone = "Phone number is required.";
     else if (!/^(97|98)\d{8}$/.test(form.phone.replace(/\s/g, "")))
       e.phone = "Use 10 digits starting with 97 or 98.";
@@ -77,12 +83,49 @@ export default function Contact() {
   const handleChange = (e) => {
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
     setErrors((p) => ({ ...p, [e.target.name]: undefined }));
+    setSendError("");
   };
 
-  const handleSubmit = () => {
-    const e = validate();
-    if (Object.keys(e).length) { setErrors(e); return; }
-    setSubmitted(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+
+    setSending(true);
+    setSendError("");
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          enquiryType: form.enquiryType,
+          studentName: form.studentName,
+          grade: form.grade,
+          message: form.message,
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setForm({
+          fullName: "", email: "", phone: "",
+          enquiryType: "", studentName: "", grade: "", message: "",
+        });
+      } else {
+        const data = await res.json().catch(() => null);
+        setSendError(
+          data?.errors?.map((er) => er.message).join(" ") ||
+          "Something went wrong sending your message. Please try again."
+        );
+      }
+    } catch {
+      setSendError("Couldn't connect. Please check your internet and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -165,7 +208,7 @@ export default function Contact() {
                 <p className="ct-form-sub">
                   Fill in the details below and we'll get back to you within 24 hours.
                 </p>
-                <div className="ct-form-grid">
+                <form className="ct-form-grid" onSubmit={handleSubmit} noValidate>
 
                   <div className="ct-form-group">
                     <label className="ct-form-label">Full Name <span className="req">*</span></label>
@@ -175,7 +218,7 @@ export default function Contact() {
                   </div>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Email Address <span className="opt">(optional)</span></label>
+                    <label className="ct-form-label">Email Address <span className="req">*</span></label>
                     <input className={`ct-input${errors.email ? " err" : ""}`} name="email"
                       type="email" placeholder="your@email.com" value={form.email} onChange={handleChange} />
                     {errors.email && <span className="ct-field-err">{errors.email}</span>}
@@ -220,18 +263,21 @@ export default function Contact() {
                     {errors.message && <span className="ct-field-err">{errors.message}</span>}
                   </div>
 
-                </div>
+                  </form>
+                {sendError && <p className="ct-field-err ct-form-server-err">{sendError}</p>}
                 <div className="ct-form-actions">
                   <p className="ct-form-note">
                     We respond within one business day. Your details are kept confidential.
                   </p>
-                  <button className="ct-submit-btn" onClick={handleSubmit}>
-                    Send Message
-                    <svg className="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"/>
-                      <polyline points="12 5 19 12 12 19"/>
-                    </svg>
+                  <button className="ct-submit-btn" onClick={handleSubmit} disabled={sending}>
+                    {sending ? "Sending…" : "Send Message"}
+                    {!sending && (
+                      <svg className="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    )}
                   </button>
                 </div>
               </>
@@ -285,19 +331,18 @@ export default function Contact() {
             <div className="ct-social-card">
               <p className="ct-side-eyebrow">Follow Us</p>
               <div className="ct-social-row">
-                <a href="#" className="ct-social-btn">
+                <a href="https://www.facebook.com/profile.php?id=100035277070893" target="_blank" rel="noreferrer" className="ct-social-btn">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                   </svg>
                   Facebook
                 </a>
-                <a href="#" className="ct-social-btn">
+                <a href="mailto:info@globallifeschool.edu.np" className="ct-social-btn">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
                   </svg>
-                  Instagram
+                  Email
                 </a>
               </div>
             </div>
