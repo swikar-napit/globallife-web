@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useLayoutEffect, useRef } from "react"
 import { Link, useLocation, useNavigate } from "react-router"
 import crest from "../assets/global.jpg"
 import "./Navbar.css"
@@ -16,9 +16,9 @@ function Navbar() {
     setIsOpen(false)
   }, [location.pathname])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen && navLinksRef.current) {
-      setMenuHeight(navLinksRef.current.scrollHeight)
+      setMenuHeight(navLinksRef.current.scrollHeight + 8)
     } else {
       setMenuHeight(0)
     }
