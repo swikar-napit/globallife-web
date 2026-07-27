@@ -173,11 +173,6 @@ function Home() {
           <span className="stat-number">15<span className="stat-plus">+</span></span>
           <span className="stat-label">Years of Excellence</span>
         </div>
-        <div className="stat-divider"></div>
-        <div className="stat-item">
-          <span className="stat-number">98<span className="stat-plus">%</span></span>
-          <span className="stat-label">Board Pass Rate</span>
-        </div>
       </div>
 
       <section className="home-about">

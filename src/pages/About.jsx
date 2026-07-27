@@ -348,7 +348,7 @@ function About() {
               </p>
 
               <div className="principal-signoff">
-                <span className="principal-name">Mrs. Madhu Sharma</span>
+                <span className="principal-name">Mr. Madhu Sharma</span>
                 <span className="principal-title">Principal</span>
               </div>
             </div>

@@ -261,7 +261,7 @@ function Team() {
                 className={`tm-tab ${activeTab === "lower-secondary" ? "is-active" : ""}`}
                 onClick={() => setActiveTab("lower-secondary")}
               >
-                Lower Secondary & Secondary
+                Secondary
               </button>
               <button
                 className={`tm-tab ${activeTab === "primary" ? "is-active" : ""}`}

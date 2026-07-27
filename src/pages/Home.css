@@ -367,17 +367,35 @@
 
 @media (max-width: 900px) {
   .stats-bar {
-    flex-wrap: wrap;
-    gap: 24px;
-    padding: 32px 20px;
-  }
-
-  .stat-divider {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 26px 20px;
+    gap: 14px;
   }
 
   .stat-item {
-    padding: 0 24px;
+    padding: 0;
+    gap: 3px;
+  }
+
+  .stat-divider {
+    display: block;
+    width: 32px;
+    height: 1px;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-plus {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.56rem;
+    letter-spacing: 1.2px;
   }
 }
 

@@ -1,12 +1,35 @@
 import { useState, useEffect, useRef } from "react"
-import { Link } from "react-router"
+import { Link, useLocation, useNavigate } from "react-router"
 import crest from "../assets/global.jpg"
 import "./Navbar.css"
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [menuHeight, setMenuHeight] = useState(0)
   const lastScrollY = useRef(0)
+  const navLinksRef = useRef(null)
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location.pathname])
+
+  useEffect(() => {
+    if (isOpen && navLinksRef.current) {
+      setMenuHeight(navLinksRef.current.scrollHeight)
+    } else {
+      setMenuHeight(0)
+    }
+  }, [isOpen])
+
+  const handleNavClick = (e, to) => {
+    if (!isOpen) return
+    e.preventDefault()
+    setIsOpen(false)
+    setTimeout(() => navigate(to), 320)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,13 +74,17 @@ function Navbar() {
         <span></span>
       </button>
 
-      <ul className={isOpen ? "nav-links open" : "nav-links"}>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About Us</Link></li>
-        <li><Link to="/academics">Academics</Link></li>
-        <li><Link to="/team">Team</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/contact" className="enquiry-btn">Enquire Now</Link></li>
+      <ul
+        className={isOpen ? "nav-links open" : "nav-links"}
+        ref={navLinksRef}
+        style={{ maxHeight: `${menuHeight}px` }}
+      >
+        <li><Link to="/" onClick={(e) => handleNavClick(e, "/")}>Home</Link></li>
+        <li><Link to="/about" onClick={(e) => handleNavClick(e, "/about")}>About Us</Link></li>
+        <li><Link to="/academics" onClick={(e) => handleNavClick(e, "/academics")}>Academics</Link></li>
+        <li><Link to="/team" onClick={(e) => handleNavClick(e, "/team")}>Team</Link></li>
+        <li><Link to="/contact" onClick={(e) => handleNavClick(e, "/contact")}>Contact</Link></li>
+        <li><Link to="/contact" className="enquiry-btn" onClick={(e) => handleNavClick(e, "/contact")}>Enquire Now</Link></li>
       </ul>
     </header>
   )

@@ -217,12 +217,11 @@
     box-shadow: 0 8px 24px rgba(14, 42, 77, 0.08);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.35s ease;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 50;
   }
 
   .nav-links.open {
-    max-height: 400px;
     padding: 12px 24px 24px;
   }
 
