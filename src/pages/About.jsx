@@ -149,12 +149,13 @@ function About() {
       <section className="abt-hero">
         <div className="abt-hero-grid" aria-hidden="true"></div>
         <div className="abt-hero-glow" aria-hidden="true"></div>
-        <div className="abt-hero-content">
-          <nav className="abt-breadcrumb">
-            <a href="/">Home</a>
-            <div className="abt-breadcrumb-sep"></div>
-            <span className="abt-breadcrumb-current">About</span>
-          </nav>
+        <div className="abt-hero-inner">
+          <div className="abt-hero-content">
+            <nav className="abt-breadcrumb">
+              <a href="/">Home</a>
+              <div className="abt-breadcrumb-sep"></div>
+              <span className="abt-breadcrumb-current">About</span>
+            </nav>
           <span className="abt-hero-eyebrow">
             <span className="abt-hero-eyebrow-dot"></span>
             Our Story & Values
@@ -178,6 +179,7 @@ function About() {
         <div className="abt-hero-crest-wrap">
           <img src={crest} alt="Global Life School Crest" className="abt-hero-crest" />
         </div>
+      </div>
       </section>
 
       <section className="mv-section">

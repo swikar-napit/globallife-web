@@ -1,12 +1,22 @@
 .abt-hero {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--navy);
   padding: 56px 48px 64px;
+  overflow: hidden;
+}
+
+.abt-hero-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: clamp(32px, 5vw, 64px);
-  overflow: hidden;
+  width: min(100%, 1280px);
+  margin: 0 auto;
 }
 
 .abt-hero-grid {
