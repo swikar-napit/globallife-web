@@ -44,30 +44,31 @@ function Navbar() {
 
   return (
     <header className={`navbar${hidden && !isOpen ? " nav-hidden" : ""}`}>
-      <NavLink to="/" className="brand">
-        <img src={crest} alt="Global Life School Logo" className="crest" />
-        <div className="brand-divider"></div>
-        <span className="brand-text">
-          <span className="school-name">Global Life School</span>
-          <span className="school-tag">Boarding &amp; Day School</span>
-        </span>
-      </NavLink>
+      <div className="navbar-content">
+        <NavLink to="/" className="brand">
+          <img src={crest} alt="Global Life School Logo" className="crest" />
+          <div className="brand-divider"></div>
+          <span className="brand-text">
+            <span className="school-name">Global Life School</span>
+            <span className="school-tag">Boarding &amp; Day School</span>
+          </span>
+        </NavLink>
 
-      <button
-        className={isOpen ? "menu-toggle open" : "menu-toggle"}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle navigation"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <button
+          className={isOpen ? "menu-toggle open" : "menu-toggle"}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-      <ul
-        className={isOpen ? "nav-links open" : "nav-links"}
-        ref={navLinksRef}
-        style={{ maxHeight: `${menuHeight}px` }}
-      >
+        <ul
+          className={isOpen ? "nav-links open" : "nav-links"}
+          ref={navLinksRef}
+          style={{ maxHeight: `${menuHeight}px` }}
+        >
         <li><NavLink to="/" end>Home</NavLink></li>
         <li><NavLink to="/about">About Us</NavLink></li>
         <li><NavLink to="/academics">Academics</NavLink></li>
@@ -75,6 +76,7 @@ function Navbar() {
         <li><NavLink to="/contact">Contact</NavLink></li>
         <li><NavLink to="/contact" className="enquiry-btn">Enquire Now</NavLink></li>
       </ul>
+      </div>
     </header>
   )
 }

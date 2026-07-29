@@ -4,18 +4,19 @@
 .hero {
   position: relative;
   display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  padding: clamp(40px, 5vw, 64px) clamp(24px, 4.5vw, 48px) clamp(64px, 6vw, 88px);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(28px, 3.5vw, 44px) clamp(24px, 4.5vw, 48px) clamp(36px, 4vw, 56px);
   background: var(--page-bg);
   gap: clamp(24px, 4vw, 48px);
-  min-height: calc(100vh - 76px);
+  min-height: auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .hero-content {
   flex: 1 1 45%;
   max-width: 580px;
-  align-self: flex-start;
 }
 
 .hero-eyebrow {
@@ -169,7 +170,8 @@
   justify-content: center;
   align-items: stretch;
   position: relative;
-  max-height: 720px;
+  max-height: 540px;
+  aspect-ratio: 700 / 540;
 }
 
 
@@ -180,6 +182,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   opacity: 0;
   transition: opacity 0.8s ease;
 }
@@ -542,7 +545,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -635,7 +638,7 @@
   display: grid;
   grid-template-columns: minmax(300px, 1fr) minmax(0, 1.35fr);
   gap: 28px;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   align-items: stretch;
 }
@@ -863,7 +866,7 @@
 }
 
 .acad-inner {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   position: relative;
 }
