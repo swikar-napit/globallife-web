@@ -7,10 +7,10 @@ import slide5 from "../assets/global5.jpg"
 import "./Home.css"
 
 const slides = [
-  { id: 1, img: slide5, caption: "Welcome Program" },
-  { id: 2, img: slide2, caption: "Dance performance" },
-  { id: 3, img: slide3, caption: "orientation program" },
-  { id: 4, img: slide1, caption: "A Home Away From Home" },
+  { id: 1, img: slide5, caption: "Welcome Program", duration: 4000 },
+  { id: 2, img: slide2, caption: "Dance performance", duration: 2000 },
+  { id: 3, img: slide3, caption: "orientation program", duration: 2000 },
+  { id: 4, img: slide1, caption: "A Home Away From Home", duration: 2000 },
 ]
 const programs = [
   {
@@ -93,14 +93,15 @@ const features = [
 function Home() {
   const [current, setCurrent] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const slideDurations = [5000, 3000, 3000, 3000]
 
   useEffect(() => {
     if (isPaused) return
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
-    }, 3000)
-    return () => clearInterval(timer)
-  }, [isPaused])
+    }, slideDurations[current])
+    return () => clearTimeout(timer)
+  }, [current, isPaused])
 
   return (
     <>
