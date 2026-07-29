@@ -314,7 +314,7 @@ function About() {
             <div className="principal-photo-wrap">
               <img src={principalPhoto} alt="Principal of Global Life School" className="principal-photo" />
               <div className="principal-photo-badge">
-                <span className="principal-badge-num">15+</span>
+                <span className="principal-badge-num">25+</span>
                 <span className="principal-badge-label">Years Leading</span>
               </div>
             </div>
