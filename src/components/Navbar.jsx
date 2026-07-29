@@ -6,22 +6,12 @@ import "./Navbar.css"
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
-  const [menuHeight, setMenuHeight] = useState(0)
   const lastScrollY = useRef(0)
-  const navLinksRef = useRef(null)
   const location = useLocation()
 
   useEffect(() => {
     setIsOpen(false)
   }, [location.pathname])
-
-  useLayoutEffect(() => {
-    if (isOpen && navLinksRef.current) {
-      setMenuHeight(navLinksRef.current.scrollHeight)
-    } else {
-      setMenuHeight(0)
-    }
-  }, [isOpen])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,11 +54,7 @@ function Navbar() {
           <span></span>
         </button>
 
-        <ul
-          className={isOpen ? "nav-links open" : "nav-links"}
-          ref={navLinksRef}
-          style={{ maxHeight: `${menuHeight}px` }}
-        >
+        <ul className={isOpen ? "nav-links open" : "nav-links"}>
         <li><NavLink to="/" end>Home</NavLink></li>
         <li><NavLink to="/about">About Us</NavLink></li>
         <li><NavLink to="/academics">Academics</NavLink></li>
