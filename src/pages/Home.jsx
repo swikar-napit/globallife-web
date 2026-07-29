@@ -7,7 +7,7 @@ import slide5 from "../assets/global5.jpg"
 import "./Home.css"
 
 const slides = [
-  { id: 1, img: slide5, caption: "Welcome Program", duration: 4000 },
+  { id: 1, img: slide5, caption: "Welcome Program", duration: 5000 },
   { id: 2, img: slide2, caption: "Dance performance", duration: 2000 },
   { id: 3, img: slide3, caption: "orientation program", duration: 2000 },
   { id: 4, img: slide1, caption: "A Home Away From Home", duration: 2000 },
