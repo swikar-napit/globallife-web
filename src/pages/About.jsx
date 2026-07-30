@@ -35,8 +35,8 @@ const milestones = [
 
 const stats = [
   { value: 15, suffix: "+", label: "Years of Excellence" },
-  { value: 500, suffix: "+", label: "Students" },
-  { value: 40, suffix: "+", label: "Teachers" },
+  { value: 200, suffix: "+", label: "Students" },
+  { value: 20, suffix: "+", label: "Teachers" },
 ]
 
 function useCountUp(target, active, duration = 1400) {
