@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(28px, 3.5vw, 44px) clamp(24px, 4.5vw, 48px) clamp(36px, 4vw, 56px);
+  padding: clamp(30px, 4.5vw, 58px) clamp(24px, 4.5vw, 48px);
   background: var(--page-bg);
   gap: clamp(24px, 4vw, 48px);
   min-height: auto;
@@ -170,8 +170,8 @@
   justify-content: center;
   align-items: stretch;
   position: relative;
-  max-height: 540px;
-  aspect-ratio: 700 / 540;
+  max-height: 460px;
+  aspect-ratio: 700 / 460;
 }
 
 
@@ -257,7 +257,7 @@
   .hero {
     overflow-x: hidden;
     gap: clamp(20px, 3vw, 40px);
-    padding: clamp(32px, 4vw, 60px) clamp(20px, 3vw, 48px);
+    padding: clamp(30px, 4.5vw, 58px) clamp(20px, 3vw, 48px);
     align-items: stretch;
   }
 }
@@ -325,7 +325,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 44px 48px;
+  padding: 24px 48px;
   gap: 0;
 }
 
@@ -333,13 +333,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   padding: 0 56px;
 }
 
 .stat-number {
   font-family: 'Fraunces', serif;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
