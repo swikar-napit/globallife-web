@@ -11,7 +11,7 @@
 ---
 
 ## 🌐 Live Demo
-👉 [Visit the website]
+🔗 **Live site:** [Global Life School](https://globallife-web.vercel.app)
 
 ---
 
