@@ -130,7 +130,6 @@ export default function Contact() {
 
   return (
     <>
-      {/* ── HERO ── */}
       <section className="ct-hero">
         <div className="ct-hero-grid" />
         <div className="ct-hero-glow" />
@@ -154,7 +153,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── INFO CARDS — clean section on page-bg ── */}
       <section className="ct-cards-section">
         <div className="ct-cards-inner">
           {infoCards.map((card) => (
@@ -178,7 +176,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── MAIN BODY ── */}
       <section className="ct-body">
         <div className="ct-body-inner">
 

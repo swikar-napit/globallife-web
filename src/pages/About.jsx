@@ -34,7 +34,7 @@ const milestones = [
 ]
 
 const stats = [
-  { value: 15, suffix: "+", label: "Years of Excellence" },
+  { value: 20, suffix: "+", label: "Years of Excellence" },
   { value: 200, suffix: "+", label: "Students" },
   { value: 20, suffix: "+", label: "Teachers" },
 ]
