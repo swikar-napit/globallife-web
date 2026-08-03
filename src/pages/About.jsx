@@ -7,7 +7,7 @@ import ctaPhoto from "../assets/global1.jpg"
 
 const milestones = [
   {
-    year: "2009",
+    year: "2006",
     title: "Global Life School is founded",
     text: "Opened our doors with a single building, a handful of classrooms, and a promise to put every child's growth first.",
   },
