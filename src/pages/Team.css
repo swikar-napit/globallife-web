@@ -365,12 +365,6 @@
   }
 }
 
-@media (max-width: 990px) {
-  .tm-grid--administration {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .tm-grid--faculty {
     grid-template-columns: repeat(2, 1fr);

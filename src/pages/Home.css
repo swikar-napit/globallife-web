@@ -270,7 +270,6 @@
     padding: 36px 20px 48px;
     min-height: auto;
     gap: 32px;
-    overflow-x: hidden;
   }
 
   .hero-content {
@@ -439,7 +438,6 @@
   color: var(--navy);
   font-style: italic;
   font-weight: 500;
-  color: var(--navy);
 }
 
 .home-about-copy {
