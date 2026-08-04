@@ -288,9 +288,6 @@
     max-width: 100%;
     justify-content: center;
     margin-top: 6px;
-    background: var(--navy);
-    border: 2px solid var(--navy);
-    color: #ffffff !important;
     white-space: normal;
     text-align: center;
     padding: 12px 16px;

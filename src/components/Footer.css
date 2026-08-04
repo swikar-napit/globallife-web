@@ -142,11 +142,6 @@
 .footer-link.active .footer-link-arrow {
   opacity: 1;
   transform: translateX(0);
-  color: var(--blue-accent);
-}
-
-.footer-links li a:hover {
-  color: #fff;
 }
 
 .footer-contact-list {
