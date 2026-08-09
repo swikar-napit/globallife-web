@@ -1,28 +1,4 @@
 /* =================================*********
-   GLOBAL RESET (prevents zoom/DPI/browser inconsistencies)
-========================================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* =================================*********
    HERO & HERO SLIDESHOW
 ========================================= */
 .hero {
