@@ -93,13 +93,12 @@ const features = [
 function Home() {
   const [current, setCurrent] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const slideDurations = [5000, 3000, 3000, 3000]
 
   useEffect(() => {
     if (isPaused) return
     const timer = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
-    }, slideDurations[current])
+    }, slides[current].duration)
     return () => clearTimeout(timer)
   }, [current, isPaused])
 
