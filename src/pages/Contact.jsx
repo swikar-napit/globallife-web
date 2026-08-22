@@ -260,23 +260,23 @@ export default function Contact() {
                     {errors.message && <span className="ct-field-err">{errors.message}</span>}
                   </div>
 
-                  </form>
-                {sendError && <p className="ct-field-err ct-form-server-err">{sendError}</p>}
-                <div className="ct-form-actions">
-                  <p className="ct-form-note">
-                    We respond within one business day. Your details are kept confidential.
-                  </p>
-                  <button className="ct-submit-btn" onClick={handleSubmit} disabled={sending}>
-                    {sending ? "Sending…" : "Send Message"}
-                    {!sending && (
-                      <svg className="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                      </svg>
-                    )}
-                  </button>
-                </div>
+                  {sendError && <p className="ct-field-err">{sendError}</p>}
+                  <div className="ct-form-actions">
+                    <p className="ct-form-note">
+                      We respond within one business day. Your details are kept confidential.
+                    </p>
+                    <button className="ct-submit-btn" type="submit" disabled={sending}>
+                      {sending ? "Sending…" : "Send Message"}
+                      {!sending && (
+                        <svg className="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12"/>
+                          <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                      )}
+                    </button>
+                  </div>
+                </form>
               </>
             )}
           </div>
