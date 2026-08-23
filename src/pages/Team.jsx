@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "./Team.css"
+import principalPhoto from "../assets/principal.jpg"
 
 const AVATAR_TONES = ["navy", "blue", "slate", "teal", "indigo", "steel"]
 
@@ -17,8 +18,6 @@ function getTone(name) {
   }
   return AVATAR_TONES[hash]
 }
-
-import principalPhoto from "../assets/principal.jpg"
 
 function TeamCard({ person }) {
   const tone = getTone(person.name)
@@ -293,8 +292,8 @@ function Team() {
             </div>
 
             <div className={activeTab === "administration" ? "tm-grid tm-grid--administration" : "tm-grid tm-grid--faculty"}>
-              {filteredMembers.map((person) => (
-                <TeamCard key={person.name} person={person} />
+              {filteredMembers.map((person, index) => (
+                <TeamCard key={`${person.category}-${index}`} person={person} />
               ))}
             </div>
           </div>
