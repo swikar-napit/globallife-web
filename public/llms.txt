@@ -1,0 +1,19 @@
+# Global Life School
+
+> Global Life School is a boarding and day school in Kamalbinayak-10, Bhaktapur, Nepal, offering Pre-Primary through Secondary (SEE) education with a focus on academic excellence, discipline, and holistic growth. Established 2009.
+
+Global Life School serves 500+ students with 40+ teachers across four stages: Pre-Primary, Primary, Lower Secondary, and Secondary (through the SEE board exams), following Nepal's National Education Board (NEB) curriculum.
+
+## Pages
+
+- [Home](https://globallife-web.vercel.app/): Overview of the school, hero introduction, enrollment stats, and featured academic programs.
+- [About](https://globallife-web.vercel.app/about): School mission, vision, core values, a history timeline from founding to today, and a message from the Principal.
+- [Academics](https://globallife-web.vercel.app/academics): Detailed breakdown of academic phases — Lower Secondary, Grade 9, and Grade 10 SEE preparation — including subjects taught at each phase.
+- [Team](https://globallife-web.vercel.app/team): Faculty and staff directory, organized by department (Administration, Secondary, Primary, Pre-Primary).
+- [Contact](https://globallife-web.vercel.app/contact): Location, phone numbers, email, office hours, and an admissions enquiry form.
+
+## Contact
+
+- Address: Kamalbinayak-10, Bhaktapur, Nepal
+- Phone: +977-01-6620200, +977-01-6612925
+- Email: globallifesch@gmail.com
