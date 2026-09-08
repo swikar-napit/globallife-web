@@ -72,3 +72,8 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Slight zoom-out applied everywhere (nav, footer, all pages) */
+html {
+  zoom: 0.97;
+}
