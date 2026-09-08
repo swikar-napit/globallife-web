@@ -72,7 +72,7 @@
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.38);
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .acp-breadcrumb a {
@@ -110,7 +110,7 @@
   text-transform: uppercase;
   padding: 6px 16px;
   border-radius: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
 .acp-hero-eyebrow-dot {
@@ -123,11 +123,11 @@
 
 .acp-hero-title {
   font-family: 'Fraunces', serif;
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.18;
+  line-height: 1.15;
   color: #fff;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 .acp-hero-title em {
@@ -137,8 +137,8 @@
 }
 
 .acp-hero-sub {
-  font-size: clamp(0.88rem, 0.82rem + 0.2vw, 1rem);
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.85;
   color: rgba(255, 255, 255, 0.65);
   max-width: 520px;
   margin: 0 auto;
