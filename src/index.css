@@ -72,3 +72,9 @@ img {
   max-width: 100%;
   display: block;
 }
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  html {
+    zoom: 0.97;
+  }
+}

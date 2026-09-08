@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
   background: var(--navy);
-  padding: 56px 48px 64px;
+  padding: 72px 48px 80px;
+  min-height: 460px;
   overflow: hidden;
 }
 
@@ -178,7 +179,8 @@
 
 @media (max-width: 900px) {
   .abt-hero {
-    padding-top: 64px;
+    padding: 60px 24px 68px;
+    min-height: 400px;
   }
 
   .abt-hero-inner {
@@ -214,6 +216,11 @@
 }
 
 @media (max-width: 480px) {
+  .abt-hero {
+    padding: 52px 20px 60px;
+    min-height: 0;
+  }
+
   .abt-hero-stats {
     flex-wrap: wrap;
     row-gap: 20px;

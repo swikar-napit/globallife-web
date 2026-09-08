@@ -12,7 +12,7 @@
 .acp-hero {
   position: relative;
   background: var(--navy);
-  padding: 56px 48px 64px;
+  padding: 72px 48px 80px;
   min-height: 460px;
   display: flex;
   flex-direction: column;
@@ -24,14 +24,14 @@
 
 @media (max-width: 768px) {
   .acp-hero {
-    padding: 48px 24px 56px;
+    padding: 60px 24px 68px;
     min-height: 400px;
   }
 }
 
 @media (max-width: 480px) {
   .acp-hero {
-    padding: 44px 20px 50px;
+    padding: 52px 20px 60px;
     min-height: 0;
   }
 }

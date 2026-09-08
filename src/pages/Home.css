@@ -253,7 +253,6 @@
     overflow-x: hidden;
     gap: clamp(20px, 3vw, 40px);
     padding: clamp(32px, 4vw, 56px) clamp(20px, 3vw, 48px);
-    align-items: stretch;
   }
 }
 
