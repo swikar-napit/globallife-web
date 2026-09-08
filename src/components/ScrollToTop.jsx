@@ -1,6 +1,22 @@
 import { useEffect } from "react"
 import { useLocation } from "react-router"
 
+function smoothScrollToTop(duration = 500) {
+  const startY = window.scrollY
+  if (startY === 0) return
+  const startTime = performance.now()
+  const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2)
+
+  const step = (now) => {
+    const elapsed = now - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    window.scrollTo(0, startY * (1 - easeInOutQuad(progress)))
+    if (progress < 1) requestAnimationFrame(step)
+  }
+
+  requestAnimationFrame(step)
+}
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
@@ -9,7 +25,7 @@ function ScrollToTop() {
     // page handle scrolling to that anchor instead of resetting to top
     if (hash) return
 
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+    smoothScrollToTop()
   }, [pathname, hash])
 
   return null
