@@ -135,6 +135,7 @@ function Home() {
                 src={slide.img}
                 alt={slide.caption}
                 className={index === current ? "slide active" : "slide"}
+                fetchPriority={index === 0 ? "high" : "auto"}
               />
             ))}
             <div className="slide-caption">{slides[current].caption}</div>
