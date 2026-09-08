@@ -18,6 +18,14 @@
   margin: 0 auto;
 }
 
+.footer-brand-col {
+  min-width: 0;
+}
+
+.footer-col {
+  min-width: 0;
+}
+
 .footer-brand {
   display: flex;
   align-items: center;

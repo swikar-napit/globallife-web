@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { NavLink, useLocation } from "react-router"
 import crest from "../assets/global.jpg"
 import "./Navbar.css"

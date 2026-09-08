@@ -5,6 +5,7 @@ import slide2 from "../assets/global2.jpg"
 import slide3 from "../assets/global3.jpg"
 import slide5 from "../assets/global5.jpg"
 import "./Home.css"
+import "../components/Cta.css"
 
 const slides = [
   { id: 1, img: slide5, caption: "Welcome Program", duration: 5000 },

@@ -208,22 +208,22 @@ export default function Contact() {
                 <form className="ct-form-grid" onSubmit={handleSubmit} noValidate>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Full Name <span className="req">*</span></label>
-                    <input className={`ct-input${errors.fullName ? " err" : ""}`} name="fullName"
+                    <label className="ct-form-label" htmlFor="fullName">Full Name <span className="req">*</span></label>
+                    <input className={`ct-input${errors.fullName ? " err" : ""}`} id="fullName" name="fullName"
                       placeholder="Your full name" value={form.fullName} onChange={handleChange} />
                     {errors.fullName && <span className="ct-field-err">{errors.fullName}</span>}
                   </div>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Email Address <span className="req">*</span></label>
-                    <input className={`ct-input${errors.email ? " err" : ""}`} name="email"
+                    <label className="ct-form-label" htmlFor="email">Email Address <span className="req">*</span></label>
+                    <input className={`ct-input${errors.email ? " err" : ""}`} id="email" name="email"
                       type="email" placeholder="your@email.com" value={form.email} onChange={handleChange} />
                     {errors.email && <span className="ct-field-err">{errors.email}</span>}
                   </div>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Phone Number <span className="req">*</span></label>
-                    <input className={`ct-input${errors.phone ? " err" : ""}`} name="phone"
+                    <label className="ct-form-label" htmlFor="phone">Phone Number <span className="req">*</span></label>
+                    <input className={`ct-input${errors.phone ? " err" : ""}`} id="phone" name="phone"
                       placeholder="98XXXXXXXX" value={form.phone} onChange={handleChange} />
                     {errors.phone
                       ? <span className="ct-field-err">{errors.phone}</span>
@@ -231,8 +231,8 @@ export default function Contact() {
                   </div>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Enquiry Type <span className="req">*</span></label>
-                    <select className={`ct-select${errors.enquiryType ? " err" : ""}`} name="enquiryType"
+                    <label className="ct-form-label" htmlFor="enquiryType">Enquiry Type <span className="req">*</span></label>
+                    <select className={`ct-select${errors.enquiryType ? " err" : ""}`} id="enquiryType" name="enquiryType"
                       value={form.enquiryType} onChange={handleChange}>
                       {enquiryTypes.map((t) => (
                         <option key={t} value={t === "Select a topic" ? "" : t} disabled={t === "Select a topic"}>{t}</option>
@@ -242,20 +242,20 @@ export default function Contact() {
                   </div>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Student Name <span className="opt">(if applicable)</span></label>
-                    <input className="ct-input" name="studentName"
+                    <label className="ct-form-label" htmlFor="studentName">Student Name <span className="opt">(if applicable)</span></label>
+                    <input className="ct-input" id="studentName" name="studentName"
                       placeholder="Student's full name" value={form.studentName} onChange={handleChange} />
                   </div>
 
                   <div className="ct-form-group">
-                    <label className="ct-form-label">Grade / Class <span className="opt">(if applicable)</span></label>
-                    <input className="ct-input" name="grade"
+                    <label className="ct-form-label" htmlFor="grade">Grade / Class <span className="opt">(if applicable)</span></label>
+                    <input className="ct-input" id="grade" name="grade"
                       placeholder="e.g. Grade 8" value={form.grade} onChange={handleChange} />
                   </div>
 
                   <div className="ct-form-group full">
-                    <label className="ct-form-label">Your Message <span className="req">*</span></label>
-                    <textarea className={`ct-textarea${errors.message ? " err" : ""}`} name="message"
+                    <label className="ct-form-label" htmlFor="message">Your Message <span className="req">*</span></label>
+                    <textarea className={`ct-textarea${errors.message ? " err" : ""}`} id="message" name="message"
                       placeholder="Write your message here…" value={form.message} onChange={handleChange} />
                     {errors.message && <span className="ct-field-err">{errors.message}</span>}
                   </div>

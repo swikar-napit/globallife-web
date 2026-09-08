@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router"
 import { useEffect, useRef, useState } from "react"
 import "./About.css"
+import "../components/Cta.css"
 import crest from "../assets/global.jpg"
 import principalPhoto from "../assets/principal.jpg"
 import ctaPhoto from "../assets/global1.jpg"

@@ -1,0 +1,204 @@
+/* =================================*********
+   SHARED CTA BANNER SECTION
+   Used by Home.jsx and About.jsx — import this file
+   in any page that renders a .cta-section block.
+========================================= */
+/* =================================*********
+   CTA BANNER SECTION
+========================================= */
+.cta-section {
+  padding: 96px 48px;
+  background: var(--page-bg);
+}
+
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 24px;
+  min-height: 440px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(14, 42, 77, 0.25);
+}
+
+.cta-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(6, 16, 32, 0.95) 0%, rgba(9, 26, 50, 0.9) 38%, rgba(14, 42, 77, 0.55) 68%, rgba(14, 42, 77, 0.25) 100%);
+  z-index: 1;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: 64px 56px;
+  text-align: left;
+}
+
+.cta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.cta-heading {
+  position: relative;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 16px;
+}
+
+.cta-text {
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 460px;
+  margin-bottom: 0;
+}
+
+.cta-stats {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 28px 0 32px;
+}
+
+.cta-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-stat-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.cta-stat-label {
+  font-size: 0.66rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 5px;
+}
+
+.cta-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.cta-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  color: var(--navy);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.cta-btn-secondary:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cta-btn-primary:focus-visible,
+.cta-btn-secondary:focus-visible {
+  outline: 2px solid var(--blue-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .cta-card {
+    min-height: 0;
+  }
+
+  .cta-content {
+    padding: 48px 28px;
+    max-width: none;
+  }
+
+  .cta-overlay {
+    background: linear-gradient(170deg, rgba(6, 16, 32, 0.93) 0%, rgba(10, 28, 54, 0.9) 60%, rgba(14, 42, 77, 0.78) 100%);
+  }
+
+  .cta-text {
+    max-width: none;
+  }
+
+  .cta-stats {
+    flex-wrap: wrap;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta-section {
+    padding: 56px 20px;
+  }
+}
