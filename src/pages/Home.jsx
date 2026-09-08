@@ -104,7 +104,7 @@ function Home() {
   }, [current, isPaused])
 
   return (
-    <>
+    <div className="home-page">
       <section className="hero">
         <div className="hero-content">
           <span className="hero-eyebrow">Welcome to Global Life School</span>
@@ -176,6 +176,8 @@ function Home() {
           <span className="stat-label">Years of Excellence</span>
         </div>
       </div>
+
+      <div className="section-spacer" aria-hidden="true"></div>
 
       <section className="home-about">
         <div className="home-about-inner">
@@ -295,7 +297,7 @@ function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 export default Home
