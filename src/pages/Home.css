@@ -22,7 +22,7 @@
 .hero-eyebrow {
   display: inline-block;
   background: var(--blue-soft);
-  color: var(--blue-accent);
+  color: var(--blue-deep);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 2.5px;
@@ -124,7 +124,7 @@
   font-size: 0.7rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--blue-accent);
+  color: var(--blue-light);
   font-weight: 600;
 }
 
@@ -206,32 +206,44 @@
 
 .slide-dots {
   position: absolute;
-  bottom: 14px;
+  bottom: 4px;
   left: 0;
   right: 0;
   z-index: 2;
   display: flex;
   justify-content: center;
-  gap: 6px;
+  gap: 2px;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 24px;
+  height: 24px;
   border: none;
   padding: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .dot:focus-visible {
   outline: 2px solid #fff;
-  outline-offset: 3px;
+  outline-offset: 1px;
+  border-radius: 50%;
 }
 
-.dot.active {
+.dot.active::after {
   background: #fff;
   transform: scale(1.3);
 }
@@ -396,7 +408,7 @@
 
 .home-about-eyebrow {
   display: block;
-  color: var(--blue-accent);
+  color: var(--blue-deep);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -442,7 +454,7 @@
   justify-content: center;
   gap: 10px;
   min-height: 44px;
-  background: var(--blue-accent);
+  background: var(--blue-deep);
   color: #ffffff;
   border-radius: 6px;
   padding: 12px 24px;
@@ -561,7 +573,7 @@
   position: relative;
   display: inline-block;
   width: fit-content;
-  color: var(--blue-accent);
+  color: var(--blue-light);
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 2.5px;
@@ -593,7 +605,7 @@
   align-items: center;
   gap: 10px;
   width: fit-content;
-  background: var(--blue-accent);
+  background: var(--blue-deep);
   color: #fff;
   font-family: 'Work Sans', sans-serif;
   font-weight: 600;
@@ -774,7 +786,7 @@
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--blue-accent);
+  color: var(--blue-light);
   padding-top: 6px;
   border-top: 2px solid var(--blue-accent);
   white-space: nowrap;
@@ -875,7 +887,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--blue-accent);
+  color: var(--blue-light);
 }
 
 .acad-pill-grades {
@@ -949,7 +961,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--blue-accent);
+  background: var(--blue-deep);
   color: #fff;
   font-family: 'Work Sans', sans-serif;
   font-size: 0.85rem;

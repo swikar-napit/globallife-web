@@ -328,7 +328,7 @@
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--blue-accent);
+  color: var(--blue-light);
   margin-bottom: 12px;
 }
 
@@ -403,7 +403,7 @@
 }
 
 .story-section .mv-eyebrow {
-  color: var(--blue-accent);
+  color: var(--blue-light);
 }
 
 .story-section .mv-heading {
@@ -532,7 +532,7 @@
   font-family: 'Fraunces', serif;
   font-style: italic;
   font-size: 1.1rem;
-  color: var(--blue-accent);
+  color: var(--blue-light);
   margin-bottom: 8px;
 }
 
@@ -751,7 +751,7 @@
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--blue-accent);
+  color: var(--blue-deep);
   margin-top: 6px;
 }
 

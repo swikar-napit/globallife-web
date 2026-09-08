@@ -2,6 +2,8 @@
   --navy: #0E2A4D;
   --navy-deep: #081C36;
   --blue-accent: #3D8BFD;
+  --blue-deep: #1B5FC4;   /* accessible blue for text/buttons on light backgrounds (5.7:1+ contrast) */
+  --blue-light: #8AC0FF;  /* accessible blue for text on navy backgrounds (7.5:1+ contrast) */
   --blue-soft: #DCEBFF;
   --bg: #F6F9FE;
   --page-bg: #F9F9FA;

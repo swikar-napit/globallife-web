@@ -2,9 +2,11 @@
     position: relative;
     background: var(--navy);
     padding: 72px 48px 80px;
+    min-height: 460px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     overflow: hidden;
 }
@@ -200,7 +202,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--blue-accent);
+    color: var(--blue-deep);
 }
 
 .ct-info-card-heading {
@@ -220,7 +222,7 @@
 }
 
 .ct-info-card-value a {
-    color: var(--blue-accent);
+    color: var(--blue-deep);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
@@ -264,7 +266,7 @@
     font-weight: 700;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--blue-accent);
+    color: var(--blue-deep);
     margin-bottom: 8px;
 }
 
@@ -314,7 +316,7 @@
 }
 
 .ct-form-label .req {
-    color: var(--blue-accent);
+    color: var(--blue-deep);
     margin-left: 2px;
 }
 
@@ -442,8 +444,13 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--blue-accent);
+    color: var(--blue-deep);
     margin-bottom: 10px;
+}
+
+/* Office Hours card has a navy background, so its eyebrow needs the light variant */
+.ct-hours-card .ct-side-eyebrow {
+    color: var(--blue-light);
 }
 
 /* Hours — navy, mirrors your CTA card style */
@@ -533,7 +540,7 @@
     gap: 5px;
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--blue-accent);
+    color: var(--blue-deep);
     text-decoration: none;
     white-space: nowrap;
     transition: color 0.2s;
@@ -545,9 +552,9 @@
 }
 
 .ct-map-link:hover {
-    background: var(--blue-accent);
+    background: var(--blue-deep);
     color: #fff;
-    border-color: var(--blue-accent);
+    border-color: var(--blue-deep);
 }
 
 /* Social */
@@ -582,9 +589,9 @@
 }
 
 .ct-social-btn:hover {
-    border-color: var(--blue-accent);
+    border-color: var(--blue-deep);
     background: var(--blue-soft);
-    color: var(--blue-accent);
+    color: var(--blue-deep);
 }
 
 /* ─────────────────────────────────────────
@@ -676,6 +683,7 @@
 
     .ct-hero {
         padding: 60px 24px 68px;
+        min-height: 400px;
     }
 
     .ct-body {
@@ -686,6 +694,7 @@
 @media (max-width: 640px) {
     .ct-hero {
         padding: 52px 20px 60px;
+        min-height: 0;
     }
 
     .ct-form-grid {

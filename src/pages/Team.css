@@ -2,11 +2,27 @@
   position: relative;
   background: var(--navy);
   padding: 72px 48px 80px;
+  min-height: 460px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .tm-hero {
+    padding: 60px 24px 68px;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tm-hero {
+    padding: 52px 20px 60px;
+    min-height: 0;
+  }
 }
 
 .tm-hero-grid {
@@ -321,7 +337,7 @@
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--blue-accent);
+  color: var(--blue-deep);
   margin: 0;
 }
 
@@ -406,7 +422,7 @@
   gap: 8px;
   background: rgba(61, 139, 253, 0.08);
   border: 1px solid rgba(61, 139, 253, 0.15);
-  color: var(--blue-accent);
+  color: var(--blue-deep);
   font-size: 0.82rem;
   font-weight: 600;
   padding: 6px 16px;
@@ -520,7 +536,7 @@
 
 .tm-tab:hover {
   opacity: 0.9;
-  color: var(--blue-accent);
+  color: var(--blue-deep);
 }
 
 .tm-tab.is-active {
