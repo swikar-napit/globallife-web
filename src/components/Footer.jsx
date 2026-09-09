@@ -11,7 +11,7 @@ function Footer() {
 
         <div className="footer-brand-col">
           <div className="footer-brand">
-            <img src={crest} alt="Global Life School Logo" className="crest" />
+            <img src={crest} alt="Global Life School Logo" className="crest" loading="lazy" />
             <div>
               <div className="footer-brand-name">Global Life School</div>
               <div className="footer-brand-tag">Boarding &amp; Day School</div>

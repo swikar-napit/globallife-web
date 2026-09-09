@@ -94,14 +94,27 @@ const features = [
 function Home() {
   const [current, setCurrent] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  // Only slide 0 (the LCP image) is mounted on first render. The rest are
+  // added quietly once the browser is idle, so they never compete for
+  // bandwidth with the hero image during the LCP measurement window.
+  const [loadedSlides, setLoadedSlides] = useState(() => new Set([0]))
 
   useEffect(() => {
     if (isPaused) return
     const timer = setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % slides.length)
+      const next = (current + 1) % slides.length
+      setCurrent(next)
+      setLoadedSlides((prev) => (prev.has(next) ? prev : new Set(prev).add(next)))
     }, slides[current].duration)
     return () => clearTimeout(timer)
   }, [current, isPaused])
+
+  useEffect(() => {
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2000))
+    const cancelIdle = window.cancelIdleCallback || clearTimeout
+    const id = idle(() => setLoadedSlides(new Set(slides.map((_, i) => i))))
+    return () => cancelIdle(id)
+  }, [])
 
   return (
     <div className="home-page">
@@ -129,15 +142,18 @@ function Home() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {slides.map((slide, index) => (
-              <img
-                key={slide.id}
-                src={slide.img}
-                alt={slide.caption}
-                className={index === current ? "slide active" : "slide"}
-                fetchPriority={index === 0 ? "high" : "auto"}
-              />
-            ))}
+            {slides.map((slide, index) =>
+              loadedSlides.has(index) ? (
+                <img
+                  key={slide.id}
+                  src={slide.img}
+                  alt={slide.caption}
+                  className={index === current ? "slide active" : "slide"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              ) : null
+            )}
             <div className="slide-caption">{slides[current].caption}</div>
             <div className="slide-dots">
               {slides.map((slide, index) => (
