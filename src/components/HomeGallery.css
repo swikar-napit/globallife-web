@@ -1,5 +1,7 @@
 /* =================================*********
    HOME PAGE — GALLERY PREVIEW SECTION
+   Uses only the fonts already loaded in index.css:
+   Fraunces (headings) and Work Sans (body / labels).
 ========================================= */
 .hg-section {
   background: var(--page-bg);
@@ -16,11 +18,11 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: clamp(28px, 4vw, 40px);
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 
 .hg-header-text {
-  max-width: 640px;
+  max-width: 660px;
 }
 
 .hg-eyebrow {
@@ -28,11 +30,12 @@
   align-items: center;
   gap: 8px;
   color: var(--blue-deep);
+  font-family: 'Work Sans', sans-serif;
   font-size: 0.74rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .hg-eyebrow svg {
@@ -42,11 +45,12 @@
 
 .hg-heading {
   font-family: 'Fraunces', serif;
-  font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+  font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
   font-weight: 500;
-  color: var(--navy);
-  line-height: 1.15;
-  margin-bottom: 14px;
+  color: var(--navy-deep);
+  line-height: 1.12;
+  letter-spacing: -0.3px;
+  margin-bottom: 18px;
 }
 
 .hg-heading em {
@@ -56,8 +60,9 @@
 }
 
 .hg-sub {
+  font-family: 'Work Sans', sans-serif;
   font-size: 0.98rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--navy);
   opacity: 0.75;
 }
@@ -79,10 +84,18 @@
   transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
 
+.hg-more-btn span {
+  transition: transform 0.2s ease;
+}
+
 .hg-more-btn:hover {
   background: var(--blue-deep);
   color: #fff;
   transform: translateY(-2px);
+}
+
+.hg-more-btn:hover span {
+  transform: translateX(3px);
 }
 
 .hg-grid {
@@ -95,7 +108,7 @@
   position: relative;
   display: block;
   aspect-ratio: 4 / 3;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   background: #e9edf3;
   text-decoration: none;
@@ -132,11 +145,12 @@
   align-items: flex-start;
   text-align: left;
   padding: 20px 22px 22px;
-  background: linear-gradient(180deg, rgba(8, 20, 40, 0) 40%, rgba(8, 20, 40, 0.55) 72%, rgba(6, 14, 28, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(8, 20, 40, 0) 38%, rgba(8, 20, 40, 0.5) 68%, rgba(6, 14, 28, 0.9) 100%);
 }
 
 .hg-card-tag {
   color: #FFD666;
+  font-family: 'Work Sans', sans-serif;
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 1.6px;
@@ -146,7 +160,7 @@
 
 .hg-card-title {
   font-family: 'Fraunces', serif;
-  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  font-size: clamp(1rem, 0.9rem + 0.45vw, 1.2rem);
   font-weight: 500;
   line-height: 1.3;
   color: #fff;
