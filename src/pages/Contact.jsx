@@ -38,8 +38,8 @@ const infoCards = [
 ];
 
 const hours = [
-  { day: "Sunday – Friday", time: "9:00 AM – 5:00 PM", open: true },
-  { day: "Saturday", time: "Closed", open: false },
+  { day: "Monday – Friday", time: "9:00 AM – 5:00 PM", open: true },
+  { day: "Saturday – Sunday", time: "Closed", open: false },
 ];
 
 const enquiryTypes = [
