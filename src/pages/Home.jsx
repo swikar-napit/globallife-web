@@ -5,7 +5,6 @@ import slide2 from "../assets/global2.jpg"
 import slide3 from "../assets/global3.jpg"
 import slide5 from "../assets/global5.jpg"
 import "./Home.css"
-import "../components/Cta.css"
 import HomeGallery from "../components/HomeGallery"
 
 const slides = [
@@ -280,42 +279,6 @@ function Home() {
         </div>
       </section>
       <HomeGallery />
-
-      <section className="cta-section">
-        <div className="cta-card">
-          <div className="cta-photo" style={{ backgroundImage: `url(${slide3})` }} aria-hidden="true" />
-          <div className="cta-overlay" aria-hidden="true" />
-          <div className="cta-content">
-            <span className="cta-eyebrow">Now Enrolling</span>
-            <h2 className="cta-heading">Ready to Join Global Life School?</h2>
-            <p className="cta-text">
-              Applications for the upcoming academic year are open. Take the
-              first step toward a future built on excellence, character, and
-              care.
-            </p>
-            <div className="cta-stats">
-              <div className="cta-stat">
-                <span className="cta-stat-num">500+</span>
-                <span className="cta-stat-label">Students</span>
-              </div>
-              <div className="cta-stat-divider"></div>
-              <div className="cta-stat">
-                <span className="cta-stat-num">15+</span>
-                <span className="cta-stat-label">Years</span>
-              </div>
-              <div className="cta-stat-divider"></div>
-              <div className="cta-stat">
-                <span className="cta-stat-num">98%</span>
-                <span className="cta-stat-label">Pass Rate</span>
-              </div>
-            </div>
-            <div className="cta-actions">
-              <Link to="/academics" className="cta-btn-primary">Apply Now</Link>
-              <Link to="/contact" className="cta-btn-secondary">Contact Us</Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

@@ -3,7 +3,7 @@
 ========================================= */
 .hg-section {
   background: var(--page-bg);
-  padding: clamp(56px, 7vw, 88px) clamp(24px, 5vw, 48px) 0;
+  padding: clamp(56px, 7vw, 88px) clamp(24px, 5vw, 48px) clamp(64px, 8vw, 96px);
 }
 
 .hg-inner {
