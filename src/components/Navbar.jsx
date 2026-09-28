@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { NavLink, useLocation } from "react-router"
 import crest from "../assets/global.jpg"
+import { smoothScrollToTop } from "./ScrollToTop"
 import "./Navbar.css"
 
 function Navbar() {
@@ -8,23 +9,6 @@ function Navbar() {
   const [hidden, setHidden] = useState(false)
   const lastScrollY = useRef(0)
   const location = useLocation()
-
-  // Eased smooth scroll to top (nicer/slower than the native "smooth" behavior)
-  const smoothScrollToTop = (duration = 500) => {
-    const startY = window.scrollY
-    if (startY === 0) return
-    const startTime = performance.now()
-    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2)
-
-    const step = (now) => {
-      const elapsed = now - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      window.scrollTo(0, startY * (1 - easeInOutQuad(progress)))
-      if (progress < 1) requestAnimationFrame(step)
-    }
-
-    requestAnimationFrame(step)
-  }
 
   // If you click a link to the page you're already on, the pathname
   // doesn't change, so ScrollToTop's effect never fires. Handle it here.
