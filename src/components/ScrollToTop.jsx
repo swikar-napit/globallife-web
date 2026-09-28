@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 import { useLocation } from "react-router"
 
 let activeFrame = null
@@ -35,10 +35,8 @@ export function smoothScrollToTop(duration = 600) {
   let startTime = null
 
   const step = (now) => {
-    // use the rAF timestamp for both start and current time (same clock)
     if (startTime === null) startTime = now
     const progress = Math.min((now - startTime) / duration, 1)
-    // whole pixels only, avoids jitter with fractional scroll positions
     window.scrollTo(0, Math.round(startY * (1 - easeInOutCubic(progress))))
 
     if (progress < 1) {
@@ -51,19 +49,72 @@ export function smoothScrollToTop(duration = 600) {
   activeFrame = requestAnimationFrame(step)
 }
 
+const normalize = (p) => p.replace(/\/+$/, "") || "/"
+
+// Where the user was on the /gallery grid before opening an album
+let savedGalleryY = 0
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
+  const pathRef = useRef(normalize(pathname))
+  const prevPathRef = useRef(null)
+
+  // We handle scroll restoration ourselves, so the browser doesn't race us
+  useEffect(() => {
+    const previous = window.history.scrollRestoration
+    window.history.scrollRestoration = "manual"
+    return () => {
+      window.history.scrollRestoration = previous
+    }
+  }, [])
+
+  // Keep the current path in a ref *before* the browser reacts to the new
+  // page's height, so scroll events from the route swap aren't saved as
+  // the gallery position.
+  useLayoutEffect(() => {
+    pathRef.current = normalize(pathname)
+  }, [pathname])
+
+  // Remember the scroll position while the user is on the gallery grid
+  useEffect(() => {
+    const onScroll = () => {
+      if (pathRef.current === "/gallery") savedGalleryY = window.scrollY
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   useEffect(() => {
+    const path = normalize(pathname)
+    const prevPath = prevPathRef.current
+    prevPathRef.current = path
+
     // if the URL includes a hash (e.g. /about#our-story), let the target
     // page handle scrolling to that anchor instead of resetting to top
     if (hash) return
 
-    // Individual album pages (/gallery/some_album): open at the top instantly
-    if (pathname.startsWith("/gallery/")) {
+    // Album pages (/gallery/some_album): open at the top instantly
+    if (path.startsWith("/gallery/")) {
       cancelScroll()
       window.scrollTo({ top: 0, left: 0, behavior: "instant" })
       return
+    }
+
+    if (path === "/gallery") {
+      // Coming back from an album: return to where the user left off
+      if (prevPath && prevPath.startsWith("/gallery/")) {
+        cancelScroll()
+        const y = savedGalleryY
+        window.scrollTo({ top: y, left: 0, behavior: "instant" })
+        // one more try next frame in case the page hadn't finished laying out
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: y, left: 0, behavior: "instant" })
+          savedGalleryY = y
+        })
+        return
+      }
+      // Coming from any other page: start fresh from the top
+      savedGalleryY = 0
     }
 
     smoothScrollToTop()
