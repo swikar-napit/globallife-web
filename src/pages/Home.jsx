@@ -6,6 +6,7 @@ import slide3 from "../assets/global3.jpg"
 import slide5 from "../assets/global5.jpg"
 import "./Home.css"
 import "../components/Cta.css"
+import HomeGallery from "../components/HomeGallery"
 
 const slides = [
   { id: 1, img: slide5, caption: "Welcome Program", duration: 5000 },
@@ -278,6 +279,8 @@ function Home() {
           </div>
         </div>
       </section>
+      <HomeGallery />
+
       <section className="cta-section">
         <div className="cta-card">
           <div className="cta-photo" style={{ backgroundImage: `url(${slide3})` }} aria-hidden="true" />
