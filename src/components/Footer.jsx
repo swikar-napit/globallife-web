@@ -52,6 +52,11 @@ function Footer() {
               </Link>
             </li>
             <li>
+              <Link to="/gallery" className={location.pathname === "/gallery" ? "footer-link active" : "footer-link"}>
+                <span>Gallery</span> <span className="footer-link-arrow">→</span>
+              </Link>
+            </li>
+            <li>
               <Link to="/contact" className={location.pathname === "/contact" ? "footer-link active" : "footer-link"}>
                 <span>Contact</span> <span className="footer-link-arrow">→</span>
               </Link>

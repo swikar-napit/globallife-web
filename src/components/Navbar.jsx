@@ -84,6 +84,7 @@ function Navbar() {
         <li><NavLink to="/about" onClick={() => handleNavClick("/about")}>About Us</NavLink></li>
         <li><NavLink to="/academics" onClick={() => handleNavClick("/academics")}>Academics</NavLink></li>
         <li><NavLink to="/team" onClick={() => handleNavClick("/team")}>Team</NavLink></li>
+        <li><NavLink to="/gallery" onClick={() => handleNavClick("/gallery")}>Gallery</NavLink></li>
         <li><NavLink to="/contact" onClick={() => handleNavClick("/contact")}>Contact</NavLink></li>
         <li><NavLink to="/contact" className="enquiry-btn" onClick={() => handleNavClick("/contact")}>Enquire Now</NavLink></li>
       </ul>

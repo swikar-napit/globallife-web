@@ -25,6 +25,13 @@ function ScrollToTop() {
     // page handle scrolling to that anchor instead of resetting to top
     if (hash) return
 
+    // Individual album pages (/gallery/some_album): jump straight to the
+    // top with no animation, so the page simply opens at the top.
+    if (pathname.startsWith("/gallery/")) {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" })
+      return
+    }
+
     smoothScrollToTop()
   }, [pathname, hash])
 
