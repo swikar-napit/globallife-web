@@ -1,10 +1,8 @@
 import { Link, useLocation } from "react-router"
 import { useEffect, useRef, useState } from "react"
 import "./About.css"
-import "../components/Cta.css"
 import crest from "../assets/crest-hires.png"
 import principalPhoto from "../assets/principal.jpg"
-import ctaPhoto from "../assets/global1.jpg"
 
 const milestones = [
   {
@@ -359,37 +357,59 @@ function About() {
         </div>
       </section>
 
-      <section className="cta-section">
-        <div className="cta-card">
-          <div className="cta-photo" style={{ backgroundImage: `url(${ctaPhoto})` }} aria-hidden="true" />
-          <div className="cta-overlay" aria-hidden="true" />
-          <div className="cta-content">
-            <span className="cta-eyebrow">Now Enrolling</span>
-            <h2 className="cta-heading">Ready to Join Global Life School?</h2>
-            <p className="cta-text">
-              Come see the classrooms, meet the teachers, and picture your
-              child thriving here. Applications for the upcoming academic
-              year are open now.
-            </p>
-            <div className="cta-stats">
-              <div className="cta-stat">
-                <span className="cta-stat-num">500+</span>
-                <span className="cta-stat-label">Students</span>
+      <section className="abm-section" id="find-us">
+        <div className="abm-inner">
+          <div className="abm-map-card">
+            <iframe
+              className="abm-map"
+              title="Global Life School location"
+              src="https://www.google.com/maps?q=Global+Life+School,Kamalbinayak,Bhaktapur&z=16&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
+          <div className="abm-info-card">
+            <div className="abm-info-list">
+              <div className="abm-info-item">
+                <span className="abm-info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div>
+                  <span className="abm-info-label">Address</span>
+                  <span className="abm-info-value">Global Life School, Kamalbinayak, Bhaktapur, Nepal</span>
+                </div>
               </div>
-              <div className="cta-stat-divider"></div>
-              <div className="cta-stat">
-                <span className="cta-stat-num">15+</span>
-                <span className="cta-stat-label">Years</span>
-              </div>
-              <div className="cta-stat-divider"></div>
-              <div className="cta-stat">
-                <span className="cta-stat-num">98%</span>
-                <span className="cta-stat-label">Pass Rate</span>
+
+              <div className="abm-info-item">
+                <span className="abm-info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z" />
+                  </svg>
+                </span>
+                <div>
+                  <span className="abm-info-label">Phone</span>
+                  <span className="abm-info-value">
+                    <a href="tel:+97716612925">01-6612925</a>
+                    {" , "}
+                    <a href="tel:+97716620200">01-6620200</a>
+                  </span>
+                </div>
               </div>
             </div>
-            <div className="cta-actions">
-              <Link to="/academics" className="cta-btn-primary">Apply Now</Link>
-              <Link to="/contact" className="cta-btn-secondary">Contact Us</Link>
+
+            <div className="abm-actions">
+              <Link to="/contact" className="abm-btn-primary">
+                Enquire Now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
+              <Link to="/academics" className="abm-btn-secondary">View Academics</Link>
             </div>
           </div>
         </div>
