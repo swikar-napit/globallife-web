@@ -13,7 +13,15 @@ function AlbumPage() {
   const photos = album ? album.photos : []
   const isLightboxOpen = lightboxIndex !== null
 
-  const openLightbox = (index) => setLightboxIndex(index)
+  const openLightbox = (index) => {
+    // Push the history entry right here, in the click handler — not in a
+    // useEffect. React's StrictMode intentionally runs effects twice in
+    // development, which would push this entry twice and leave a hidden
+    // extra step the back button has to silently consume first.
+    window.history.pushState({ glLightbox: true }, "")
+    historyPushedRef.current = true
+    setLightboxIndex(index)
+  }
 
   const closeLightbox = useCallback(() => {
     if (historyPushedRef.current) {
@@ -41,13 +49,12 @@ function AlbumPage() {
     setLightboxIndex(null)
   }, [slug])
 
-  // Push a history entry when the lightbox opens, so the browser/mouse
-  // "back" button closes the lightbox first instead of leaving the page.
+  // Listen for the browser/mouse "back" button while the lightbox is open,
+  // so it closes the lightbox instead of leaving the page. The history
+  // entry itself is pushed once, in openLightbox — not here — so this
+  // effect only attaches/detaches a listener and is safe to re-run.
   useEffect(() => {
     if (!isLightboxOpen) return
-
-    window.history.pushState({ glLightbox: true }, "")
-    historyPushedRef.current = true
 
     const handlePopState = () => {
       historyPushedRef.current = false
@@ -60,7 +67,6 @@ function AlbumPage() {
     return () => {
       window.removeEventListener("popstate", handlePopState)
       document.body.style.overflow = ""
-      historyPushedRef.current = false
     }
   }, [isLightboxOpen])
 
