@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Link, useParams, Navigate } from "react-router"
 import { getAlbumBySlug } from "../data/albums"
 import "./Gallery.css"
@@ -8,33 +8,23 @@ function AlbumPage() {
   const album = getAlbumBySlug(slug)
 
   const [lightboxIndex, setLightboxIndex] = useState(null)
-  const historyPushedRef = useRef(false)
 
   const photos = album ? album.photos : []
   const isLightboxOpen = lightboxIndex !== null
 
   const openLightbox = (index) => {
-    // Push the history entry right here, in the click handler — not in a
-    // useEffect. React's StrictMode intentionally runs effects twice in
-    // development, which would push this entry twice and leave a hidden
-    // extra step the back button has to silently consume first.
-    window.history.pushState({ glLightbox: true }, "")
-    historyPushedRef.current = true
+    // Push a history entry carrying which photo is open, so back closes
+    // it and forward can reopen the same photo instead of doing nothing.
+    window.history.pushState({ glLightbox: true, index }, "")
     setLightboxIndex(index)
   }
 
   const closeLightbox = useCallback(() => {
-    if (historyPushedRef.current) {
-      // Consume the history entry we pushed when opening, so the
-      // browser's back button doesn't land on an already-closed lightbox.
-      // Clear the flag first so a second call can never go "back" twice
-      // (which would leave the album page entirely).
-      historyPushedRef.current = false
-      window.history.back()
-    } else {
-      setLightboxIndex(null)
-    }
-  }, [])
+    // Every open pushed exactly one history entry, so closing just
+    // undoes that one step. The popstate listener below is what
+    // actually clears lightboxIndex once the browser lands on it.
+    if (lightboxIndex !== null) window.history.back()
+  }, [lightboxIndex])
 
   const showNext = useCallback(() => {
     setLightboxIndex((i) => (i === null ? i : (i + 1) % photos.length))
@@ -49,23 +39,28 @@ function AlbumPage() {
     setLightboxIndex(null)
   }, [slug])
 
-  // Listen for the browser/mouse "back" button while the lightbox is open,
-  // so it closes the lightbox instead of leaving the page. The history
-  // entry itself is pushed once, in openLightbox — not here — so this
-  // effect only attaches/detaches a listener and is safe to re-run.
+  // One listener for the whole time this page is mounted (not just while
+  // the lightbox is open), so both directions work correctly:
+  // - back → lands on a history entry with no glLightbox flag → close it
+  // - forward → lands back on the glLightbox entry → reopen that photo
   useEffect(() => {
-    if (!isLightboxOpen) return
-
-    const handlePopState = () => {
-      historyPushedRef.current = false
-      setLightboxIndex(null)
+    const handlePopState = (event) => {
+      if (event.state && event.state.glLightbox) {
+        setLightboxIndex(event.state.index)
+      } else {
+        setLightboxIndex(null)
+      }
     }
 
     window.addEventListener("popstate", handlePopState)
-    document.body.style.overflow = "hidden"
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [])
 
+  // Lock page scroll only while the lightbox is actually showing
+  useEffect(() => {
+    if (!isLightboxOpen) return
+    document.body.style.overflow = "hidden"
     return () => {
-      window.removeEventListener("popstate", handlePopState)
       document.body.style.overflow = ""
     }
   }, [isLightboxOpen])
