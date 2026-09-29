@@ -19,6 +19,9 @@ function AlbumPage() {
     if (historyPushedRef.current) {
       // Consume the history entry we pushed when opening, so the
       // browser's back button doesn't land on an already-closed lightbox.
+      // Clear the flag first so a second call can never go "back" twice
+      // (which would leave the album page entirely).
+      historyPushedRef.current = false
       window.history.back()
     } else {
       setLightboxIndex(null)
@@ -142,7 +145,11 @@ function AlbumPage() {
 
       {activePhoto && (
         <div className="gl-lightbox" role="dialog" aria-modal="true" onClick={closeLightbox}>
-          <button className="gl-lightbox-close" onClick={closeLightbox} aria-label="Close">
+          <button
+            className="gl-lightbox-close"
+            onClick={(e) => { e.stopPropagation(); closeLightbox() }}
+            aria-label="Close"
+          >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />

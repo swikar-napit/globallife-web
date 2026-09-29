@@ -784,17 +784,17 @@
 }
 
 .abm-inner {
-  max-width: 1180px;
+  max-width: 1080px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(20px, 3vw, 32px);
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(16px, 2.4vw, 24px);
   align-items: stretch;
 }
 
 .abm-map-card {
   position: relative;
-  min-height: 320px;
+  min-height: 250px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(14, 42, 77, 0.1);
@@ -815,8 +815,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 28px;
-  padding: clamp(28px, 4vw, 48px);
+  gap: 22px;
+  padding: clamp(22px, 3vw, 34px);
   background: #fff;
   border-radius: 14px;
   border: 1px solid rgba(14, 42, 77, 0.1);
@@ -826,7 +826,7 @@
 .abm-info-list {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 16px;
 }
 
 .abm-info-item {
@@ -860,7 +860,7 @@
 
 .abm-info-value {
   display: block;
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.5;
   color: var(--navy);
@@ -889,8 +889,8 @@
   gap: 10px;
   font-family: 'Work Sans', sans-serif;
   font-weight: 600;
-  font-size: 0.92rem;
-  padding: 12px 26px;
+  font-size: 0.86rem;
+  padding: 10px 22px;
   border-radius: 8px;
   text-decoration: none;
   border: 2px solid var(--navy);
@@ -936,7 +936,7 @@
   }
 
   .abm-map-card {
-    min-height: 280px;
+    min-height: 230px;
   }
 }
 
