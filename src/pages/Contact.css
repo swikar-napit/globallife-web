@@ -228,14 +228,14 @@
 
 .ct-info-card-value a {
     overflow-wrap: anywhere;
-    color: var(--blue-deep);
+    color: inherit;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: inherit;
     transition: color 0.2s;
 }
 
 .ct-info-card-value a:hover {
-    color: var(--navy);
+    color: var(--blue-deep);
 }
 
 /* ─────────────────────────────────────────
@@ -716,9 +716,6 @@
         line-height: 1.7;
     }
 
-    .ct-info-card-value a {
-        font-size: 0.84rem;
-    }
 }
 
 @media (max-width: 768px) {
