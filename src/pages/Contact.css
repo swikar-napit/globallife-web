@@ -141,11 +141,12 @@
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
 
 .ct-info-card {
+    min-width: 0;
     background: #fff;
     border-radius: 18px;
     padding: 32px 28px 28px;
@@ -221,7 +222,12 @@
     line-height: 1.75;
 }
 
+.ct-info-card-value {
+    overflow-wrap: anywhere;
+}
+
 .ct-info-card-value a {
+    overflow-wrap: anywhere;
     color: var(--blue-deep);
     text-decoration: none;
     font-weight: 600;
@@ -667,8 +673,51 @@
         gap: 16px;
     }
 
+    /* Tablet: Office Hours and Follow Us sit side by side, map spans below */
+    .ct-hours-card {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .ct-social-card {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .ct-map-card {
         grid-column: 1 / -1;
+        grid-row: 2;
+    }
+}
+
+/* Tablet: tighter cards so all three fit cleanly in a row */
+@media (max-width: 960px) {
+    .ct-cards-section {
+        padding: 48px 32px 0;
+    }
+
+    .ct-cards-inner {
+        gap: 14px;
+    }
+
+    .ct-info-card {
+        padding: 26px 20px 24px;
+    }
+
+    .ct-info-card-top {
+        gap: 10px;
+    }
+
+    .ct-info-card-value {
+        font-size: 0.86rem;
+        line-height: 1.7;
+    }
+
+    .ct-info-card-value a {
+        font-size: 0.84rem;
     }
 }
 
@@ -730,8 +779,11 @@
         grid-template-columns: 1fr;
     }
 
+    .ct-hours-card,
+    .ct-social-card,
     .ct-map-card {
         grid-column: 1;
+        grid-row: auto;
     }
 }
 

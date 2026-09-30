@@ -360,24 +360,51 @@
   flex-shrink: 0;
 }
 
+/* Tablet: keep stats horizontal, just tighter */
 @media (max-width: 900px) {
   .stats-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 26px 20px;
-    gap: 14px;
+    padding: 24px 20px;
+    gap: 0;
   }
 
   .stat-item {
-    padding: 0;
-    gap: 3px;
+    flex: 1;
+    padding: 0 12px;
+    gap: 6px;
+    text-align: center;
   }
 
   .stat-divider {
-    display: block;
-    width: 32px;
-    height: 1px;
+    height: 44px;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-plus {
+    font-size: 1.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.66rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* Phones: still horizontal, labels wrap under the numbers */
+@media (max-width: 480px) {
+  .stats-bar {
+    padding: 20px 10px;
+  }
+
+  .stat-item {
+    padding: 0 6px;
+    gap: 4px;
+  }
+
+  .stat-divider {
+    height: 38px;
   }
 
   .stat-number {
@@ -389,8 +416,10 @@
   }
 
   .stat-label {
-    font-size: 0.56rem;
-    letter-spacing: 1.2px;
+    font-size: 0.54rem;
+    letter-spacing: 0.8px;
+    white-space: normal;
+    line-height: 1.4;
   }
 }
 
@@ -730,12 +759,31 @@
   line-height: 1.65;
 }
 
-/* Triggers layout shift only at modern portrait tablets and mobile sizes */
-@media (max-width: 768px) {
+/* Tablets: stack the promise card above the cards so they stay wide, not tall and narrow */
+@media (max-width: 1024px) {
   .why-bento {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
+  .why-hero-card {
+    padding: 44px 40px;
+  }
+
+  .why-hero-text {
+    max-width: 560px;
+  }
+
+  .why-grid {
+    gap: 20px;
+  }
+
+  .why-card {
+    padding: 28px 26px;
+  }
+}
+
+@media (max-width: 768px) {
   .why-hero-card {
     padding: 40px 32px;
   }

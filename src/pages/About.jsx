@@ -4,31 +4,18 @@ import "./About.css"
 import crest from "../assets/crest-hires.png"
 import principalPhoto from "../assets/principal.jpg"
 
-const milestones = [
+const journey = [
   {
-    year: "2006",
-    title: "Global Life School is founded",
-    text: "Opened our doors with a single building, a handful of classrooms, and a promise to put every child's growth first.",
+    title: "Foundation for Growth",
+    text: "Global Life School was established with a vision to provide quality education in a caring boarding and day environment.",
   },
   {
-    year: "2013",
-    title: "Boarding facilities open",
-    text: "Introduced safe, home-like boarding houses, welcoming students from across the region for the first time.",
+    title: "Academic Development",
+    text: "We strengthened classroom learning, student care, co-curricular activities, and exam preparation.",
   },
   {
-    year: "2017",
-    title: "Secondary level launched",
-    text: "Expanded through Class 10, giving students a full academic journey without ever needing to change schools.",
-  },
-  {
-    year: "2021",
-    title: "500th student enrolled",
-    text: "Crossed a major milestone in enrollment, a mark of the trust families across the community placed in us.",
-  },
-  {
-    year: "2024",
-    title: "98% board pass rate achieved",
-    text: "Our graduating class posted our strongest results yet, a reflection of years of disciplined academic groundwork.",
+    title: "Global Life Today",
+    text: "We continue to serve students through academics, values, leadership, and holistic development.",
   },
 ]
 
@@ -229,74 +216,30 @@ function About() {
       </section>
       <section className="story-section" id="our-story">
         <div className="story-inner">
-          <div className="mv-intro">
-            <span className="mv-eyebrow">Our Story</span>
-            <h2 className="mv-heading">
-              Fifteen years of <em>growing together</em>
+          <div className="story-left">
+            <span className="story-eyebrow">Our Story</span>
+            <h2 className="story-heading">
+              Built on care, discipline, and <em>progress</em>
             </h2>
+            <p className="story-intro">
+              Global Life School has grown into a trusted institution known
+              for academic excellence, strong values, and holistic student
+              development.
+            </p>
+            <Link to="/academics" className="story-btn">
+              Explore Academics <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
-          <div className="story-scroll-wrap">
-            <div className="story-scroll">
-              <div className="story-timeline">
-                <div className="story-row story-row--top">
-                  {milestones.map((m, index) => (
-                    <div className="story-slot" key={m.year}>
-                      {index % 2 === 0 && (
-                        <div className="story-content">
-                          <span className="story-year">{m.year}</span>
-                          <h3 className="story-title">{m.title}</h3>
-                          <p className="story-text">{m.text}</p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="story-row story-row--line">
-                  <div className="story-line" aria-hidden="true"></div>
-                  {milestones.map((m) => (
-                    <div className="story-slot" key={m.year}>
-                      <div className="story-dot" aria-hidden="true"></div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="story-row story-row--bottom">
-                  {milestones.map((m, index) => (
-                    <div className="story-slot" key={m.year}>
-                      {index % 2 !== 0 && (
-                        <div className="story-content">
-                          <span className="story-year">{m.year}</span>
-                          <h3 className="story-title">{m.title}</h3>
-                          <p className="story-text">{m.text}</p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="story-scroll-fade" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 6l6 6-6 6" />
-              </svg>
-            </div>
-          </div>
-
-          <div className="story-mobile-list">
-            <div className="story-mobile-line" aria-hidden="true"></div>
-            {milestones.map((m) => (
-              <div className="story-mobile-item" key={m.year}>
-                <div className="story-mobile-dot" aria-hidden="true"></div>
-                <div className="story-content">
-                  <span className="story-year">{m.year}</span>
-                  <h3 className="story-title">{m.title}</h3>
-                  <p className="story-text">{m.text}</p>
-                </div>
-              </div>
+          <ol className="story-list">
+            {journey.map((item, index) => (
+              <li className="story-list-item" key={item.title}>
+                <span className="story-num">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="story-title">{item.title}</h3>
+                <p className="story-text">{item.text}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
